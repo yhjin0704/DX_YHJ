@@ -8,4 +8,20 @@
       <UniqueIdentifier>{5d4c89bd-d5c0-4dd4-960d-a92e748fd2cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EngineCore.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineOption.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EngineCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineOption.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
