@@ -176,6 +176,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EngineRenderTarget.h" />
+    <ClInclude Include="EngineTexture.h" />
     <ClInclude Include="PreCompile.h">
       <SubType>
       </SubType>
@@ -191,6 +193,8 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EngineRenderTarget.cpp" />
+    <ClCompile Include="EngineTexture.cpp" />
     <ClCompile Include="PreCompile.cpp">
       <SubType>
       </SubType>

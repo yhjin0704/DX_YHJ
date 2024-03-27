@@ -37,6 +37,9 @@
     <ClCompile Include="NameObject.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="PreCompile.cpp">
+      <Filter>PreCompile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineDebug.h">
@@ -75,6 +78,9 @@
     <ClInclude Include="NameObject.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="PreCompile.h">
+      <Filter>PreCompile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Debug">
@@ -94,6 +100,9 @@
     </Filter>
     <Filter Include="Time">
       <UniqueIdentifier>{7e55f2ac-2f79-46a7-a4b2-ac087f2f481a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PreCompile">
+      <UniqueIdentifier>{16e9733d-0de7-4115-a343-32db48160ee3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

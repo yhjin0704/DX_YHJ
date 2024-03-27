@@ -11,6 +11,4 @@ USamCore::~USamCore()
 
 void USamCore::Initialize()
 {
-	// GEngine->CreateLevel();
-	int a = 0;
 }

@@ -16,6 +16,9 @@
     <ClCompile Include="WindowImage.cpp">
       <Filter>Window</Filter>
     </ClCompile>
+    <ClCompile Include="PreCompile.cpp">
+      <Filter>PreCompile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineInput.h">
@@ -57,6 +60,9 @@
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
       <Filter>ThirdParty\FMOD\inc</Filter>
     </ClInclude>
+    <ClInclude Include="PreCompile.h">
+      <Filter>PreCompile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input">
@@ -86,21 +92,14 @@
     <Filter Include="ThirdParty\FMOD\Release">
       <UniqueIdentifier>{0b7decbc-859f-43c9-b02c-be3b2ce8419e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PreCompile">
+      <UniqueIdentifier>{46183f94-0389-4c25-972a-6d584e292d46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ThirdParty\FMOD\Debug\fmodL.dll">
-      <Filter>ThirdParty\FMOD\Debug</Filter>
-    </None>
-    <None Include="ThirdParty\FMOD\Release\fmod.dll">
-      <Filter>ThirdParty\FMOD\Release</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="ThirdParty\FMOD\Debug\fmodL_vc.lib">
-      <Filter>ThirdParty\FMOD\Debug</Filter>
-    </Library>
-    <Library Include="ThirdParty\FMOD\Release\fmod_vc.lib">
-      <Filter>ThirdParty\FMOD\Release</Filter>
-    </Library>
+    <CopyFileToFolders Include="ThirdParty\FMOD\Debug\fmodL.dll" />
+    <CopyFileToFolders Include="ThirdParty\FMOD\Release\fmod.dll" />
+    <CopyFileToFolders Include="ThirdParty\FMOD\Debug\fmodL_vc.lib" />
+    <CopyFileToFolders Include="ThirdParty\FMOD\Release\fmod_vc.lib" />
   </ItemGroup>
 </Project>
