@@ -8,6 +8,7 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="PlayGameMode.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -17,6 +18,7 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="PlayGameMode.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
