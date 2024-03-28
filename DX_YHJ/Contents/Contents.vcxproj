@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PlayGameMode.h" />
     <ClInclude Include="PreCompile.h">
       <SubType>
       </SubType>
@@ -29,6 +30,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PlayGameMode.cpp" />
     <ClCompile Include="PreCompile.cpp">
       <SubType>
       </SubType>
