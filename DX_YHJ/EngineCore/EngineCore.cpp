@@ -5,6 +5,9 @@
 #include <EnginePlatform/EngineSound.h>
 #include <EngineCore/EngineTexture.h>
 #include "Level.h"
+#include "GameMode.h"
+
+#include "EngineVertexBuffer.h"
 
 UEngineCore::UEngineCore() 
 {
@@ -79,10 +82,7 @@ void UEngineCore::EngineOptionInit()
 
 void UEngineCore::EngineEnd()
 {
-	// 어차피 자동으로 지워지는 리소스들을 왜 굳이 여기서 클리어를 직접 해주지?
-	// 엔진이 종료되는 시점에 텍스처를 모두다 삭제한다.
-	UEngineSound::ResourcesRelease();
-	UEngineTexture::ResourcesRelease();
+	EngineDevice.EngineResourcesRelease();
 }
 
 void UEngineCore::EngineFrameUpdate()
@@ -112,9 +112,16 @@ void UEngineCore::EngineFrameUpdate()
 
 std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string& _Name, std::shared_ptr<AActor> _GameMode)
 {
+	std::shared_ptr <AGameMode> GameModePtr = std::dynamic_pointer_cast<AGameMode>(_GameMode);
+
+	if (nullptr == GameModePtr)
+	{
+		MsgBoxAssert("레벨의 첫 오브젝트가 GameMode를 상속받은 클래스가 아닙니다.");
+		return nullptr;
+	}
+
 	std::shared_ptr<ULevel> Level = std::make_shared<ULevel>();
 	Level->PushActor(_GameMode);
-	Level->BeginPlay();
 	Levels[_Name] = Level;
 	return Level;
 }
