@@ -40,6 +40,12 @@
     <Filter Include="Resources\Mesh">
       <UniqueIdentifier>{0b3c968c-a9e0-4803-91e1-33b1d7bbc872}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\RenderingSetting">
+      <UniqueIdentifier>{a7807e48-8549-4251-bb43-4e6ae5a52e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shader">
+      <UniqueIdentifier>{0445cad8-3a53-452a-b2f8-95a56c71c135}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineCore.cpp">
@@ -105,6 +111,21 @@
     <ClCompile Include="EngineVertexBuffer.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
+    <ClCompile Include="EngineMaterial.cpp">
+      <Filter>Resources\RenderingSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineRasterizer.cpp">
+      <Filter>Resources\RenderingSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="EnginePixelShader.cpp">
+      <Filter>Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineShader.cpp">
+      <Filter>Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVertexShader.cpp">
+      <Filter>Resources\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineCore.h">
@@ -169,6 +190,21 @@
     </ClInclude>
     <ClInclude Include="EngineVertexBuffer.h">
       <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineMaterial.h">
+      <Filter>Resources\RenderingSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineRasterizer.h">
+      <Filter>Resources\RenderingSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="EnginePixelShader.h">
+      <Filter>Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineShader.h">
+      <Filter>Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVertexShader.h">
+      <Filter>Resources\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
