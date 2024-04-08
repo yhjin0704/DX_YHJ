@@ -4,21 +4,17 @@
     <ClCompile Include="PreCompile.cpp">
       <Filter>PreCompile</Filter>
     </ClCompile>
-    <ClCompile Include="SamCore.cpp">
+    <ClCompile Include="HoloCureCore.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="PlayGameMode.cpp" />
-    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
       <Filter>PreCompile</Filter>
     </ClInclude>
-    <ClInclude Include="SamCore.h">
+    <ClInclude Include="HoloCureCore.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="PlayGameMode.h" />
-    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">

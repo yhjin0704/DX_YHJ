@@ -33,25 +33,35 @@ public:
 	ULevel& operator=(ULevel&& _Other) noexcept = delete;
 
 	template<typename ActorType>
-	void SpawnActor(std::string _Name, int _Order = 0)
+	std::shared_ptr<ActorType> SpawnActor(std::string _Name, int _Order = 0)
 	{
 		// 이 사이에서만 컴포넌트를 생성할수 있어야 한다.
 		IsActorConstructer = true;
 		std::shared_ptr<AActor> NewActor = std::make_shared<ActorType>();
+		ConstructorActor(NewActor);
 		IsActorConstructer = false;
 
 		// 이
 		//NewActor->SetWorld(this);
 		//NewActor->BeginPlay();
-
 		PushActor(NewActor);
 
+
+		return std::dynamic_pointer_cast<ActorType>(NewActor);
 		// Actors[_Order].push_back(NewActor);
+	}
+
+	std::shared_ptr<UCamera> GetMainCamera()
+	{
+		return MainCamera;
 	}
 
 protected:
 	void Tick(float _DeltaTime) override;
 	void Render(float _DeltaTime);
+
+	void LevelEnd(ULevel* _NextLevel) override;
+	void LevelStart(ULevel* _PrevLevel) override;
 
 private:
 	std::shared_ptr<UCamera> MainCamera = nullptr;
@@ -62,6 +72,7 @@ private:
 
 	std::map<int, std::list<std::shared_ptr<URenderer>>> Renderers;
 
+	void ConstructorActor(std::shared_ptr<AActor> _Actor);
 	void PushActor(std::shared_ptr<AActor> _Actor);
 	void PushRenderer(std::shared_ptr<URenderer> _Renderer);
 	

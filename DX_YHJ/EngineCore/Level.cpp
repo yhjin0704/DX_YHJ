@@ -10,7 +10,11 @@ bool ULevel::IsActorConstructer = true;
 
 ULevel::ULevel() 
 {
-	MainCamera = std::make_shared<UCamera>();
+	// MainCamera = std::make_shared<UCamera>();
+
+	MainCamera = SpawnActor<UCamera>("MainCamera");
+	UICamera = SpawnActor<UCamera>("NewActor");
+	UICamera->InputOff();
 }
 
 ULevel::~ULevel() 
@@ -33,23 +37,10 @@ void ULevel::Tick(float _DeltaTime)
 
 void ULevel::Render(float _DeltaTime)
 {
-	D3D11_VIEWPORT View;
-
-	// ViewPort.ViewPort(1280.0f, 720.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-
-	View.Width = 1280.0f;
-	View.Height = 720.0f;
-	View.TopLeftX = 0;
-	View.TopLeftY = 0;
-	View.MinDepth = 0;
-	View.MaxDepth = 1;
-
-	GEngine->GetDirectXContext()->RSSetViewports(1, &View);
-
-	// 어느 그림에다가 출력할거냐?
-	// 여기에 출력해라.
+	MainCamera->ViewPortSetting();
 	GEngine->GetEngineDevice().BackBufferRenderTarget->Setting();
 	
+	MainCamera->CameraTransformUpdate();
 
 	for (std::pair<const int, std::list<std::shared_ptr<URenderer>>>& RenderGroup : Renderers)
 	{
@@ -57,6 +48,12 @@ void ULevel::Render(float _DeltaTime)
 
 		for (std::shared_ptr<URenderer> Renderer : GroupRenderers)
 		{
+			if (false == Renderer->IsActive())
+			{
+				continue;
+			}
+
+			Renderer->RenderingTransformUpdate(MainCamera);
 			Renderer->Render(_DeltaTime);
 		}
 	}
@@ -71,15 +68,44 @@ void ULevel::PushActor(std::shared_ptr<AActor> _Actor)
 	}
 	
 	_Actor->SetWorld(this);
-	_Actor->RootCheck();
 	_Actor->BeginPlay();
 
 	Actors[_Actor->GetOrder()].push_back(_Actor);
 }
 
-
+void ULevel::ConstructorActor(std::shared_ptr<AActor> _Actor)
+{
+	_Actor->RootCheck();
+}
 
 void ULevel::PushRenderer(std::shared_ptr<URenderer> _Renderer)
 {
 	Renderers[_Renderer->GetOrder()].push_front(_Renderer);
+}
+
+void ULevel::LevelEnd(ULevel* _NextLevel)
+{
+	Super::LevelStart(_NextLevel);
+	for (std::pair<const int, std::list<std::shared_ptr<AActor>>>& TickGroup : Actors)
+	{
+		std::list<std::shared_ptr<AActor>>& GroupActors = TickGroup.second;
+
+		for (std::shared_ptr<AActor> Actor : GroupActors)
+		{
+			Actor->LevelEnd(_NextLevel);
+		}
+	}
+}
+void ULevel::LevelStart(ULevel* _PrevLevel)
+{
+	Super::LevelStart(_PrevLevel);
+	for (std::pair<const int, std::list<std::shared_ptr<AActor>>>& TickGroup : Actors)
+	{
+		std::list<std::shared_ptr<AActor>>& GroupActors = TickGroup.second;
+
+		for (std::shared_ptr<AActor> Actor : GroupActors)
+		{
+			Actor->LevelStart(_PrevLevel);
+		}
+	}
 }

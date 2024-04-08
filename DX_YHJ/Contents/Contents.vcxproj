@@ -19,20 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayGameMode.h" />
-    <ClInclude Include="PreCompile.h">
+    <ClInclude Include="HoloCureCore.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SamCore.h">
+    <ClInclude Include="PreCompile.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayGameMode.cpp" />
+    <ClCompile Include="HoloCureCore.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PreCompile.cpp">
       <SubType>
       </SubType>
@@ -40,10 +40,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="SamCore.cpp">
-      <SubType>
-      </SubType>
     </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">

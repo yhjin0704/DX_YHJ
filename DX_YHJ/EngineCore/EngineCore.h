@@ -94,6 +94,13 @@ public:
 		std::shared_ptr<ULevel> Level = NewLevelCreate(UpperName, NewGameMode);
 	}
 
+	FEngineOption GetEngineOption()
+	{
+		return EngineOption;
+	}
+
+	UEngineWindow EngineWindow;
+
 protected:
 
 private:
@@ -101,7 +108,6 @@ private:
 
 	UEngineTime MainTimer;
 
-	UEngineWindow EngineWindow;
 
 	UEngineGraphicDevice EngineDevice;
 
