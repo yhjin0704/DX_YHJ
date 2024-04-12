@@ -45,6 +45,9 @@ protected:
 
 	void InfinityGroundCheck();
 
+	void SpawnMonster(std::string _Name);
+	void RandomLocation();
+
 	void PlayDebugText();
 
 private:

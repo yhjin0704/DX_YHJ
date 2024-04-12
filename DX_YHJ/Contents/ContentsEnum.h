@@ -3,6 +3,7 @@
 enum class ERenderOrder
 {
 	BackGround,
+	Monster,
 	Player,
 };
 

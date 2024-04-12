@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "PlayGameMode.h"
 #include "ContentsValue.h"
+#include "Monster.h"
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
 #include <EngineCore/EngineDebugMsgWindow.h>
@@ -55,7 +56,6 @@ void APlayGameMode::BeginPlay()
 			BackGround->SetActorLocation(Pos);
 
 			BackGroundVector.push_back(BackGround);
-
 		}
 	}
 }
@@ -145,11 +145,19 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
+void APlayGameMode::SpawnMonster(std::string _Name)
+{
+	auto Monster = GetWorld()->SpawnActor<AMonster>(_Name);
+}
+
+void APlayGameMode::RandomLocation()
+{
+}
+
 void APlayGameMode::PlayDebugText()
 {
-	float4 PlayerPos = Player->GetActorLocation();
-	FIntPoint Index = PosToIndex(PlayerPos);
+	FIntPoint Index = PosToIndex(APlayer::PlayerPos);
 	CurIndex = Index;
-	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : {}", PlayerPos.ToString()));
+	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : X : {}, Y : {}", APlayer::PlayerPos.X, APlayer::PlayerPos.Y));
 	UEngineDebugMsgWindow::PushMsg(std::format("BackGroundIndex : {}, {}", Index.X, Index.Y));
 }
