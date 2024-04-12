@@ -49,7 +49,7 @@ void APlayer::RunStart()
 void APlayer::Run(float _DeltaTime)
 {
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
-	float Speed = 500.0f;
+	float Speed = 200.0f;
 
 	if (true == IsPress('A'))
 	{

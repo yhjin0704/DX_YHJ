@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="ContentsValue.h" />
     <ClInclude Include="PlayBackGround.h">
       <SubType>
       </SubType>
@@ -46,6 +47,7 @@
     <ClInclude Include="TitleLogo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ContentsValue.cpp" />
     <ClCompile Include="PlayBackGround.cpp">
       <SubType>
       </SubType>

@@ -18,8 +18,8 @@ void APlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->CreateAnimation("Kronii Idle", "Kronii_Idle");
-	Renderer->CreateAnimation("Kronii Run", "Kronii_Run");
+	Renderer->CreateAnimation("Kronii Idle", "Kronii", 0.1f, true, 0, 3);
+	Renderer->CreateAnimation("Kronii Run", "Kronii", 0.1f, true, 4, 9);
 
 	StateInit();
 	Renderer->SetOrder(ERenderOrder::Player);

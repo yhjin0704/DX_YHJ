@@ -31,6 +31,9 @@
     <ClCompile Include="Player_State.cpp">
       <Filter>Level\PlayLevel</Filter>
     </ClCompile>
+    <ClCompile Include="ContentsValue.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -61,6 +64,9 @@
       <Filter>Level\PlayLevel</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnum.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsValue.h">
       <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>

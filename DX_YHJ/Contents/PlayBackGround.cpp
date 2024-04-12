@@ -15,7 +15,6 @@ void APlayBackGround::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// 내부에서 샘플러도 같이 찾을
 	Renderer->SetSprite("Holo_Stage_1_Back_Ground.png");
 
 }
