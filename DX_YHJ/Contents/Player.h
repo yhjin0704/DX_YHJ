@@ -28,6 +28,10 @@ private:
 	USpriteRenderer* Renderer;
 	float4 Color;
 
+	std::string Name = "";
+
+	void CreatePlayerAnimation(std::string _Name);
+
 	void StateInit();
 
 	void Die(float _DeltaTime);

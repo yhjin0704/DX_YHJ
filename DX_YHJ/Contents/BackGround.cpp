@@ -7,6 +7,7 @@
 ABackGround::ABackGround()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	SetRoot(Renderer);
 }
 
 ABackGround::~ABackGround()

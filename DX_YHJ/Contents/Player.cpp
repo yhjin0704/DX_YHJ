@@ -7,6 +7,7 @@
 APlayer::APlayer()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	SetRoot(Renderer);
 	InputOn();
 }
 
@@ -18,8 +19,9 @@ void APlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->CreateAnimation("Kronii Idle", "Kronii", 0.1f, true, 0, 3);
-	Renderer->CreateAnimation("Kronii Run", "Kronii", 0.1f, true, 4, 9);
+	Name = "Kronii";
+
+	CreatePlayerAnimation(Name);
 
 	StateInit();
 	Renderer->SetOrder(ERenderOrder::Player);
@@ -30,4 +32,10 @@ void APlayer::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	State.Update(_DeltaTime);
+}
+
+void APlayer::CreatePlayerAnimation(std::string _Name)
+{
+	Renderer->CreateAnimation(_Name + "_Idle", _Name, 0.1f, true, 0, 3);
+	Renderer->CreateAnimation(_Name + "_Run", _Name, 0.1f, true, 4, 9);
 }

@@ -45,6 +45,8 @@ protected:
 
 	void InfinityGroundCheck();
 
+	void PlayDebugText();
+
 private:
 	FIntPoint CurIndex;
 };

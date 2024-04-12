@@ -15,7 +15,7 @@ void APlayer::StateInit()
 
 	State.SetStartFunction("Idle", [=]
 		{
-			MyRender->ChangeAnimation("Kronii Idle");
+			MyRender->ChangeAnimation(Name + "_Idle");
 		}
 	);
 
@@ -43,7 +43,7 @@ void APlayer::Idle(float _Update)
 
 void APlayer::RunStart()
 {
-	Renderer->ChangeAnimation("Kronii Run");
+	Renderer->ChangeAnimation(Name +"_Run");
 }
 
 void APlayer::Run(float _DeltaTime)
@@ -68,11 +68,13 @@ void APlayer::Run(float _DeltaTime)
 	if (true == IsPress('W'))
 	{
 		AddActorLocation(FVector::Up * _DeltaTime * Speed);
+		Camera->AddActorLocation(FVector::Up * _DeltaTime * Speed);
 	}
 
 	if (true == IsPress('S'))
 	{
 		AddActorLocation(FVector::Down * _DeltaTime * Speed);
+		Camera->AddActorLocation(FVector::Down * _DeltaTime * Speed);
 	}
 
 	if (true == IsPress(VK_NUMPAD1))

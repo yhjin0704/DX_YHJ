@@ -3,6 +3,7 @@
 #include "ContentsValue.h"
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
+#include <EngineCore/EngineDebugMsgWindow.h>
 
 APlayGameMode::APlayGameMode()
 {
@@ -64,6 +65,8 @@ void APlayGameMode::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	InfinityGroundCheck();
+
+	PlayDebugText();
 }
 
 float4 APlayGameMode::IndexToCenterPos(FIntPoint _Index)
@@ -140,4 +143,13 @@ void APlayGameMode::InfinityGroundCheck()
 
 		CurIndex = Index;
 	}
+}
+
+void APlayGameMode::PlayDebugText()
+{
+	float4 PlayerPos = Player->GetActorLocation();
+	FIntPoint Index = PosToIndex(PlayerPos);
+	CurIndex = Index;
+	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : {}", PlayerPos.ToString()));
+	UEngineDebugMsgWindow::PushMsg(std::format("BackGroundIndex : {}, {}", Index.X, Index.Y));
 }
