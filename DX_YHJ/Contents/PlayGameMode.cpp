@@ -118,9 +118,7 @@ FIntPoint APlayGameMode::PosToIndex(float4 _Pos)
 
 void APlayGameMode::InfinityGroundCheck()
 {
-	float4 PlayerPos = Player->GetActorLocation();
-
-	FIntPoint Index = PosToIndex(PlayerPos);
+	FIntPoint Index = PosToIndex(APlayer::PlayerPos);
 
 	if (Index.X != CurIndex.X || Index.Y != CurIndex.Y)
 	{
@@ -166,7 +164,7 @@ void APlayGameMode::SpawnMonster(std::string _Name, float4 _Location)
 
 float4 APlayGameMode::RandomLocation()
 {
-	float4 MonsterPos = Player->GetActorLocation();
+	float4 MonsterPos = APlayer::PlayerPos;
 	MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
 	MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
 	

@@ -5,6 +5,8 @@
 AMonster::AMonster()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	Renderer->SetPivot(EPivot::BOT);
+
 	SetRoot(Renderer);
 }
 

@@ -9,6 +9,8 @@ float4 APlayer::PlayerPos = float4::Zero;
 APlayer::APlayer()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	Renderer->SetPivot(EPivot::BOT);
+
 	SetRoot(Renderer);
 	InputOn();
 }
