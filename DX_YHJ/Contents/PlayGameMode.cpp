@@ -5,6 +5,7 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
 #include <EngineCore/EngineDebugMsgWindow.h>
+#include <EngineBase/EngineRandom.h>
 
 APlayGameMode::APlayGameMode()
 {
@@ -65,6 +66,16 @@ void APlayGameMode::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	InfinityGroundCheck();
+
+	if (SpawnTerm <= 0)
+	{
+		SpawnMonster("Shrimp", RandomLocation());
+		SpawnTerm = 5.0f;
+	}
+	else
+	{
+		SpawnTerm -= _DeltaTime;
+	}
 
 	PlayDebugText();
 }
@@ -145,13 +156,21 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-void APlayGameMode::SpawnMonster(std::string _Name)
+void APlayGameMode::SpawnMonster(std::string _Name, float4 _Location)
 {
-	auto Monster = GetWorld()->SpawnActor<AMonster>(_Name);
+	std::shared_ptr<AMonster> Monster;
+	//Monster->SetName(_Name);
+	Monster = GetWorld()->SpawnActor<AMonster>(_Name);
+	Monster->SetActorLocation(_Location);
 }
 
-void APlayGameMode::RandomLocation()
+float4 APlayGameMode::RandomLocation()
 {
+	float4 MonsterPos = Player->GetActorLocation();
+	MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+	MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+	
+	return MonsterPos;
 }
 
 void APlayGameMode::PlayDebugText()

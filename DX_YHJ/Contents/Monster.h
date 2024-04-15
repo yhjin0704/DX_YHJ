@@ -29,7 +29,7 @@ private:
 	USpriteRenderer* Renderer;
 	FVector PlayerLocation;
 
-	std::string Name = "";
+	std::string Name = "Shrimp";
 	float Speed = 100.f;
 };
 

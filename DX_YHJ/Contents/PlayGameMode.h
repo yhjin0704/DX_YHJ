@@ -45,12 +45,14 @@ protected:
 
 	void InfinityGroundCheck();
 
-	void SpawnMonster(std::string _Name);
-	void RandomLocation();
+	void SpawnMonster(std::string _Name, float4 _Location);
+	float4 RandomLocation();
 
 	void PlayDebugText();
 
 private:
 	FIntPoint CurIndex;
+
+	float SpawnTerm = 0;
 };
 

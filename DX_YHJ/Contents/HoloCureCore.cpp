@@ -42,6 +42,17 @@ void UHoloCureCore::Initialize()
 			}
 		}
 
+		{
+			Dir.MoveParent();
+			Dir.Move("Monster");
+
+			std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
+			for (size_t i = 0; i < Directorys.size(); i++)
+			{
+				std::string Name = Directorys[i].GetFolderName();
+				UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
+			}
+		}
 	}
 
 	{
