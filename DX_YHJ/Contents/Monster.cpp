@@ -18,10 +18,14 @@ void AMonster::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->CreateAnimation(Name, Name, 0.1f, true, 0, 2);
+	CreateMonsterAnimation("Shrimp");
+	CreateMonsterAnimation("Deadbeat");
+	CreateMonsterAnimation("Takodachi");
+	CreateMonsterAnimation("Baerat");
+
 	Renderer->SetAutoSize(1.0f, true);
-	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation(Name);
+	Renderer->SetOrder(ERenderOrder::Monster);
 }
 
 
@@ -45,4 +49,9 @@ void AMonster::Tick(float _DeltaTime)
 	}
 
 
+}
+
+void AMonster::CreateMonsterAnimation(std::string _Name)
+{
+	Renderer->CreateAnimation(_Name, _Name, 0.1f, true, 0, 2);
 }

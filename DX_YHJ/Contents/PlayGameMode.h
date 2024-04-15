@@ -53,6 +53,8 @@ protected:
 private:
 	FIntPoint CurIndex;
 
+	float PlayTime = 0;
 	float SpawnTerm = 0;
+
 };
 

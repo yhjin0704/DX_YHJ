@@ -23,6 +23,11 @@ public:
 
 	UStateManager State;
 
+	void SetName(std::string _Name)
+	{
+		Name = _Name;
+	}
+
 	EPlayerDir GetPlayerDir()
 	{
 		return PlayerDir;
@@ -36,10 +41,10 @@ private:
 	USpriteRenderer* Renderer;
 	float4 Color;
 
-	std::string Name = "";
+	std::string Name = "Kronii";
 	EPlayerDir PlayerDir = EPlayerDir::E;
-	int Hp;
-	float Atk;
+	int Hp = 100;
+	float Atk = 1;
 	float Speed = 200.0f;
 
 	void CreatePlayerAnimation(std::string _Name);

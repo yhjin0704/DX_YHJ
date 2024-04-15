@@ -21,6 +21,11 @@ public:
 		Name = _Name;
 	}
 
+	USpriteRenderer* GetRenderer()
+	{
+		return Renderer;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -31,5 +36,7 @@ private:
 
 	std::string Name = "Shrimp";
 	float Speed = 100.f;
+
+	void CreateMonsterAnimation(std::string _Name);
 };
 

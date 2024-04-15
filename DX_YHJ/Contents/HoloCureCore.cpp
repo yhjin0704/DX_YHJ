@@ -3,6 +3,7 @@
 #include "PlayGameMode.h"
 #include "TitleGameMode.h"
 #include <EngineCore/EngineSprite.h>
+#include <EnginePlatform/EngineWindow.h>
 
 UHoloCureCore::UHoloCureCore()
 {

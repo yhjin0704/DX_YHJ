@@ -30,6 +30,7 @@ void APlayGameMode::BeginPlay()
 	Camera->SetActorLocation(CameraPos);
 
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
+	Player->SetName("Ame");
 
 	float4 ImageScale = { 64.0f, 64.0f, 0.0f };
 
@@ -67,16 +68,56 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
-	if (SpawnTerm <= 0)
+	if (PlayTime > 60.0f)
 	{
-		SpawnMonster("Shrimp", RandomLocation());
-		SpawnTerm = 5.0f;
+		if (SpawnTerm <= 0)
+		{
+			SpawnMonster("Baerat", RandomLocation());
+			SpawnTerm = 5.0f;
+		}
+		else
+		{
+			SpawnTerm -= _DeltaTime;
+		}
+	}
+	else if (PlayTime > 40.0f)
+	{
+		if (SpawnTerm <= 0)
+		{
+			SpawnMonster("Takodachi", RandomLocation());
+			SpawnTerm = 5.0f;
+		}
+		else
+		{
+			SpawnTerm -= _DeltaTime;
+		}
+	}
+	else if (PlayTime > 20.0f)
+	{
+		if (SpawnTerm <= 0)
+		{
+			SpawnMonster("Deadbeat", RandomLocation());
+			SpawnTerm = 5.0f;
+		}
+		else
+		{
+			SpawnTerm -= _DeltaTime;
+		}
 	}
 	else
 	{
-		SpawnTerm -= _DeltaTime;
+		if (SpawnTerm <= 0)
+		{
+			SpawnMonster("Shrimp", RandomLocation());
+			SpawnTerm = 5.0f;
+		}
+		else
+		{
+			SpawnTerm -= _DeltaTime;
+		}
 	}
 
+	PlayTime += _DeltaTime;
 	PlayDebugText();
 }
 
@@ -157,8 +198,10 @@ void APlayGameMode::InfinityGroundCheck()
 void APlayGameMode::SpawnMonster(std::string _Name, float4 _Location)
 {
 	std::shared_ptr<AMonster> Monster;
-	//Monster->SetName(_Name);
+
 	Monster = GetWorld()->SpawnActor<AMonster>(_Name);
+	Monster->GetRenderer()->SetAutoSize(1.0f, true);
+	Monster->GetRenderer()->ChangeAnimation(_Name);
 	Monster->SetActorLocation(_Location);
 }
 
@@ -173,8 +216,11 @@ float4 APlayGameMode::RandomLocation()
 
 void APlayGameMode::PlayDebugText()
 {
+	AGameMode* ThisLevel = dynamic_cast<AGameMode*>(this);
+
 	FIntPoint Index = PosToIndex(APlayer::PlayerPos);
 	CurIndex = Index;
+	
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : X : {}, Y : {}", APlayer::PlayerPos.X, APlayer::PlayerPos.Y));
 	UEngineDebugMsgWindow::PushMsg(std::format("BackGroundIndex : {}, {}", Index.X, Index.Y));
 	

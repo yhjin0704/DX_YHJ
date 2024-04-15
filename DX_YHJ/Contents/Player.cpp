@@ -22,11 +22,11 @@ void APlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Name = "Kronii";
-
-	CreatePlayerAnimation(Name);
+	CreatePlayerAnimation("Kronii");
+	CreatePlayerAnimation("Ame");
 
 	StateInit();
+
 	Renderer->SetOrder(ERenderOrder::Player);
 }
 

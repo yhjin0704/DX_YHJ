@@ -1,8 +1,10 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
-class Weapon
+class USpriteRenderer;
+class Weapon : public AActor
 {
+	GENERATED_BODY(AActor)
 public:
 	// constrcuter destructer
 	Weapon();
