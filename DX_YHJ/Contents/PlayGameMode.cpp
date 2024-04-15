@@ -177,4 +177,36 @@ void APlayGameMode::PlayDebugText()
 	CurIndex = Index;
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : X : {}, Y : {}", APlayer::PlayerPos.X, APlayer::PlayerPos.Y));
 	UEngineDebugMsgWindow::PushMsg(std::format("BackGroundIndex : {}, {}", Index.X, Index.Y));
+	
+	std::string PlayerDir = "";
+	switch (Player->GetPlayerDir())
+	{
+	case EPlayerDir::N:
+		PlayerDir = "N";
+		break;
+	case EPlayerDir::NE:
+		PlayerDir = "NE";
+		break;
+	case EPlayerDir::NW:
+		PlayerDir = "NW";
+		break;
+	case EPlayerDir::E:
+		PlayerDir = "E";
+		break;
+	case EPlayerDir::W:
+		PlayerDir = "W";
+		break;
+	case EPlayerDir::S:
+		PlayerDir = "S";
+		break;
+	case EPlayerDir::SE:
+		PlayerDir = "SE";
+		break;
+	case EPlayerDir::SW:
+		PlayerDir = "SW";
+		break;
+	default:
+		break;
+	}
+	UEngineDebugMsgWindow::PushMsg(std::format("PlayerDir : {}", PlayerDir));
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include <EngineCore/StateManager.h>
+#include "ContentsEnum.h"
 
 class USpriteRenderer;
 class APlayer : public AActor
@@ -22,6 +23,11 @@ public:
 
 	UStateManager State;
 
+	EPlayerDir GetPlayerDir()
+	{
+		return PlayerDir;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -31,6 +37,10 @@ private:
 	float4 Color;
 
 	std::string Name = "";
+	EPlayerDir PlayerDir = EPlayerDir::E;
+	int Hp;
+	float Atk;
+	float Speed = 200.0f;
 
 	void CreatePlayerAnimation(std::string _Name);
 

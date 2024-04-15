@@ -2,7 +2,6 @@
 #include "Player.h"
 #include <EngineCore/Renderer.h>
 #include <EngineCore/SpriteRenderer.h>
-#include "ContentsEnum.h"
 
 float4 APlayer::PlayerPos = float4::Zero;
 

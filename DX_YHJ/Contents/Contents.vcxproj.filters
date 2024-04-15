@@ -37,6 +37,9 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Level\PlayLevel\Equipment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -75,6 +78,9 @@
     <ClInclude Include="Monster.h">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Level\PlayLevel\Equipment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -106,6 +112,9 @@
     </Filter>
     <Filter Include="Level\PlayLevel\Monster">
       <UniqueIdentifier>{d32ab972-11dd-4503-acb9-c4518c2f433c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\CharacterInherence">
+      <UniqueIdentifier>{240af979-6a32-40fb-b699-7669ec2d4e6d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
