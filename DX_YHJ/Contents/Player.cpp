@@ -36,8 +36,6 @@ void APlayer::BeginPlay()
 
 	Renderer->SetOrder(ERenderOrder::Player);
 
-	AtkDir->SetSprite("spr_arrow_1.png");
-	AtkDir->SetAutoSize(1.0f, true);
 	AtkDir->SetOrder(ERenderOrder::Player);
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + 20.0f });
 
@@ -63,7 +61,7 @@ void APlayer::CreatePlayerAnimation(std::string _Name)
 
 void APlayer::CheckMouseAimMode()
 {
-	if (true == AHoloCursor::MouseAimOn)
+	if (false == AHoloCursor::MouseAimOn)
 	{
 		AtkDir->SetSprite("spr_arrow_1.png");
 		AtkDir->SetAutoSize(1.0f, true);
