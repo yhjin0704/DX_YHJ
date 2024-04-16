@@ -27,6 +27,8 @@ protected:
 	USpriteRenderer* Renderer;
 
 	void CursorOFf();
+	void ChangeAimMode();
+	void CheckAimMode();
 
 private:
 };

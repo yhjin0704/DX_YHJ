@@ -34,24 +34,42 @@ void AHoloCursor::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true != MouseAimOn && true == IsDown(VK_LBUTTON))
-	{
-		CursorOFf();
-		Renderer->SetSprite("spr_GameCursor1_0.png");
-		//Renderer->SetPivot();
-		MouseAimOn = true;
-
-	}
-	else if (true == MouseAimOn && true == IsDown(VK_LBUTTON))
-	{
-		CursorOFf();
-		Renderer->SetSprite("spr_GameCursor_0.png");
-		Renderer->SetPivot(EPivot::MAX);
-		MouseAimOn = false;
-	}
+	ChangeAimMode();
+	CheckAimMode();
 }
 
 void AHoloCursor::CursorOFf()
 {
 	ShowCursor(FALSE);
+}
+
+void AHoloCursor::ChangeAimMode()
+{
+	if (true == IsDown(VK_LBUTTON))
+	{
+		if (true != MouseAimOn) 
+		{
+			MouseAimOn = true;
+		}
+		else
+		{
+			MouseAimOn = false;
+		}
+	}
+}
+
+void AHoloCursor::CheckAimMode()
+{
+	if (true != MouseAimOn)
+	{
+		CursorOFf();
+		Renderer->SetSprite("spr_GameCursor_0.png");
+		//Renderer->SetPivot();
+	}
+	else
+	{
+		CursorOFf();
+		Renderer->SetSprite("spr_GameCursor1_0.png");
+		Renderer->SetPivot(EPivot::MAX);
+	}
 }

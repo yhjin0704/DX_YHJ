@@ -32,6 +32,7 @@ void ATitleGameMode::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
+	AHoloCursor::MouseAimOn = false;
 	Cursor->SetActorLocation(FVector{ AHoloCursor::CursorPos.X - 640.0f, (AHoloCursor::CursorPos.Y - 360.0f) * -1.0f });
 
 	if (true == IsAnykeyDown())

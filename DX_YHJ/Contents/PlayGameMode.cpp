@@ -31,11 +31,10 @@ void APlayGameMode::BeginPlay()
 	
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kronii");
-	float4 ImageScale = { 64.0f, 64.0f, 0.0f };
-	Player->SetActorScale3D(ImageScale);
 	Player->SetActorLocation(PlayerStartPos);
 
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
+	AHoloCursor::MouseAimOn = false;
 	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
 	Cursor->SetActorLocation(AHoloCursor::CursorPos);
 
@@ -70,7 +69,8 @@ void APlayGameMode::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
-	Cursor->SetActorLocation(FVector{ APlayer::PlayerPos.X + AHoloCursor::CursorPos.X - 640, APlayer::PlayerPos.Y - AHoloCursor::CursorPos.Y + 360 });
+	ContentsValue::PlayLevelMousePos = FVector{ APlayer::PlayerPos.X + AHoloCursor::CursorPos.X - 640, APlayer::PlayerPos.Y - AHoloCursor::CursorPos.Y + 360 };
+	Cursor->SetActorLocation(ContentsValue::PlayLevelMousePos);
 
 	InfinityGroundCheck();
 

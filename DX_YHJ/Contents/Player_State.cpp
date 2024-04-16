@@ -53,38 +53,38 @@ void APlayer::Run(float _DeltaTime)
 	
 	if (true == IsPress('W') && true == IsPress('A'))
 	{
-		AddActorLocation(FVector::Up * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Up * _DeltaTime * Speed);
+		AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
 		Renderer->SetDir(EEngineDir::Left);
-		AddActorLocation(FVector::Left * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Left * _DeltaTime * Speed);
+		AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::NW;
 	}
 	else if (true == IsPress('W') && true == IsPress('D'))
 	{
-		AddActorLocation(FVector::Up * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Up * _DeltaTime * Speed);
+		AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
 		Renderer->SetDir(EEngineDir::Right);
-		AddActorLocation(FVector::Right * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Right * _DeltaTime * Speed);
+		AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::NE;
 	}
 	else if (true == IsPress('S') && true == IsPress('A'))
 	{
-		AddActorLocation(FVector::Down * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Down * _DeltaTime * Speed);
+		AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
 		Renderer->SetDir(EEngineDir::Left);
-		AddActorLocation(FVector::Left * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Left * _DeltaTime * Speed);
+		AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::SW;
 	}
 	else if (true == IsPress('S') && true == IsPress('D'))
 	{
-		AddActorLocation(FVector::Down * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Down * _DeltaTime * Speed);
+		AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
 		Renderer->SetDir(EEngineDir::Right);
-		AddActorLocation(FVector::Right * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Right * _DeltaTime * Speed);
+		AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
+		Camera->AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::SE;
 	}
 	else if (true == IsPress('A'))

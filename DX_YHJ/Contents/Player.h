@@ -48,10 +48,13 @@ private:
 	int Hp = 100;
 	float Atk = 1;
 	float Speed = 200.0f;
+	float LineSpeed = Speed * 0.75f;
 
 	void CreatePlayerAnimation(std::string _Name);
 
 	void CheckMouseAimMode();
+	void ChangeMoveAimAtkDir();
+	void ChangeMouseAimAtkDir();
 
 	void StateInit();
 
