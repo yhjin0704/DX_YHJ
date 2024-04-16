@@ -40,6 +40,9 @@
     <ClCompile Include="Weapon.cpp">
       <Filter>Level\PlayLevel\Equipment</Filter>
     </ClCompile>
+    <ClCompile Include="HoloCursor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Level\PlayLevel\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="HoloCursor.h">
+      <Filter>Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

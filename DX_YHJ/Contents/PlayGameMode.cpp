@@ -28,14 +28,17 @@ void APlayGameMode::BeginPlay()
 	float4 CameraPos = PlayerStartPos;
 	CameraPos.Z = -500.0f;
 	Camera->SetActorLocation(CameraPos);
-
+	
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kronii");
-
 	float4 ImageScale = { 64.0f, 64.0f, 0.0f };
-
 	Player->SetActorScale3D(ImageScale);
 	Player->SetActorLocation(PlayerStartPos);
+
+	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
+	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
+	Cursor->SetActorLocation(AHoloCursor::CursorPos);
+
 
 	for (int y = -1; y < 2; y++)
 	{
@@ -65,6 +68,9 @@ void APlayGameMode::BeginPlay()
 void APlayGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
+	Cursor->SetActorLocation(FVector{ APlayer::PlayerPos.X + AHoloCursor::CursorPos.X - 640, APlayer::PlayerPos.Y - AHoloCursor::CursorPos.Y + 360 });
 
 	InfinityGroundCheck();
 
@@ -119,6 +125,16 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	PlayTime += _DeltaTime;
 	PlayDebugText();
+}
+
+void APlayGameMode::LevelEnd(ULevel* _NextLevel)
+{
+	Super::LevelEnd(_NextLevel);
+}
+
+void APlayGameMode::LevelStart(ULevel* _PrevLevel)
+{
+	Super::LevelStart(_PrevLevel);
 }
 
 float4 APlayGameMode::IndexToCenterPos(FIntPoint _Index)

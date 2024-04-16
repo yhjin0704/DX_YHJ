@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+#include "HoloCursor.h"
 #include "Player.h"
 #include "PlayBackGround.h"
 
@@ -36,8 +37,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void LevelEnd(ULevel* _NextLevel);
+	void LevelStart(ULevel* _PrevLevel);
+
 	std::vector<std::shared_ptr<APlayBackGround>> BackGroundVector;
 
+	std::shared_ptr<AHoloCursor> Cursor;
 	std::shared_ptr<APlayer> Player;
 
 	float4 IndexToCenterPos(FIntPoint _Index);

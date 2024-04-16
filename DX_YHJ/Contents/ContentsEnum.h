@@ -5,6 +5,7 @@ enum class ERenderOrder
 	BackGround,
 	Monster,
 	Player,
+	Cursor,
 };
 
 enum class EDir

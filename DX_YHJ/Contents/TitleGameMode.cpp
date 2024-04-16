@@ -21,11 +21,18 @@ void ATitleGameMode::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<ATitleLogo>("TitleLogo");
 	GetWorld()->SpawnActor<ATitleBackGround>("TitleBackGround");
+
+	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
+	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
+	Cursor->SetActorLocation(FVector{ AHoloCursor::CursorPos.X - 1280.0f, AHoloCursor::CursorPos.Y - 360.0f });
 }
 
 void ATitleGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
+	Cursor->SetActorLocation(FVector{ AHoloCursor::CursorPos.X - 640.0f, (AHoloCursor::CursorPos.Y - 360.0f) * -1.0f });
 
 	if (true == IsAnykeyDown())
 	{

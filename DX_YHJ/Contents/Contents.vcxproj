@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HoloCursor.h" />
     <ClInclude Include="Monster.h">
       <SubType>
       </SubType>
@@ -55,6 +56,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HoloCursor.cpp" />
     <ClCompile Include="Monster.cpp">
       <SubType>
       </SubType>
