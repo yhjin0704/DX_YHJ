@@ -2,6 +2,7 @@
 #include "Player.h"
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
+#include "HoloCursor.h"
 
 void APlayer::StateInit()
 {
@@ -53,50 +54,68 @@ void APlayer::Run(float _DeltaTime)
 	
 	if (true == IsPress('W') && true == IsPress('A'))
 	{
+		if (false == AHoloCursor::MouseAimOn)
+		{
+			Renderer->SetDir(EEngineDir::Left);
+		}
 		AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
-		Renderer->SetDir(EEngineDir::Left);
 		AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::NW;
 	}
 	else if (true == IsPress('W') && true == IsPress('D'))
 	{
+		if (false == AHoloCursor::MouseAimOn)
+		{
+			Renderer->SetDir(EEngineDir::Right);
+		}
 		AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
-		Renderer->SetDir(EEngineDir::Right);
 		AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::NE;
 	}
 	else if (true == IsPress('S') && true == IsPress('A'))
 	{
+		if (false == AHoloCursor::MouseAimOn)
+		{
+			Renderer->SetDir(EEngineDir::Left);
+		}
 		AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
-		Renderer->SetDir(EEngineDir::Left);
 		AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::SW;
 	}
 	else if (true == IsPress('S') && true == IsPress('D'))
 	{
+		if (false == AHoloCursor::MouseAimOn)
+		{
+			Renderer->SetDir(EEngineDir::Right);
+		}
 		AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
-		Renderer->SetDir(EEngineDir::Right);
 		AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
 		Camera->AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
 		PlayerDir = EPlayerDir::SE;
 	}
 	else if (true == IsPress('A'))
 	{
-		Renderer->SetDir(EEngineDir::Left);
+		if (false == AHoloCursor::MouseAimOn)
+		{
+			Renderer->SetDir(EEngineDir::Left);
+		}
 		AddActorLocation(FVector::Left * _DeltaTime * Speed);
 		Camera->AddActorLocation(FVector::Left * _DeltaTime * Speed);
 		PlayerDir = EPlayerDir::W;
 	}
 	else if (true == IsPress('D'))
 	{
-		Renderer->SetDir(EEngineDir::Right);
+		if (false == AHoloCursor::MouseAimOn)
+		{
+			Renderer->SetDir(EEngineDir::Right);
+		}
 		AddActorLocation(FVector::Right * _DeltaTime * Speed);
 		Camera->AddActorLocation(FVector::Right * _DeltaTime * Speed);
 		PlayerDir = EPlayerDir::E;
