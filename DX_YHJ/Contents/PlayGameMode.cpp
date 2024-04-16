@@ -30,7 +30,7 @@ void APlayGameMode::BeginPlay()
 	Camera->SetActorLocation(CameraPos);
 
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
-	Player->SetName("Ame");
+	Player->SetName("Kronii");
 
 	float4 ImageScale = { 64.0f, 64.0f, 0.0f };
 
@@ -72,7 +72,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Baerat", RandomLocation());
+			SpawnMonster("KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, RandomLocation());
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -84,7 +84,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Takodachi", RandomLocation());
+			SpawnMonster("Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, RandomLocation());
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -96,7 +96,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Deadbeat", RandomLocation());
+			SpawnMonster("Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, RandomLocation());
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -108,7 +108,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Shrimp", RandomLocation());
+			SpawnMonster("Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, RandomLocation());
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -195,13 +195,14 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-void APlayGameMode::SpawnMonster(std::string _Name, float4 _Location)
+void APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, float4 _Location)
 {
 	std::shared_ptr<AMonster> Monster;
 
 	Monster = GetWorld()->SpawnActor<AMonster>(_Name);
-	Monster->GetRenderer()->SetAutoSize(1.0f, true);
+	Monster->GetRenderer()->SetAutoSize(_Size, true);
 	Monster->GetRenderer()->ChangeAnimation(_Name);
+	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp);
 	Monster->SetActorLocation(_Location);
 }
 

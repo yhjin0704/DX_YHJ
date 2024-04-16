@@ -45,7 +45,7 @@ protected:
 
 	void InfinityGroundCheck();
 
-	void SpawnMonster(std::string _Name, float4 _Location);
+	void SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, float4 _Location);
 	float4 RandomLocation();
 
 	void PlayDebugText();

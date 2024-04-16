@@ -26,6 +26,8 @@ public:
 		return Renderer;
 	}
 
+	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -35,7 +37,11 @@ private:
 	FVector PlayerLocation;
 
 	std::string Name = "Shrimp";
-	float Speed = 100.f;
+	float Hp = 8.0f;
+	float Atk = 2.0f;
+	float Speed = 0.35f;
+	float CalSpeed = 300.0f * Speed;
+	float Exp = 6.0f;
 
 	void CreateMonsterAnimation(std::string _Name);
 };
