@@ -39,6 +39,8 @@ protected:
 
 private:
 	USpriteRenderer* Renderer;
+	USpriteRenderer* AtkDir;
+
 	float4 Color;
 
 	std::string Name = "Kronii";
@@ -48,6 +50,8 @@ private:
 	float Speed = 200.0f;
 
 	void CreatePlayerAnimation(std::string _Name);
+
+	void CheckMouseAimMode();
 
 	void StateInit();
 

@@ -8,6 +8,7 @@ class AHoloCursor : public AActor
 	GENERATED_BODY(AActor)
 public:
 	static float4 CursorPos;
+	static bool MouseAimOn;
 
 	// constrcuter destructer
 	AHoloCursor();
@@ -24,7 +25,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	USpriteRenderer* Renderer;
-	bool MouseAimOn = false;
 
 	void CursorOFf();
 

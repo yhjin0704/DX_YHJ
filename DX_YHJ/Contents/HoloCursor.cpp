@@ -2,6 +2,7 @@
 #include "HoloCursor.h"
 
 float4 AHoloCursor::CursorPos = FVector::Zero;
+bool AHoloCursor::MouseAimOn = false;
 
 AHoloCursor::AHoloCursor()
 {
@@ -37,6 +38,7 @@ void AHoloCursor::Tick(float _DeltaTime)
 	{
 		CursorOFf();
 		Renderer->SetSprite("spr_GameCursor1_0.png");
+		//Renderer->SetPivot();
 		MouseAimOn = true;
 
 	}
@@ -44,6 +46,7 @@ void AHoloCursor::Tick(float _DeltaTime)
 	{
 		CursorOFf();
 		Renderer->SetSprite("spr_GameCursor_0.png");
+		Renderer->SetPivot(EPivot::MAX);
 		MouseAimOn = false;
 	}
 }
