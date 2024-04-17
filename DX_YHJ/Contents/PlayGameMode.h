@@ -49,15 +49,18 @@ protected:
 	FIntPoint PosToIndex(float4 _Pos);
 
 	void InfinityGroundCheck();
+	void SetGroundLocation();
 
-	void SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, float4 _Location);
-	float4 RandomLocation();
+	void SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, bool _Group = false, int _Quantity = 1);
+	float4 RandomLocation(bool _Group);
 
 	void PlayDebugText();
 
 private:
-	int aa;
 	FIntPoint CurIndex;
+
+	float4 GroupMonsterPos;
+	bool GroupSpawn = false;
 
 	float PlayTime = 0;
 	float SpawnTerm = 0;

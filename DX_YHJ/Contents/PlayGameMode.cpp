@@ -24,21 +24,24 @@ void APlayGameMode::BeginPlay()
 	CurIndex = { 0, 0 };
 	float4 PlayerStartPos = IndexToCenterPos(CurIndex);
 
+	// 카메라 세팅
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	float4 CameraPos = PlayerStartPos;
 	CameraPos.Z = -500.0f;
 	Camera->SetActorLocation(CameraPos);
 	
+	// 플레이어 생성
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kronii");
 	Player->SetActorLocation(PlayerStartPos);
 
+	// 커서 생성
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
 	AHoloCursor::MouseAimOn = false;
 	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
 	Cursor->SetActorLocation(AHoloCursor::CursorPos);
 
-
+	// 지면 생성
 	for (int y = -1; y < 2; y++)
 	{
 		for (int x = -1; x < 2; x++)
@@ -78,7 +81,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, RandomLocation());
+			SpawnMonster("KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, true, 10);
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -90,7 +93,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, RandomLocation());
+			SpawnMonster("Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -102,7 +105,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, RandomLocation());
+			SpawnMonster("Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f);
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -114,7 +117,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster("Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, RandomLocation());
+			SpawnMonster("Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, false, 10);
 			SpawnTerm = 5.0f;
 		}
 		else
@@ -213,22 +216,54 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-void APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, float4 _Location)
+void APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, bool _Group, int _Quantity)
 {
-	std::shared_ptr<AMonster> Monster;
+	if (0 >= _Quantity)
+	{
+		MsgBoxAssert("스폰하려는 몬스터의 수가 0 이하 입니다.");
+		return;
+	}
+	
+	for (int i = 0; i < _Quantity; i++)
+	{
+		std::shared_ptr<AMonster> Monster;
 
-	Monster = GetWorld()->SpawnActor<AMonster>(_Name);
-	Monster->GetRenderer()->SetAutoSize(_Size, true);
-	Monster->GetRenderer()->ChangeAnimation(_Name);
-	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp);
-	Monster->SetActorLocation(_Location);
+		Monster = GetWorld()->SpawnActor<AMonster>(_Name);
+		Monster->GetRenderer()->SetAutoSize(_Size, true);
+		Monster->GetRenderer()->ChangeAnimation(_Name);
+		Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp);
+		Monster->SetActorLocation(RandomLocation(_Group));
+	}
+	GroupSpawn = false;
 }
 
-float4 APlayGameMode::RandomLocation()
+float4 APlayGameMode::RandomLocation(bool _Group)
 {
-	float4 MonsterPos = APlayer::PlayerPos;
-	MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
-	MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+	float4 MonsterPos;
+	if (false == _Group)
+	{
+		MonsterPos = APlayer::PlayerPos;
+
+		MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+		MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+	}
+	else
+	{
+		if (false == GroupSpawn)
+		{
+			GroupMonsterPos = APlayer::PlayerPos; 
+
+			GroupMonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+			GroupMonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
+
+			GroupSpawn = true;
+		}
+
+		MonsterPos = GroupMonsterPos;
+
+		MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 10.0f;
+		MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 10.0f;
+	}
 	
 	return MonsterPos;
 }
