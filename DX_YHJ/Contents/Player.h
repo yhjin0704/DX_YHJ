@@ -33,6 +33,11 @@ public:
 		return PlayerDir;
 	}
 
+	float GetAngle()
+	{
+		return Angle;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -42,6 +47,7 @@ private:
 	USpriteRenderer* AtkDir;
 
 	float4 Color;
+	float Angle;
 
 	std::string Name = "Kronii";
 	EPlayerDir PlayerDir = EPlayerDir::E;
@@ -65,4 +71,3 @@ private:
 	void RunStart();
 	void Run(float _DeltaTime);
 };
-

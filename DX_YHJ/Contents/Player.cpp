@@ -121,10 +121,10 @@ void APlayer::ChangeMouseAimAtkDir()
 {
 	if (true == AHoloCursor::MouseAimOn)
 	{
-		float angle = atan2f((ContentsValue::PlayLevelMousePos.Y - APlayer::PlayerPos.Y), (ContentsValue::PlayLevelMousePos.X - APlayer::PlayerPos.X)) * 180.0f / UEngineMath::PI;
-		AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, angle });
+		Angle = atan2f((ContentsValue::PlayLevelMousePos.Y - APlayer::PlayerPos.Y), (ContentsValue::PlayLevelMousePos.X - APlayer::PlayerPos.X)) * 180.0f / UEngineMath::PI;
+		AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 
-		if (270.0f <= angle || 90.0f > angle)
+		if (-90.0f <= Angle && 90.0f > Angle)
 		{
 			Renderer->SetDir(EEngineDir::Right);
 		}

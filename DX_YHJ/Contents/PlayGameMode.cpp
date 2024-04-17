@@ -272,4 +272,6 @@ void APlayGameMode::PlayDebugText()
 		break;
 	}
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerDir : {}", PlayerDir));
+
+	UEngineDebugMsgWindow::PushMsg(std::format("Angle : {}", Player->GetAngle()));
 }
