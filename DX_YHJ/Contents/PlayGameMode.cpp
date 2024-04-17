@@ -79,9 +79,13 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, 
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow, 
-		false, 1);
+		false, 10);
+	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 10.0f,
+		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		true, 10);
 	SpawnMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, 
-		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow);
+		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
+		false, 5);
 	SpawnMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, 
 		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
 	SpawnMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, 
