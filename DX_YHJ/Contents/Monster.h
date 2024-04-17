@@ -29,6 +29,13 @@ public:
 
 	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
 
+	FVector CreateGroupToPlayerDir();
+
+	void SetToPlayerDir(FVector _ToPlayerDir)
+	{
+		ToPlayerDir = _ToPlayerDir;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -36,6 +43,8 @@ protected:
 private:
 	USpriteRenderer* Renderer;
 	FVector PlayerLocation;
+	FVector Dir = FVector::Zero;
+	FVector ToPlayerDir;
 
 	std::string Name = "Shrimp";
 	float Hp = 8.0f;

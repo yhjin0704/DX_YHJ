@@ -35,7 +35,7 @@ void AMonster::Tick(float _DeltaTime)
 
 	Move(_DeltaTime, MoveType);
 
-	if (GetActorLocation().X > APlayer::PlayerPos.X)
+	if (0 > Dir.X)
 	{
 		Renderer->SetDir(EEngineDir::Left);
 	}
@@ -57,6 +57,13 @@ void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp,
 	MoveType = _MoveType;
 }
 
+FVector AMonster::CreateGroupToPlayerDir()
+{
+	FVector GroupDir = APlayer::PlayerPos - GetActorLocation();
+	GroupDir = GroupDir.Normalize2DReturn();
+	return GroupDir;
+}
+
 void AMonster::CreateMonsterAnimation(std::string _Name)
 {
 	Renderer->CreateAnimation(_Name, _Name, 0.1f, true, 0, 2);
@@ -65,7 +72,6 @@ void AMonster::CreateMonsterAnimation(std::string _Name)
 void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
 {
 	FVector MonsterPos = GetActorLocation();
-	FVector Dir = FVector::Zero;
 
 	switch (_MoveType)
 	{
@@ -74,6 +80,7 @@ void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
 		Dir = Dir.Normalize2DReturn();
 		break;
 	case EMonsterMoveType::StraightToPlayer:
+		Dir = ToPlayerDir;
 		break;
 	case EMonsterMoveType::StraightToUp:
 		break;

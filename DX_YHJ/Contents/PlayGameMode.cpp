@@ -79,13 +79,13 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, 
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow, 
-		false, 10);
+		false, 1);
 	SpawnMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, 
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow);
 	SpawnMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, 
 		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
 	SpawnMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, 
-		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::Follow, 
+		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 10);
 
 	PlayTime += _DeltaTime;
@@ -187,6 +187,8 @@ void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp
 		MsgBoxAssert("스폰하려는 몬스터의 수가 0 이하 입니다.");
 		return;
 	}
+
+	FVector GroupToPlayerDir;
 	
 	for (int i = 0; i < _Quantity; i++)
 	{
@@ -196,7 +198,27 @@ void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp
 		Monster->GetRenderer()->SetAutoSize(_Size, true);
 		Monster->GetRenderer()->ChangeAnimation(_Name);
 		Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
-		Monster->SetActorLocation(RandomLocation(_Group));
+		FVector GroupPos = RandomLocation(_Group);
+		Monster->SetActorLocation(GroupPos);
+		if (true == _Group)
+		{
+			if (false == GroupSpawn)
+			{
+				GroupToPlayerDir = Monster->CreateGroupToPlayerDir();
+				Monster->SetToPlayerDir(GroupToPlayerDir);
+				GroupSpawn = true;
+			}
+			else
+			{
+				Monster->SetToPlayerDir(GroupToPlayerDir);
+			}
+		}
+		else
+		{
+			FVector Dir = APlayer::PlayerPos - Monster->GetActorLocation();
+			Dir = Dir.Normalize2DReturn();
+			Monster->SetToPlayerDir(Dir);
+		}
 	}
 	GroupSpawn = false;
 }
@@ -221,8 +243,6 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 
 			GroupMonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
 			GroupMonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 200.0f;
-
-			GroupSpawn = true;
 		}
 
 		MonsterPos = GroupMonsterPos;
