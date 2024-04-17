@@ -64,7 +64,7 @@ void AHoloCursor::CheckAimMode()
 	{
 		CursorOFf();
 		Renderer->SetSprite("spr_GameCursor_0.png");
-		//Renderer->SetPivot();
+		Renderer->SetPivot(EPivot::LEFTTOP);
 	}
 	else
 	{

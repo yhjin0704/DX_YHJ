@@ -88,28 +88,36 @@ void APlayer::ChangeMoveAimAtkDir()
 		switch (PlayerDir)
 		{
 		case EPlayerDir::N:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 90.0f });
+			Angle = 90.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::NE:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 45.0f });
+			Angle = 45.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::E:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 0.0f });
+			Angle = 0.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::SE:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 315.0f });
+			Angle = 315.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::S:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 270.0f });
+			Angle = 270.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::SW:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 225.0f });
+			Angle = 225.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::W:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 180.0f });
+			Angle = 180.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		case EPlayerDir::NW:
-			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, 135.0f });
+			Angle = 135.0f;
+			AtkDir->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			break;
 		default:
 			break;

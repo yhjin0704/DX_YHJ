@@ -1,10 +1,10 @@
 #include "PreCompile.h"
 #include "Weapon.h"
 
-Weapon::Weapon()
+AWeapon::AWeapon()
 {
 }
 
-Weapon::~Weapon()
+AWeapon::~AWeapon()
 {
 }

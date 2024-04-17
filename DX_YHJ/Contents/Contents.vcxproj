@@ -19,6 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Melee.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MultiShot.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Ranged.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HoloCursor.h" />
     <ClInclude Include="Monster.h">
       <SubType>
@@ -56,6 +68,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Melee.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MultiShot.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Ranged.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HoloCursor.cpp" />
     <ClCompile Include="Monster.cpp">
       <SubType>
