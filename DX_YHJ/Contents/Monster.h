@@ -44,5 +44,6 @@ private:
 	float Exp = 6.0f;
 
 	void CreateMonsterAnimation(std::string _Name);
+	void CheckPosComparePlayer();
 };
 

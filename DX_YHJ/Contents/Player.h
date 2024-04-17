@@ -45,6 +45,7 @@ protected:
 private:
 	USpriteRenderer* Renderer;
 	USpriteRenderer* AtkDir;
+	std::shared_ptr<UCamera> Camera;
 
 	float4 Color;
 	float Angle;
@@ -62,6 +63,7 @@ private:
 	void ChangeMoveAimAtkDir();
 	void ChangeMouseAimAtkDir();
 
+	//State
 	void StateInit();
 
 	void Die(float _DeltaTime);
@@ -70,4 +72,7 @@ private:
 
 	void RunStart();
 	void Run(float _DeltaTime);
+
+	void KeyMove(float _DeltaTime, float4 _Dir, float _Speed);
+	void KeyLineMove(float _DeltaTime, float4 _Dir1, float4 _Dir2);
 };

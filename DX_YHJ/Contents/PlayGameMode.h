@@ -56,6 +56,7 @@ protected:
 	void PlayDebugText();
 
 private:
+	int aa;
 	FIntPoint CurIndex;
 
 	float PlayTime = 0;

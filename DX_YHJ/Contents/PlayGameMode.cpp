@@ -192,6 +192,7 @@ void APlayGameMode::InfinityGroundCheck()
 				std::shared_ptr<APlayBackGround> BackGround = BackGroundVector[GroundCount];
 
 				BackGround->SetActorScale3D(ContentsValue::GroundTileSize);
+
 				FIntPoint Point;
 				Point.X = x;
 				Point.Y = y;
@@ -203,6 +204,7 @@ void APlayGameMode::InfinityGroundCheck()
 				Pos.X += ContentsValue::GroundTileSize.hX();
 				Pos.Y += ContentsValue::GroundTileSize.hY();
 				BackGround->SetActorLocation(Pos + MovePos);
+
 				++GroundCount;
 			}
 		}
@@ -238,7 +240,9 @@ void APlayGameMode::PlayDebugText()
 	FIntPoint Index = PosToIndex(APlayer::PlayerPos);
 	CurIndex = Index;
 	
+	//플레이어 위치
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : X : {}, Y : {}", APlayer::PlayerPos.X, APlayer::PlayerPos.Y));
+	//플레이어가 있는 BackGround
 	UEngineDebugMsgWindow::PushMsg(std::format("BackGroundIndex : {}, {}", Index.X, Index.Y));
 	
 	std::string PlayerDir = "";
@@ -271,7 +275,8 @@ void APlayGameMode::PlayDebugText()
 	default:
 		break;
 	}
+	//마지막으로 움직인 방향
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerDir : {}", PlayerDir));
-
+	//마우스모드 각도
 	UEngineDebugMsgWindow::PushMsg(std::format("Angle : {}", Player->GetAngle()));
 }

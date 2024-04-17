@@ -49,8 +49,7 @@ void APlayer::RunStart()
 
 void APlayer::Run(float _DeltaTime)
 {
-	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
-
+	Camera = GetWorld()->GetMainCamera();
 	
 	if (true == IsPress('W') && true == IsPress('A'))
 	{
@@ -58,10 +57,7 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Left);
 		}
-		AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
-		AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
+		KeyLineMove(_DeltaTime, FVector::Up, FVector::Left);
 		PlayerDir = EPlayerDir::NW;
 	}
 	else if (true == IsPress('W') && true == IsPress('D'))
@@ -70,10 +66,7 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Right);
 		}
-		AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Up * _DeltaTime * LineSpeed);
-		AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
+		KeyLineMove(_DeltaTime, FVector::Up, FVector::Right);
 		PlayerDir = EPlayerDir::NE;
 	}
 	else if (true == IsPress('S') && true == IsPress('A'))
@@ -82,10 +75,7 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Left);
 		}
-		AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
-		AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Left * _DeltaTime * LineSpeed);
+		KeyLineMove(_DeltaTime, FVector::Down, FVector::Left);
 		PlayerDir = EPlayerDir::SW;
 	}
 	else if (true == IsPress('S') && true == IsPress('D'))
@@ -94,10 +84,7 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Right);
 		}
-		AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Down * _DeltaTime * LineSpeed);
-		AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
-		Camera->AddActorLocation(FVector::Right * _DeltaTime * LineSpeed);
+		KeyLineMove(_DeltaTime, FVector::Down, FVector::Right);
 		PlayerDir = EPlayerDir::SE;
 	}
 	else if (true == IsPress('A'))
@@ -106,8 +93,7 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Left);
 		}
-		AddActorLocation(FVector::Left * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Left * _DeltaTime * Speed);
+		KeyMove(_DeltaTime, FVector::Left, Speed);
 		PlayerDir = EPlayerDir::W;
 	}
 	else if (true == IsPress('D'))
@@ -116,20 +102,17 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Right);
 		}
-		AddActorLocation(FVector::Right * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Right * _DeltaTime * Speed);
+		KeyMove(_DeltaTime, FVector::Right, Speed);
 		PlayerDir = EPlayerDir::E;
 	}
 	else if (true == IsPress('W'))
 	{
-		AddActorLocation(FVector::Up * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Up * _DeltaTime * Speed);
+		KeyMove(_DeltaTime, FVector::Up, Speed);
 		PlayerDir = EPlayerDir::N;
 	}
 	else if (true == IsPress('S'))
 	{
-		AddActorLocation(FVector::Down * _DeltaTime * Speed);
-		Camera->AddActorLocation(FVector::Down * _DeltaTime * Speed);
+		KeyMove(_DeltaTime, FVector::Down, Speed);
 		PlayerDir = EPlayerDir::S;
 	}
 
@@ -137,4 +120,16 @@ void APlayer::Run(float _DeltaTime)
 	{
 		State.ChangeState("Idle");
 	}
+}
+
+void APlayer::KeyMove(float _DeltaTime, float4 _Dir, float _Speed)
+{
+	AddActorLocation(_Dir * _DeltaTime * _Speed);
+	Camera->AddActorLocation(_Dir * _DeltaTime * _Speed);
+}
+
+void APlayer::KeyLineMove(float _DeltaTime, float4 _Dir1, float4 _Dir2)
+{
+	KeyMove(_DeltaTime, _Dir1, LineSpeed);
+	KeyMove(_DeltaTime, _Dir2, LineSpeed);
 }

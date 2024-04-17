@@ -25,7 +25,7 @@ void AMonster::BeginPlay()
 
 	Renderer->SetAutoSize(1.0f, true);
 	Renderer->ChangeAnimation(Name);
-	Renderer->SetOrder(ERenderOrder::Monster);
+	Renderer->SetOrder(ERenderOrder::MonsterUp);
 }
 
 
@@ -34,7 +34,6 @@ void AMonster::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	FVector MonsterPos = GetActorLocation();
-
 
 	FVector MonsterDir = APlayer::PlayerPos - MonsterPos;
 	FVector MonsterDirNormal = MonsterDir.Normalize2DReturn();
@@ -47,8 +46,7 @@ void AMonster::Tick(float _DeltaTime)
 	{
 		Renderer->SetDir(EEngineDir::Right);
 	}
-
-
+	CheckPosComparePlayer();
 }
 
 void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp)
@@ -65,3 +63,14 @@ void AMonster::CreateMonsterAnimation(std::string _Name)
 	Renderer->CreateAnimation(_Name, _Name, 0.1f, true, 0, 2);
 }
 
+void AMonster::CheckPosComparePlayer()
+{
+	if (APlayer::PlayerPos.Y <= GetActorLocation().Y)
+	{
+		Renderer->SetOrder(ERenderOrder::MonsterUp);
+	}
+	else
+	{
+		Renderer->SetOrder(ERenderOrder::MonsterDown);
+	}
+}
