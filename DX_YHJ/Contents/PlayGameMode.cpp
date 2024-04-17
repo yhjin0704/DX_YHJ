@@ -77,12 +77,19 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
-	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, "Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, false, 10);
-	SpawnMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, "Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f);
-	SpawnMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, "Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
-	SpawnMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, "KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, true, 10);
+	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, 
+		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow, 
+		false, 10);
+	SpawnMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, 
+		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow);
+	SpawnMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, 
+		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
+	SpawnMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, 
+		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::Follow, 
+		true, 10);
 
 	PlayTime += _DeltaTime;
+
 	PlayDebugText();
 }
 
@@ -172,7 +179,8 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-void APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, bool _Group, int _Quantity)
+void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
+	bool _Group, int _Quantity)
 {
 	if (0 >= _Quantity)
 	{
@@ -187,7 +195,7 @@ void APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, floa
 		Monster = GetWorld()->SpawnActor<AMonster>(_Name);
 		Monster->GetRenderer()->SetAutoSize(_Size, true);
 		Monster->GetRenderer()->ChangeAnimation(_Name);
-		Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp);
+		Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
 		Monster->SetActorLocation(RandomLocation(_Group));
 	}
 	GroupSpawn = false;
@@ -226,13 +234,15 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	return MonsterPos;
 }
 
-void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, bool _Group, int _Quantity)
+void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, 
+	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
+	bool _Group, int _Quantity)
 {
 	if (PlayTime >= _SpawnBegin && PlayTime < _SpawnEnd)
 	{
 		if (SpawnTerm <= 0)
 		{
-			SpawnMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _Group, _Quantity);
+			RandomSpawnMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
 			SpawnTerm = _Term;
 		}
 		else

@@ -27,3 +27,14 @@ enum class EPlayerDir
 	W,
 	NW,
 };
+
+enum class EMonsterMoveType
+{
+	Follow,
+	StraightToPlayer,
+	StraightToUp,
+	StraightToDown,
+	StraightToRight,
+	StraightToLeft,
+	Stop,
+};

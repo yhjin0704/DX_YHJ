@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "ContentsEnum.h"
 
 class USpriteRenderer;
 class AMonster : public AActor
@@ -26,7 +27,7 @@ public:
 		return Renderer;
 	}
 
-	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp);
+	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
 
 protected:
 	void BeginPlay() override;
@@ -43,7 +44,11 @@ private:
 	float CalSpeed = 300.0f * Speed;
 	float Exp = 6.0f;
 
+	EMonsterMoveType MoveType = EMonsterMoveType::Follow;
+
 	void CreateMonsterAnimation(std::string _Name);
+
+	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
 	void CheckPosComparePlayer();
 };
 
