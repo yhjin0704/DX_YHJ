@@ -77,54 +77,10 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
-	if (PlayTime > 60.0f)
-	{
-		if (SpawnTerm <= 0)
-		{
-			SpawnMonster("KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, true, 10);
-			SpawnTerm = 5.0f;
-		}
-		else
-		{
-			SpawnTerm -= _DeltaTime;
-		}
-	}
-	else if (PlayTime > 40.0f)
-	{
-		if (SpawnTerm <= 0)
-		{
-			SpawnMonster("Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
-			SpawnTerm = 5.0f;
-		}
-		else
-		{
-			SpawnTerm -= _DeltaTime;
-		}
-	}
-	else if (PlayTime > 20.0f)
-	{
-		if (SpawnTerm <= 0)
-		{
-			SpawnMonster("Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f);
-			SpawnTerm = 5.0f;
-		}
-		else
-		{
-			SpawnTerm -= _DeltaTime;
-		}
-	}
-	else
-	{
-		if (SpawnTerm <= 0)
-		{
-			SpawnMonster("Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, false, 10);
-			SpawnTerm = 5.0f;
-		}
-		else
-		{
-			SpawnTerm -= _DeltaTime;
-		}
-	}
+	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, "Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, false, 10);
+	SpawnMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, "Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f);
+	SpawnMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, "Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
+	SpawnMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, "KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, true, 10);
 
 	PlayTime += _DeltaTime;
 	PlayDebugText();
@@ -240,6 +196,7 @@ void APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, floa
 float4 APlayGameMode::RandomLocation(bool _Group)
 {
 	float4 MonsterPos;
+	// 뭉쳐서 나오지 않을 때
 	if (false == _Group)
 	{
 		MonsterPos = APlayer::PlayerPos;
@@ -249,6 +206,7 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	}
 	else
 	{
+		//뭉쳐서 나올 때 
 		if (false == GroupSpawn)
 		{
 			GroupMonsterPos = APlayer::PlayerPos; 
@@ -266,6 +224,22 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	}
 	
 	return MonsterPos;
+}
+
+void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, bool _Group, int _Quantity)
+{
+	if (PlayTime >= _SpawnBegin && PlayTime < _SpawnEnd)
+	{
+		if (SpawnTerm <= 0)
+		{
+			SpawnMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _Group, _Quantity);
+			SpawnTerm = _Term;
+		}
+		else
+		{
+			SpawnTerm -= _DeltaTime;
+		}
+	}
 }
 
 void APlayGameMode::PlayDebugText()
