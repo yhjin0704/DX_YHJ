@@ -57,7 +57,7 @@ private:
 
 	EMonsterMoveType MoveType = EMonsterMoveType::Follow;
 
-	void CreateMonsterAnimation(std::string _Name);
+	void CreateMonsterAnimation(std::string _Name, int _MaxIndex = 2);
 
 	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
 	void CheckPosComparePlayer();

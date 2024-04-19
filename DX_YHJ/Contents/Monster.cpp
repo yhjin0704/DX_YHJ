@@ -64,9 +64,9 @@ FVector AMonster::CreateGroupToPlayerDir()
 	return GroupDir;
 }
 
-void AMonster::CreateMonsterAnimation(std::string _Name)
+void AMonster::CreateMonsterAnimation(std::string _Name, int _MaxIndex)
 {
-	Renderer->CreateAnimation(_Name, _Name, 0.1f, true, 0, 2);
+	Renderer->CreateAnimation(_Name, _Name, 0.1f, true, 0, _MaxIndex);
 }
 
 void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
