@@ -4,10 +4,18 @@
 
 AMonster::AMonster()
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	Renderer->SetupAttachment(Root);
 	Renderer->SetPivot(EPivot::BOT);
 
-	SetRoot(Renderer);
+	Collision = CreateDefaultSubObject<UCollision>("Collision");
+	Collision->SetupAttachment(Root);
+	Collision->SetCollisionGroup(ECollisionOrder::Monster);
+	Collision->SetCollisionType(ECollisionType::Rect);
+	
+	SetRoot(Root);
 }
 
 AMonster::~AMonster()
@@ -26,6 +34,8 @@ void AMonster::BeginPlay()
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation(Name);
 	Renderer->SetOrder(ERenderOrder::MonsterUp);
+
+	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (10.0f * ContentsValue::MultipleSize) });
 }
 
 

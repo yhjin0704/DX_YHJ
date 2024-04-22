@@ -15,6 +15,12 @@ APlayer::APlayer()
 	Renderer->SetupAttachment(Root);
 	Renderer->SetPivot(EPivot::BOT);
 
+	Collision = CreateDefaultSubObject<UCollision>("Collision");
+	Collision->SetupAttachment(Root);
+	Collision->SetScale({ 16.0f * ContentsValue::MultipleSize, 16.0f * ContentsValue::MultipleSize });
+	Collision->SetCollisionGroup(ECollisionOrder::Player);
+	Collision->SetCollisionType(ECollisionType::Rect);
+
 	AtkDir = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	AtkDir->SetupAttachment(Root);
 	AtkDir->SetPivot(EPivot::MAX);
@@ -40,6 +46,8 @@ void APlayer::BeginPlay()
 
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::Player);
+
+	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (10.0f * ContentsValue::MultipleSize) });
 
 	AtkDir->SetOrder(ERenderOrder::Player);
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });

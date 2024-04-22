@@ -44,6 +44,7 @@ protected:
 
 private:
 	USpriteRenderer* Renderer;
+	UCollision* Collision;
 
 	USpriteRenderer* AtkDir;
 	std::shared_ptr<UCamera> Camera;

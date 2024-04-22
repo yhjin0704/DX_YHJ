@@ -28,6 +28,11 @@ public:
 		return Renderer;
 	}
 
+	UCollision* GetCollosion()
+	{
+		return Collision;
+	}
+
 	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
 
 	FVector CreateGroupToPlayerDir();
@@ -62,4 +67,3 @@ private:
 	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
 	void CheckPosComparePlayer();
 };
-
