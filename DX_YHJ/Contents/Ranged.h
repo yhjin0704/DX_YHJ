@@ -17,6 +17,7 @@ public:
 	ARanged& operator=(ARanged&& _Other) noexcept = delete;
 
 protected:
+	bool IsMultiShot = false;
 
 private:
 
