@@ -47,5 +47,8 @@
     <FxCompile Include="TargetCopyShader.fx">
       <Filter>Target</Filter>
     </FxCompile>
+    <FxCompile Include="ImageShaderInstanced.fx">
+      <Filter>2D</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
