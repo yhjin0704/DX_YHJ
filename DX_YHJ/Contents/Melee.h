@@ -17,6 +17,11 @@ public:
 	AMelee& operator=(AMelee&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
+	void MoveAimDir() override;
+	void MouseAimDir() override;
 
 private:
 

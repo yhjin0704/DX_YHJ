@@ -10,6 +10,14 @@ enum class ERenderOrder
 	Cursor,
 };
 
+enum class ECollisionOrder
+{
+	Player,
+	Monster,
+	Weapon,
+	Obstacle,
+};
+
 enum class EDir
 {
 	Left,

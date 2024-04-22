@@ -23,7 +23,7 @@ void AMonster::BeginPlay()
 	CreateMonsterAnimation("Takodachi");
 	CreateMonsterAnimation("KFP");
 
-	Renderer->SetAutoSize(1.0f, true);
+	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation(Name);
 	Renderer->SetOrder(ERenderOrder::MonsterUp);
 }
@@ -52,7 +52,7 @@ void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp,
 	Hp = _Hp;
 	Atk = _Atk;
 	Speed = _Speed;
-	CalSpeed = 200.0f * Speed;
+	CalSpeed = ContentsValue::BaseSpeed * Speed;
 	Exp = _Exp;
 	MoveType = _MoveType;
 }

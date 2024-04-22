@@ -45,7 +45,6 @@ private:
 	USpriteRenderer* Renderer;
 	UCollision* Collision;
 
-	FVector PlayerLocation;
 	FVector Dir = FVector::Zero;
 	FVector ToPlayerDir;
 

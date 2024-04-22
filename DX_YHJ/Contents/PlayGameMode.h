@@ -33,6 +33,11 @@ public:
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
 
+	std::shared_ptr<APlayer> GetMainPlayer()
+	{
+		return Player;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -49,8 +54,6 @@ protected:
 	FIntPoint PosToIndex(float4 _Pos);
 
 	void InfinityGroundCheck();
-	void SetGroundLocation();
-
 
 	// 몬스터 스폰 관련
 	void RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group, int _Quantity);

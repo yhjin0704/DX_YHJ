@@ -43,14 +43,14 @@
     <ClCompile Include="Ranged.cpp">
       <Filter>Level\PlayLevel\Equipment</Filter>
     </ClCompile>
-    <ClCompile Include="MultiShot.cpp">
-      <Filter>Level\PlayLevel\Equipment</Filter>
-    </ClCompile>
     <ClCompile Include="TitleLogo.cpp">
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>Level\TitleLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="KiaraWeapon.cpp">
+      <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,14 +96,14 @@
     <ClInclude Include="Ranged.h">
       <Filter>Level\PlayLevel\Equipment</Filter>
     </ClInclude>
-    <ClInclude Include="MultiShot.h">
-      <Filter>Level\PlayLevel\Equipment</Filter>
-    </ClInclude>
     <ClInclude Include="TitleLogo.h">
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <Filter>Level\TitleLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="KiaraWeapon.h">
+      <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

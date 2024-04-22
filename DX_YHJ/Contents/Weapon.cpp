@@ -18,6 +18,7 @@ AWeapon::~AWeapon()
 void AWeapon::BeginPlay()
 {
 	Super::BeginPlay();
+	Renderer->SetOrder(ERenderOrder::Weapon);
 }
 
 void AWeapon::Tick(float _DeltaTime)
@@ -27,8 +28,10 @@ void AWeapon::Tick(float _DeltaTime)
 
 void AWeapon::MoveAimDir()
 {
+	
 }
 
 void AWeapon::MouseAimDir()
 {
+
 }

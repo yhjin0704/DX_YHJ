@@ -1,6 +1,5 @@
 #pragma once
 #include <EngineCore/Actor.h>
-#include "Player.h"
 
 class USpriteRenderer;
 class AWeapon : public AActor
@@ -8,6 +7,8 @@ class AWeapon : public AActor
 	GENERATED_BODY(AActor)
 
 public:
+	friend class APlayer;
+
 	// constrcuter destructer
 	AWeapon();
 	~AWeapon();
@@ -24,6 +25,8 @@ protected:
 
 	USpriteRenderer* Renderer;
 	UCollision* Collision;
+
+	float4 Dir = float4::Zero;
 
 	int Level;
 

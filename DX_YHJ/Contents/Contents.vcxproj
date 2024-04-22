@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Melee.h">
+    <ClInclude Include="KiaraWeapon.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MultiShot.h">
+    <ClInclude Include="Melee.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -68,11 +68,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Melee.cpp">
+    <ClCompile Include="KiaraWeapon.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="MultiShot.cpp">
+    <ClCompile Include="Melee.cpp">
       <SubType>
       </SubType>
     </ClCompile>

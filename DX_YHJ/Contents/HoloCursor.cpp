@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "HoloCursor.h"
+#include "ContentsValue.h"
 
 float4 AHoloCursor::CursorPos = FVector::Zero;
 bool AHoloCursor::MouseAimOn = false;
@@ -24,7 +25,7 @@ void AHoloCursor::BeginPlay()
 
 	CursorOFf();
 	Renderer->SetSprite("spr_GameCursor_0.png");
-	Renderer->SetAutoSize(1.0f, true);
+	Renderer->SetAutoSize(ContentsValue::MultipleSize * 0.5f, true);
 	Renderer->SetOrder(ERenderOrder::Cursor);
 
 	CursorPos = GEngine->EngineWindow.GetScreenMousePos();

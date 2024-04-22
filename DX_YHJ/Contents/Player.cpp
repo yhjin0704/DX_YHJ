@@ -38,11 +38,11 @@ void APlayer::BeginPlay()
 	CreatePlayerAnimation("AZKiPortrait");
 	CreatePlayerAnimation("Kronii");
 
-	Renderer->SetAutoSize(1.0f, true);
+	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::Player);
 
 	AtkDir->SetOrder(ERenderOrder::Player);
-	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + 20.0f });
+	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
 
 	StateInit();
 }
@@ -71,12 +71,12 @@ void APlayer::CheckMouseAimMode()
 	if (false == AHoloCursor::MouseAimOn)
 	{
 		AtkDir->SetSprite("spr_arrow_1.png");
-		AtkDir->SetAutoSize(1.0f, true);
+		AtkDir->SetAutoSize(ContentsValue::MultipleSize, true);
 	}
 	else
 	{
 		AtkDir->SetSprite("spr_arrow_2.png");
-		AtkDir->SetAutoSize(1.0f, true);
+		AtkDir->SetAutoSize(ContentsValue::MultipleSize, true);
 	}
 }
 

@@ -18,7 +18,7 @@ void ABackGround::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->SetAutoSize(1.0f, true);
+	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::BackGround);
 }
 

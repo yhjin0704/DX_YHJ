@@ -5,6 +5,7 @@ class ContentsValue
 {
 public:
 	static FVector WindowSize;
+	static float MultipleSize;
 
 	static const float4 GroundTileSize;
 
