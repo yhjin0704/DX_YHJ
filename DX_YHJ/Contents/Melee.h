@@ -3,6 +3,8 @@
 
 class AMelee : public AWeapon
 {
+	GENERATED_BODY(AActor)
+
 public:
 	// constrcuter destructer
 	AMelee();

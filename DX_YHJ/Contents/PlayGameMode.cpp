@@ -72,7 +72,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
-	ContentsValue::PlayLevelMousePos = FVector{ APlayer::PlayerPos.X + AHoloCursor::CursorPos.X - 640, APlayer::PlayerPos.Y - AHoloCursor::CursorPos.Y + 360 };
+	ContentsValue::PlayLevelMousePos = FVector{ APlayer::PlayerPos.X + AHoloCursor::CursorPos.X - (ContentsValue::WindowSize.X / 2.0f), APlayer::PlayerPos.Y - AHoloCursor::CursorPos.Y + (ContentsValue::WindowSize.Y / 2.0f) };
 	Cursor->SetActorLocation(ContentsValue::PlayLevelMousePos);
 
 	InfinityGroundCheck();

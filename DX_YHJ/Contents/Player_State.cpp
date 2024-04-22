@@ -93,7 +93,7 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Left);
 		}
-		KeyMove(_DeltaTime, FVector::Left, Speed);
+		KeyMove(_DeltaTime, FVector::Left, CalSpeed);
 		PlayerDir = EPlayerDir::W;
 	}
 	else if (true == IsPress('D'))
@@ -102,17 +102,17 @@ void APlayer::Run(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Right);
 		}
-		KeyMove(_DeltaTime, FVector::Right, Speed);
+		KeyMove(_DeltaTime, FVector::Right, CalSpeed);
 		PlayerDir = EPlayerDir::E;
 	}
 	else if (true == IsPress('W'))
 	{
-		KeyMove(_DeltaTime, FVector::Up, Speed);
+		KeyMove(_DeltaTime, FVector::Up, CalSpeed);
 		PlayerDir = EPlayerDir::N;
 	}
 	else if (true == IsPress('S'))
 	{
-		KeyMove(_DeltaTime, FVector::Down, Speed);
+		KeyMove(_DeltaTime, FVector::Down, CalSpeed);
 		PlayerDir = EPlayerDir::S;
 	}
 

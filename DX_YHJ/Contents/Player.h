@@ -44,6 +44,7 @@ protected:
 
 private:
 	USpriteRenderer* Renderer;
+
 	USpriteRenderer* AtkDir;
 	std::shared_ptr<UCamera> Camera;
 
@@ -54,8 +55,9 @@ private:
 	EPlayerDir PlayerDir = EPlayerDir::E;
 	int Hp = 100;
 	float Atk = 1;
-	float Speed = 200.0f;
-	float LineSpeed = Speed * 0.75f;
+	float Speed = 1.0f;
+	float CalSpeed = ContentsValue::BaseSpeed * Speed;
+	float LineSpeed = CalSpeed * 0.75f;
 
 	void CreatePlayerAnimation(std::string _Name);
 

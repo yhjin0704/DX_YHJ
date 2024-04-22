@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include "ContentsEnum.h"
+#include "ContentsValue.h"
 
 class USpriteRenderer;
 class AMonster : public AActor
@@ -52,7 +53,7 @@ private:
 	float Hp = 8.0f;
 	float Atk = 2.0f;
 	float Speed = 0.35f;
-	float CalSpeed = 300.0f * Speed;
+	float CalSpeed = ContentsValue::BaseSpeed * Speed;
 	float Exp = 6.0f;
 
 	EMonsterMoveType MoveType = EMonsterMoveType::Follow;

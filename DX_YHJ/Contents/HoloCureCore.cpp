@@ -4,6 +4,7 @@
 #include "TitleGameMode.h"
 #include <EngineCore/EngineSprite.h>
 #include <EnginePlatform/EngineWindow.h>
+#include "ContentsValue.h"
 
 UHoloCureCore::UHoloCureCore()
 {
@@ -66,6 +67,8 @@ void UHoloCureCore::Initialize()
 			UEngineSound::Load(File.GetFullPath());
 		}
 	}
+
+	ContentsValue::WindowSize = GEngine->EngineWindow.GetWindowScale();
 
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");

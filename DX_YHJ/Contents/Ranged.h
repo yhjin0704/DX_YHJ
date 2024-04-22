@@ -3,6 +3,8 @@
 
 class ARanged : public AWeapon
 {
+	GENERATED_BODY(AActor)
+
 public:
 	// constrcuter destructer
 	ARanged();

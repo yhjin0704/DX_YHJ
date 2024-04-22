@@ -10,6 +10,12 @@
     <Filter Include="Debug">
       <UniqueIdentifier>{5c75e500-2a3d-462b-8ce1-b43709d0be67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{45d255b3-65c0-4ba7-9868-897c7ef5455f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Target">
+      <UniqueIdentifier>{65c6206f-80fa-4ada-8b77-3f11161db104}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="EngineShaderBase.hlsli">
@@ -34,6 +40,12 @@
     </FxCompile>
     <FxCompile Include="DebugShader.fx">
       <Filter>Debug</Filter>
+    </FxCompile>
+    <FxCompile Include="BlurEffectShader.fx">
+      <Filter>Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="TargetCopyShader.fx">
+      <Filter>Target</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

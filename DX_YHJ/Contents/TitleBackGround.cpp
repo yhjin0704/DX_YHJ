@@ -15,7 +15,7 @@ void ATitleBackGround::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
+	SetActorScale3D(FVector(ContentsValue::WindowSize.X, ContentsValue::WindowSize.Y, 100.0f));
 
 	Renderer->SetSprite("menu_charselecBG_0.png");
 }

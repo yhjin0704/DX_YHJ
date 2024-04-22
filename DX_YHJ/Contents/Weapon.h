@@ -1,10 +1,12 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "Player.h"
 
 class USpriteRenderer;
 class AWeapon : public AActor
 {
 	GENERATED_BODY(AActor)
+
 public:
 	// constrcuter destructer
 	AWeapon();
@@ -17,9 +19,17 @@ public:
 	AWeapon& operator=(AWeapon&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
 	USpriteRenderer* Renderer;
+	UCollision* Collision;
+
+	int Level;
+
+	virtual void MoveAimDir();
+	virtual void MouseAimDir();
 
 private:
-
 };
 
