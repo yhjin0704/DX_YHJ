@@ -38,6 +38,21 @@ public:
 		return Angle;
 	}
 
+	float GetHp()
+	{
+		return Hp;
+	}
+
+	float GetAtk()
+	{
+		return Atk;
+	}
+
+	float GetSpeed()
+	{
+		return Speed;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -54,11 +69,13 @@ private:
 
 	std::string Name = "Kronii";
 	EPlayerDir PlayerDir = EPlayerDir::E;
-	int Hp = 100;
+	float Hp = 100.0f;
 	float Atk = 1;
+	float CriRate = 0.05f;
 	float Speed = 1.0f;
 	float CalSpeed = ContentsValue::BaseSpeed * Speed;
 	float LineSpeed = CalSpeed * 0.75f;
+	float Exp = 0;
 
 	void CreatePlayerAnimation(std::string _Name);
 
