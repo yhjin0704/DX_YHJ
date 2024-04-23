@@ -42,7 +42,8 @@ void APlayer::BeginPlay()
 	CreatePlayerAnimation("Aqua");
 	CreatePlayerAnimation("Ayame");
 	CreatePlayerAnimation("AZKiPortrait");
-	CreatePlayerAnimation("Kronii");
+	CreatePlayerAnimation("Kiara");
+	CreatePlayerAnimation("Kronii"); 
 
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::Player);

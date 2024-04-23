@@ -32,7 +32,7 @@ void APlayGameMode::BeginPlay()
 	
 	// 敲饭捞绢 积己
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
-	Player->SetName("Kronii");
+	Player->SetName("Kiara");
 	Player->SetActorLocation(PlayerStartPos);
 
 	// 目辑 积己
