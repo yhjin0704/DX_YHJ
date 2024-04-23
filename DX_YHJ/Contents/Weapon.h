@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "Player.h"
 
 class USpriteRenderer;
 class AWeapon : public AActor
@@ -19,14 +20,25 @@ public:
 	AWeapon& operator=(const AWeapon& _Other) = delete;
 	AWeapon& operator=(AWeapon&& _Other) noexcept = delete;
 
+	void SetPlayerStat(EPlayerDir _PlayerDir, float _Angle, float _Atk, float _CriRate, float _AtkTime);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	APlayer* Player;
+
 	USpriteRenderer* Renderer;
 	UCollision* Collision;
 
+	EPlayerDir PlayerDir = EPlayerDir::E;
 	float4 Dir = float4::Zero;
+	float PlayerAngle;
+	float Angle;
+	float Atk;
+	float CriRate;
+	float AtkTime;
+	float Delay = 1.0f;
 
 	int Level;
 

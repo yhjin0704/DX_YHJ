@@ -4,6 +4,8 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineBase/EngineMath.h>
 #include "HoloCursor.h"
+#include "Weapon.h"
+#include "KiaraWeapon.h"
 
 float4 APlayer::PlayerPos = float4::Zero;
 
@@ -53,6 +55,12 @@ void APlayer::BeginPlay()
 	AtkDir->SetOrder(ERenderOrder::Player);
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
 
+	{
+		std::shared_ptr<AWeapon> Weapon;
+		Weapon = GetWorld()->SpawnActor<AKiaraWeapon>("KiaraWeapon");
+		VPlayerWeapons.push_back(Weapon);
+	}
+
 	StateInit();
 }
 
@@ -67,12 +75,29 @@ void APlayer::Tick(float _DeltaTime)
 	CheckMouseAimMode();
 	ChangeMoveAimAtkDir();
 	ChangeMouseAimAtkDir();
+
+	{
+		for (VPlayerWeaponsIter = VPlayerWeapons.begin(); VPlayerWeaponsIter != VPlayerWeapons.end(); ++VPlayerWeaponsIter)
+		{
+			std::shared_ptr<AWeapon> Weapon = *VPlayerWeaponsIter;
+			Weapon->SetPlayerStat(PlayerDir, Angle, Atk, CriRate, AtkTime);
+			*VPlayerWeaponsIter = Weapon;
+		}
+	}
 }
 
 void APlayer::CreatePlayerAnimation(std::string _Name)
 {
 	Renderer->CreateAnimation(_Name + "_Idle", _Name, 0.1f, true, 0, 3);
 	Renderer->CreateAnimation(_Name + "_Run", _Name, 0.1f, true, 4, 9);
+}
+
+void APlayer::CalStatus()
+{
+	AtkTime = roundf(1.0f / (1.0f + Haste));
+
+	CalSpeed = ContentsValue::BaseSpeed * Speed;
+	LineSpeed = CalSpeed * 0.75f;
 }
 
 void APlayer::CheckMouseAimMode()

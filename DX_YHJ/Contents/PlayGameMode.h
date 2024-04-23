@@ -33,10 +33,7 @@ public:
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
 
-	std::shared_ptr<APlayer> GetMainPlayer()
-	{
-		return Player;
-	}
+	static std::shared_ptr<APlayer> GetMainPlayer();
 
 protected:
 	void BeginPlay() override;

@@ -37,6 +37,7 @@ void ATitleGameMode::Tick(float _DeltaTime)
 
 	if (true == IsAnykeyDown())
 	{
+		AHoloCursor::MouseAimOn = false;
 		GEngine->ChangeLevel("PlayLevel");
 	}
 }

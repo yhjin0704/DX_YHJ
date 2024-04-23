@@ -3,6 +3,7 @@
 #include <EngineCore/StateManager.h>
 #include "ContentsEnum.h"
 
+class AWeapon;
 class USpriteRenderer;
 class APlayer : public AActor
 {
@@ -72,12 +73,19 @@ private:
 	float Hp = 100.0f;
 	float Atk = 1;
 	float CriRate = 0.05f;
+	float Haste = 0.0f;
+	float AtkTime = 1.0f;
 	float Speed = 1.0f;
 	float CalSpeed = ContentsValue::BaseSpeed * Speed;
 	float LineSpeed = CalSpeed * 0.75f;
 	float Exp = 0;
 
+	std::vector<std::shared_ptr<AWeapon>> VPlayerWeapons;
+	std::vector<std::shared_ptr<AWeapon>>::iterator VPlayerWeaponsIter = VPlayerWeapons.begin();
+
 	void CreatePlayerAnimation(std::string _Name);
+
+	void CalStatus();
 
 	void CheckMouseAimMode();
 	void ChangeMoveAimAtkDir();

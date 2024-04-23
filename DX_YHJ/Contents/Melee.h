@@ -3,7 +3,7 @@
 
 class AMelee : public AWeapon
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(AWeapon)
 
 public:
 	// constrcuter destructer
