@@ -52,7 +52,7 @@ void APlayer::BeginPlay()
 
 	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (5.0f * ContentsValue::MultipleSize) });
 
-	AtkDir->SetOrder(ERenderOrder::Player);
+	AtkDir->SetOrder(ERenderOrder::Cursor);
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
 
 	{

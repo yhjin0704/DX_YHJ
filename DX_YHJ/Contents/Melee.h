@@ -20,8 +20,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void MoveAimDir() override;
-	void MouseAimDir() override;
+	void SetKnifeTypeMeleeLocation(float _DistanceFromPlayer);
 
 private:
 

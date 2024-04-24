@@ -19,12 +19,11 @@ void AMelee::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 }
 
-void AMelee::MoveAimDir()
+void AMelee::SetKnifeTypeMeleeLocation(float _DistanceFromPlayer)
 {
-	AWeapon::MoveAimDir();
-}
+	Dir = float4::DegToDir(Angle);
+	Dir.Z = 0.0f;
 
-void AMelee::MouseAimDir()
-{
-	AWeapon::MouseAimDir();
+	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
+	AddActorLocation(Dir * _DistanceFromPlayer * ContentsValue::MultipleSize);
 }

@@ -3,7 +3,7 @@
 
 AWeapon::AWeapon()
 {
-	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
 	Renderer->SetPivot(EPivot::MAX);
@@ -62,34 +62,4 @@ void AWeapon::SetPlayerStat(EPlayerDir _PlayerDir, float _Angle, float _Atk, flo
 	Atk = _Atk;
 	CriRate = _CriRate;
 	AtkTime = _AtkTime;
-}
-
-void AWeapon::MoveAimDir()
-{
-	switch (PlayerDir)
-	{
-	case EPlayerDir::N:
-		break;
-	case EPlayerDir::NE:
-		break;
-	case EPlayerDir::E:
-		break;
-	case EPlayerDir::SE:
-		break;
-	case EPlayerDir::S:
-		break;
-	case EPlayerDir::SW:
-		break;
-	case EPlayerDir::W:
-		break;
-	case EPlayerDir::NW:
-		break;
-	default:
-		break;
-	}
-}
-
-void AWeapon::MouseAimDir()
-{
-
 }

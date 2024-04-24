@@ -66,4 +66,6 @@ private:
 
 	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
 	void CheckPosComparePlayer();
+
+	void CheckHit();
 };

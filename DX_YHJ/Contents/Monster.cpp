@@ -55,6 +55,7 @@ void AMonster::Tick(float _DeltaTime)
 	}
 
 	CheckPosComparePlayer();
+	CheckHit();
 }
 
 void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
@@ -119,4 +120,13 @@ void AMonster::CheckPosComparePlayer()
 	{
 		Renderer->SetOrder(ERenderOrder::MonsterDown);
 	}
+}
+
+void AMonster::CheckHit()
+{
+	Collision->CollisionEnter(ECollisionOrder::Weapon, [=](std::shared_ptr<UCollision> _Collison)
+		{
+			Destroy();
+		}
+	);
 }

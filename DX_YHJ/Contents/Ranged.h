@@ -3,7 +3,7 @@
 
 class ARanged : public AWeapon
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(AWeapon)
 
 public:
 	// constrcuter destructer
@@ -17,6 +17,9 @@ public:
 	ARanged& operator=(ARanged&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
 	bool IsMultiShot = false;
 
 private:

@@ -52,6 +52,9 @@
     <ClCompile Include="KiaraWeapon.cpp">
       <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
     </ClCompile>
+    <ClCompile Include="Asacoco.cpp">
+      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -105,6 +108,9 @@
     <ClInclude Include="KiaraWeapon.h">
       <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
     </ClInclude>
+    <ClInclude Include="Asacoco.h">
+      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -142,6 +148,9 @@
     </Filter>
     <Filter Include="Level\TitleLevel\Actor">
       <UniqueIdentifier>{fa849d48-1d6e-4472-8d58-e3918e6031da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\NomalWeapons">
+      <UniqueIdentifier>{234de6c4-8e0c-4eee-8864-60be56f96ce6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

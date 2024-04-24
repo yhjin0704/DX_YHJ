@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asacoco.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="KiaraWeapon.h">
       <SubType>
       </SubType>
@@ -68,6 +72,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Asacoco.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="KiaraWeapon.cpp">
       <SubType>
       </SubType>

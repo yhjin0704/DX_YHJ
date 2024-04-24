@@ -26,10 +26,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	APlayer* Player;
+	UDefaultSceneComponent* Root;
 
 	USpriteRenderer* Renderer;
-	UCollision* Collision;
 
 	EPlayerDir PlayerDir = EPlayerDir::E;
 	float4 Dir = float4::Zero;
@@ -42,8 +41,7 @@ protected:
 
 	int Level;
 
-	virtual void MoveAimDir();
-	virtual void MouseAimDir();
+
 
 private:
 };

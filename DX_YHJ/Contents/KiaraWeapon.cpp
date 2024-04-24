@@ -3,6 +3,12 @@
 
 AKiaraWeapon::AKiaraWeapon()
 {
+	CollisionR0 = CreateDefaultSubObject<UCollision>("Collision");
+	//CollisionR0->SetupAttachment(Root);
+	CollisionR0->SetScale({ 50.0f * ContentsValue::MultipleSize, 50.f * ContentsValue::MultipleSize });
+
+	CollisionR0->SetCollisionGroup(ECollisionOrder::Weapon);
+	CollisionR0->SetCollisionType(ECollisionType::Rect);
 }
 
 AKiaraWeapon::~AKiaraWeapon()
@@ -17,29 +23,24 @@ void AKiaraWeapon::BeginPlay()
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation("KiaraAttack");
 
-	Dir = float4::DegToDir(Angle);
-	Dir.Z = 0.0f;
-	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
-	AddActorLocation(Dir * 50.0f * ContentsValue::MultipleSize);
+	SetKnifeTypeMeleeLocation(25.0f);
+	CollisionR0->SetActive(false);
 }
 
 void AKiaraWeapon::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	Dir = float4::DegToDir(Angle);
-	Dir.Z = 0.0f;
-	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize )});
-	AddActorLocation(Dir * 50.0f * ContentsValue::MultipleSize);
+	SetKnifeTypeMeleeLocation(25.0f);
 
-}
-
-void AKiaraWeapon::MoveAimDir()
-{
-	AMelee::MoveAimDir();
-}
-
-void AKiaraWeapon::MouseAimDir()
-{
-	AMelee::MouseAimDir();
+	if (true == Renderer->IsActive())
+	{
+		CollisionR0->SetActive(true);
+		CollisionR0->SetPosition(Root->GetLocalPosition());
+		CollisionR0->AddPosition(Dir * 50.0f * ContentsValue::MultipleSize);
+	}
+	else
+	{
+		CollisionR0->SetActive(false);
+	}
 }
