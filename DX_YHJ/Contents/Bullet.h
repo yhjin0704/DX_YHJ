@@ -1,6 +1,10 @@
 #pragma once
-class ABullet
+#include "Weapon.h"
+
+class ABullet : public AWeapon
 {
+	GENERATED_BODY(AWeapon)
+
 public:
 	// constrcuter destructer
 	ABullet();
@@ -13,8 +17,10 @@ public:
 	ABullet& operator=(ABullet&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
-
+	
 };
 

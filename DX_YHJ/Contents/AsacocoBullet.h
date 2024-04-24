@@ -1,6 +1,10 @@
 #pragma once
-class AAsacocoBullet
+#include "Bullet.h"
+
+class AAsacocoBullet : public ABullet
 {
+	GENERATED_BODY(ABullet)
+
 public:
 	// constrcuter destructer
 	AAsacocoBullet();

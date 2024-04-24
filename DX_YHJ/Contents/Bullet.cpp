@@ -8,3 +8,11 @@ ABullet::ABullet()
 ABullet::~ABullet()
 {
 }
+
+void ABullet::BeginPlay()
+{
+}
+
+void ABullet::Tick(float _DeltaTime)
+{
+}

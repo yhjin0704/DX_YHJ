@@ -4,6 +4,7 @@
 class AAsacoco : public ARanged
 {
 	GENERATED_BODY(ARanged)
+
 public:
 	// constrcuter destructer
 	AAsacoco();

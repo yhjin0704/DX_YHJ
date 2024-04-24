@@ -49,7 +49,7 @@ void APlayer::BeginPlay()
 
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::Player);
-
+	                                                                        
 	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (5.0f * ContentsValue::MultipleSize) });
 
 	AtkDir->SetOrder(ERenderOrder::Cursor);
