@@ -19,11 +19,11 @@ void AKiaraWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->CreateAnimation("KiaraAttack", "KiaraAttack", 0.1f);
+	Renderer->CreateAnimation("KiaraAttack", "KiaraAttack", 0.05f);
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation("KiaraAttack");
 
-	SetKnifeTypeMeleeLocation(25.0f);
+	SetKnifeTypeMeleeLocation(35.0f);
 	CollisionR0->SetActive(false);
 }
 
@@ -31,7 +31,7 @@ void AKiaraWeapon::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	SetKnifeTypeMeleeLocation(25.0f);
+	SetKnifeTypeMeleeLocation(35.0f);
 
 	if (true == Renderer->IsActive())
 	{

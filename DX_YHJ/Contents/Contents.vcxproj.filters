@@ -37,12 +37,6 @@
     <ClCompile Include="HoloCursor.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Melee.cpp">
-      <Filter>Level\PlayLevel\Equipment</Filter>
-    </ClCompile>
-    <ClCompile Include="Ranged.cpp">
-      <Filter>Level\PlayLevel\Equipment</Filter>
-    </ClCompile>
     <ClCompile Include="TitleLogo.cpp">
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClCompile>
@@ -50,13 +44,22 @@
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="KiaraWeapon.cpp">
-      <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
+      <Filter>Level\PlayLevel\Equipment\Melee\CharacterInherence</Filter>
     </ClCompile>
     <ClCompile Include="Asacoco.cpp">
-      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
     </ClCompile>
     <ClCompile Include="AsacocoBullet.cpp">
-      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee.cpp">
+      <Filter>Level\PlayLevel\Equipment\Melee</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranged.cpp">
+      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,12 +99,6 @@
     <ClInclude Include="HoloCursor.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Melee.h">
-      <Filter>Level\PlayLevel\Equipment</Filter>
-    </ClInclude>
-    <ClInclude Include="Ranged.h">
-      <Filter>Level\PlayLevel\Equipment</Filter>
-    </ClInclude>
     <ClInclude Include="TitleLogo.h">
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClInclude>
@@ -109,13 +106,22 @@
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="KiaraWeapon.h">
-      <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
+      <Filter>Level\PlayLevel\Equipment\Melee\CharacterInherence</Filter>
     </ClInclude>
     <ClInclude Include="Asacoco.h">
-      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
     </ClInclude>
     <ClInclude Include="AsacocoBullet.h">
-      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Melee.h">
+      <Filter>Level\PlayLevel\Equipment\Melee</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranged.h">
+      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,14 +155,26 @@
     <Filter Include="Level\PlayLevel\Monster">
       <UniqueIdentifier>{d32ab972-11dd-4503-acb9-c4518c2f433c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\CharacterInherence">
-      <UniqueIdentifier>{240af979-6a32-40fb-b699-7669ec2d4e6d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\TitleLevel\Actor">
       <UniqueIdentifier>{fa849d48-1d6e-4472-8d58-e3918e6031da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\NomalWeapons">
+    <Filter Include="Level\PlayLevel\Equipment\Melee">
+      <UniqueIdentifier>{47eb42bd-2753-4639-bc4f-03d8f50091aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\Ranged">
+      <UniqueIdentifier>{419617ae-2e4c-4892-ae5c-248acedc5c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\Ranged\NomalWeapons">
       <UniqueIdentifier>{234de6c4-8e0c-4eee-8864-60be56f96ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\Melee\CharacterInherence">
+      <UniqueIdentifier>{240af979-6a32-40fb-b699-7669ec2d4e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\Ranged\CharacterInherence">
+      <UniqueIdentifier>{d1ed3a35-65c7-446d-8d0a-0a54edfea1cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\Melee\NomalWeapons">
+      <UniqueIdentifier>{5de64815-7b88-42d9-854f-c98d80186cca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

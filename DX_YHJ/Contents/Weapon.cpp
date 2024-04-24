@@ -3,12 +3,6 @@
 
 AWeapon::AWeapon()
 {
-	Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);
-	Renderer->SetPivot(EPivot::MAX);
-
-	SetRoot(Root);
 }
 
 AWeapon::~AWeapon()
@@ -18,8 +12,6 @@ AWeapon::~AWeapon()
 void AWeapon::BeginPlay()
 {
 	Super::BeginPlay();
-	Renderer->SetOrder(ERenderOrder::Weapon);
-	
 }
 
 void AWeapon::Tick(float _DeltaTime)

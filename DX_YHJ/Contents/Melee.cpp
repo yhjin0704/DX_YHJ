@@ -3,6 +3,12 @@
 
 AMelee::AMelee()
 {
+	Root = CreateDefaultSubObject<UDefaultSceneComponent>("Renderer");
+	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	Renderer->SetupAttachment(Root);
+	Renderer->SetPivot(EPivot::MAX);
+
+	SetRoot(Root);
 }
 
 AMelee::~AMelee()
@@ -12,6 +18,8 @@ AMelee::~AMelee()
 void AMelee::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Renderer->SetOrder(ERenderOrder::Weapon);
 }
 
 void AMelee::Tick(float _DeltaTime)
