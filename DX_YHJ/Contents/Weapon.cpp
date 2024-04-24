@@ -26,8 +26,10 @@ void AWeapon::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	//공격이 보일때
 	if (true == Renderer->IsActive())
 	{
+		//공격 애니메이션이 종료된 직후
 		if (true == Renderer->IsCurAnimationEnd())
 		{
 			Renderer->SetActive(false);
@@ -37,15 +39,15 @@ void AWeapon::Tick(float _DeltaTime)
 			int a = 0;
 		}
 	}
-	else
+	else // 공격이 실행되지 않을 때
 	{
 		Angle = PlayerAngle;
-		if (0 < Delay)
+		if (0 < Delay) // 공격 쿨이 돌기 전
 		{
 			Renderer->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 			Delay -= _DeltaTime;
 		}
-		else
+		else // 공격 시작
 		{
 			Delay = AtkTime;
 			Renderer->SetActive(true);

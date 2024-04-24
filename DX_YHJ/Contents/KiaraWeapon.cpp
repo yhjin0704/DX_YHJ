@@ -16,34 +16,21 @@ void AKiaraWeapon::BeginPlay()
 	Renderer->CreateAnimation("KiaraAttack", "KiaraAttack", 0.1f);
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation("KiaraAttack");
+
+	Dir = float4::DegToDir(Angle);
+	Dir.Z = 0.0f;
+	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
+	AddActorLocation(Dir * 50.0f * ContentsValue::MultipleSize);
 }
 
 void AKiaraWeapon::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true == Renderer->IsActive())
-	{
-		if (true == Renderer->IsCurAnimationEnd())
-		{
-		}
-		else
-		{
-		}
-	}
-	else
-	{
-		if (0 < Delay)
-		{
-			Dir = float4::DegToDir(Angle);
-			Dir.X = 0.0f;
-			SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y });
-			AddActorLocation(Dir * 200.0f);
-		}
-		else
-		{
-		}
-	}
+	Dir = float4::DegToDir(Angle);
+	Dir.Z = 0.0f;
+	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize )});
+	AddActorLocation(Dir * 50.0f * ContentsValue::MultipleSize);
 
 }
 

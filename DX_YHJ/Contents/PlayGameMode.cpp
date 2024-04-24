@@ -202,7 +202,7 @@ void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp
 		Monster->GetRenderer()->SetAutoSize(_Size * ContentsValue::MultipleSize, true);
 		Monster->GetRenderer()->ChangeAnimation(_Name);
 		Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
-		Monster->GetCollosion()->SetScale({ _Size * 16.0f * ContentsValue::MultipleSize, _Size * 16.0f * ContentsValue::MultipleSize });
+		Monster->GetCollosion()->SetScale({ _Size * 8.0f * ContentsValue::MultipleSize, _Size * 8.0f * ContentsValue::MultipleSize });
 		
 		FVector GroupPos = RandomLocation(_Group);
 		Monster->SetActorLocation(GroupPos);

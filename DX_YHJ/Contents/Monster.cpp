@@ -35,7 +35,7 @@ void AMonster::BeginPlay()
 	Renderer->ChangeAnimation(Name);
 	Renderer->SetOrder(ERenderOrder::MonsterUp);
 
-	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (10.0f * ContentsValue::MultipleSize) });
+	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (5.0f * ContentsValue::MultipleSize) });
 }
 
 

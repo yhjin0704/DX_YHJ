@@ -34,7 +34,7 @@ protected:
 	EPlayerDir PlayerDir = EPlayerDir::E;
 	float4 Dir = float4::Zero;
 	float PlayerAngle;
-	float Angle;
+	float Angle = 0.0f;
 	float Atk;
 	float CriRate;
 	float AtkTime;
