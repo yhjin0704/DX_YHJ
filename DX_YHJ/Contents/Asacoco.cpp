@@ -1,3 +1,4 @@
+#include "PreCompile.h"
 #include "Asacoco.h"
 
 AAsacoco::AAsacoco()

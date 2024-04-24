@@ -55,6 +55,9 @@
     <ClCompile Include="Asacoco.cpp">
       <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
     </ClCompile>
+    <ClCompile Include="AsacocoBullet.cpp">
+      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -109,6 +112,9 @@
       <Filter>Level\PlayLevel\Equipment\CharacterInherence</Filter>
     </ClInclude>
     <ClInclude Include="Asacoco.h">
+      <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="AsacocoBullet.h">
       <Filter>Level\PlayLevel\Equipment\NomalWeapons</Filter>
     </ClInclude>
   </ItemGroup>
