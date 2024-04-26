@@ -7,7 +7,7 @@ AAsacocoBullet::AAsacocoBullet()
 	Renderer->SetSprite("Asacoco.png");
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 
-	Collision->SetScale({ 15.0f * ContentsValue::MultipleSize, 15.f * ContentsValue::MultipleSize });
+	Collision->SetScale({ 15.0f * ContentsValue::MultipleSize, 15.0f * ContentsValue::MultipleSize });
 }
 
 AAsacocoBullet::~AAsacocoBullet()
