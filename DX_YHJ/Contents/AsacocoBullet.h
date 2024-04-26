@@ -17,8 +17,10 @@ public:
 	AAsacocoBullet& operator=(AAsacocoBullet&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
-
+	void CheckHit();
 };
 

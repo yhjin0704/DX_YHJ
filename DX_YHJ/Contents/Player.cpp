@@ -6,6 +6,7 @@
 #include "HoloCursor.h"
 #include "Weapon.h"
 #include "KiaraWeapon.h"
+#include "Asacoco.h"
 
 float4 APlayer::PlayerPos = float4::Zero;
 
@@ -58,6 +59,12 @@ void APlayer::BeginPlay()
 	{
 		std::shared_ptr<AWeapon> Weapon;
 		Weapon = GetWorld()->SpawnActor<AKiaraWeapon>("KiaraWeapon");
+		VPlayerWeapons.push_back(Weapon);
+	}
+
+	{
+		std::shared_ptr<AWeapon> Weapon;
+		Weapon = GetWorld()->SpawnActor<AAsacoco>("AAsacoco");
 		VPlayerWeapons.push_back(Weapon);
 	}
 

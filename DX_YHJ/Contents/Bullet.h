@@ -20,6 +20,13 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	UCollision* Collision;
+
+	float BulletSpeed = 0.0f;
+	float TimeDestory = 20.0f;
+
+	void CheakTimeDestory(float _DeltaTime);
+
 private:
 	
 };

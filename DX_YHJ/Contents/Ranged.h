@@ -22,6 +22,8 @@ protected:
 
 	bool IsMultiShot = false;
 
+	void CreateBullet();
+
 private:
 
 };
