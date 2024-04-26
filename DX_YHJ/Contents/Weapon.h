@@ -41,7 +41,7 @@ protected:
 
 	int Level;
 
-
+	//virtual void CheckHit();
 
 private:
 };

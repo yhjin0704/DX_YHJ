@@ -126,7 +126,7 @@ void AMonster::CheckHit()
 {
 	Collision->CollisionEnter(ECollisionOrder::Weapon, [=](std::shared_ptr<UCollision> _Collison)
 		{
-			Destroy();
+			
 		}
 	);
 }

@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "KiaraWeapon.h"
+#include "Monster.h"
 
 AKiaraWeapon::AKiaraWeapon()
 {
@@ -38,9 +39,23 @@ void AKiaraWeapon::Tick(float _DeltaTime)
 		CollisionR0->SetActive(true);
 		CollisionR0->SetPosition(Root->GetLocalPosition());
 		CollisionR0->AddPosition(Dir * 50.0f * ContentsValue::MultipleSize);
+
+		CheckHit();
 	}
 	else
 	{
 		CollisionR0->SetActive(false);
 	}
+}
+
+void AKiaraWeapon::CheckHit()
+{
+	CollisionR0->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
+		{
+			AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
+
+			Monster->Destroy();
+			//Monster->GetEnemyData().Hp -= UMagicWand::Data.Damage;
+		}
+	);
 }

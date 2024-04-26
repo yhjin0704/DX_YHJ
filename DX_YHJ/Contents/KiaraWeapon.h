@@ -20,9 +20,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void CheckHit();
+
 private:
 	UCollision* CollisionR0;
 	UCollision* CollisionR1;
 	UCollision* CollisionC0;
+
 };
 
