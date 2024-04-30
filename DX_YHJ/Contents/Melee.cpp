@@ -41,7 +41,7 @@ void AMelee::Tick(float _DeltaTime)
 	}
 	else // 공격이 실행되지 않을 때
 	{
-		Angle = PlayerAngle;
+		Angle = APlayGameMode::MainPlayer->GetAngle();
 		if (0 < Delay) // 공격 쿨이 돌기 전
 		{
 			Renderer->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
@@ -49,7 +49,7 @@ void AMelee::Tick(float _DeltaTime)
 		}
 		else // 공격 시작
 		{
-			Delay = AtkTime;
+			Delay = APlayGameMode::MainPlayer->GetAtkTime();
 			Renderer->SetActive(true);
 		}
 	}

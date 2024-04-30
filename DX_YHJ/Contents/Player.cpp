@@ -57,17 +57,8 @@ void APlayer::BeginPlay()
 	AtkDir->SetOrder(ERenderOrder::Cursor);
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
 
-	{
-		std::shared_ptr<AWeapon> Weapon;
-		Weapon = GetWorld()->SpawnActor<AKiaraWeapon>("KiaraWeapon");
-		VPlayerWeapons.push_back(Weapon);
-	}
-
-	{
-		std::shared_ptr<AWeapon> Weapon;
-		Weapon = GetWorld()->SpawnActor<AAsacoco>("AAsacoco");
-		VPlayerWeapons.push_back(Weapon);
-	}
+	AddWeapon<AKiaraWeapon>("KiaraWeapon");
+	AddWeapon<AAsacoco>("Asacoco");
 
 	StateInit();
 }
@@ -89,10 +80,17 @@ void APlayer::Tick(float _DeltaTime)
 		for (VPlayerWeaponsIter = VPlayerWeapons.begin(); VPlayerWeaponsIter != VPlayerWeapons.end(); ++VPlayerWeaponsIter)
 		{
 			std::shared_ptr<AWeapon> Weapon = *VPlayerWeaponsIter;
-			Weapon->SetPlayerStat(PlayerDir, Angle, Atk, CriRate, AtkTime);
+
 			*VPlayerWeaponsIter = Weapon;
 		}
 	}
+}
+
+template<typename WeaponType>
+void APlayer::AddWeapon(std::string _Name)
+{
+	std::shared_ptr<AWeapon> Weapon = GetWorld()->SpawnActor<WeaponType>(_Name);
+	VPlayerWeapons.push_back(Weapon);
 }
 
 void APlayer::CreatePlayerAnimation(std::string _Name)

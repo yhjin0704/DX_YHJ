@@ -20,6 +20,8 @@ void AKiaraWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Name = "KiaraWeapon";
+
 	Renderer->CreateAnimation("KiaraAttack", "KiaraAttack", 0.05f);
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation("KiaraAttack");

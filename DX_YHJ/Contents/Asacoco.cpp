@@ -13,6 +13,8 @@ AAsacoco::~AAsacoco()
 void AAsacoco::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Name = "Asacoco";
 }
 
 void AAsacoco::Tick(float _DeltaTime)
@@ -27,8 +29,7 @@ void AAsacoco::Tick(float _DeltaTime)
 	{
 		std::shared_ptr<AAsacocoBullet> Bullet;
 		Bullet = GetWorld()->SpawnActor<AAsacocoBullet>("Bullet");
-		Bullet->SetPlayerStat(PlayerDir, PlayerAngle, Atk, CriRate, AtkTime);
 
-		Delay = AtkTime;
+		Delay = APlayGameMode::MainPlayer->GetAtkTime();
 	}
 }

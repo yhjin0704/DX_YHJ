@@ -18,6 +18,6 @@ protected:
 	void Initialize() override;
 
 private:
-
+	std::string WindowIconPath;
 };
 

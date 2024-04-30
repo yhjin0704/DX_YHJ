@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include "Player.h"
+#include "PlayGameMode.h"
 
 class USpriteRenderer;
 class AWeapon : public AActor
@@ -20,7 +21,10 @@ public:
 	AWeapon& operator=(const AWeapon& _Other) = delete;
 	AWeapon& operator=(AWeapon&& _Other) noexcept = delete;
 
-	void SetPlayerStat(EPlayerDir _PlayerDir, float _Angle, float _Atk, float _CriRate, float _AtkTime);
+	std::string GetName()
+	{
+		return Name;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -29,6 +33,8 @@ protected:
 	UDefaultSceneComponent* Root;
 
 	USpriteRenderer* Renderer;
+
+	std::string Name = "";
 
 	EPlayerDir PlayerDir = EPlayerDir::E;
 	float4 Dir = float4::Zero;

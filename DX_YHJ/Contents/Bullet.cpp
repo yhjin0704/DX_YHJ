@@ -18,6 +18,8 @@ ABullet::ABullet()
 	SetRoot(Root);
 
 	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y });
+
+	Angle = APlayGameMode::MainPlayer->GetAngle();
 }
 
 ABullet::~ABullet()
@@ -33,9 +35,9 @@ void ABullet::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	Renderer->SetRotationDeg(FVector{ 0.0f, 0.0f, PlayerAngle });
+	Renderer->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 
-	Dir = float4::DegToDir(PlayerAngle);
+	Dir = float4::DegToDir(Angle);
 	Dir.Z = 0.0f;
 
 	AddActorLocation(Dir * _DeltaTime * BulletSpeed * ContentsValue::MultipleSize);

@@ -7,6 +7,8 @@
 #include <EngineCore/EngineDebugMsgWindow.h>
 #include <EngineBase/EngineRandom.h>
 
+std::shared_ptr<APlayer> APlayGameMode::MainPlayer = nullptr;
+
 APlayGameMode::APlayGameMode()
 {
 }
@@ -34,6 +36,7 @@ void APlayGameMode::BeginPlay()
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kiara");
 	Player->SetActorLocation(PlayerStartPos);
+	MainPlayer = Player;
 
 	// 커서 생성
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");

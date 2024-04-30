@@ -46,12 +46,6 @@
     <ClCompile Include="KiaraWeapon.cpp">
       <Filter>Level\PlayLevel\Equipment\Melee\CharacterInherence</Filter>
     </ClCompile>
-    <ClCompile Include="Asacoco.cpp">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
-    </ClCompile>
-    <ClCompile Include="AsacocoBullet.cpp">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
-    </ClCompile>
     <ClCompile Include="Melee.cpp">
       <Filter>Level\PlayLevel\Equipment\Melee</Filter>
     </ClCompile>
@@ -60,6 +54,12 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+    </ClCompile>
+    <ClCompile Include="Asacoco.cpp">
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
+    </ClCompile>
+    <ClCompile Include="AsacocoBullet.cpp">
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -108,12 +108,6 @@
     <ClInclude Include="KiaraWeapon.h">
       <Filter>Level\PlayLevel\Equipment\Melee\CharacterInherence</Filter>
     </ClInclude>
-    <ClInclude Include="Asacoco.h">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
-    </ClInclude>
-    <ClInclude Include="AsacocoBullet.h">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons</Filter>
-    </ClInclude>
     <ClInclude Include="Melee.h">
       <Filter>Level\PlayLevel\Equipment\Melee</Filter>
     </ClInclude>
@@ -122,6 +116,12 @@
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+    </ClInclude>
+    <ClInclude Include="Asacoco.h">
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
+    </ClInclude>
+    <ClInclude Include="AsacocoBullet.h">
+      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +175,9 @@
     </Filter>
     <Filter Include="Level\PlayLevel\Equipment\Melee\NomalWeapons">
       <UniqueIdentifier>{5de64815-7b88-42d9-854f-c98d80186cca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco">
+      <UniqueIdentifier>{9cebc663-736f-4df2-bd1a-9c3fb2d0fdd3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

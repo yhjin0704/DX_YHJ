@@ -23,6 +23,8 @@ class APlayGameMode : public AGameMode
 	GENERATED_BODY(AGameMode)
 
 public:
+	static std::shared_ptr<APlayer> MainPlayer;
+
 	// constrcuter destructer
 	APlayGameMode();
 	~APlayGameMode();
@@ -33,7 +35,7 @@ public:
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
 
-	static std::shared_ptr<APlayer> GetMainPlayer();
+	std::shared_ptr<APlayer> GetMainPlayer();
 
 protected:
 	void BeginPlay() override;
@@ -61,6 +63,7 @@ protected:
 	void PlayDebugText();
 
 private:
+
 	FIntPoint CurIndex;
 
 	float4 GroupMonsterPos;

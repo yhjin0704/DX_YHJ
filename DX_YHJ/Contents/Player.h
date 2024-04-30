@@ -50,10 +50,18 @@ public:
 		return Atk;
 	}
 
+	float GetAtkTime()
+	{
+		return AtkTime;
+	}
+
 	float GetSpeed()
 	{
 		return Speed;
 	}
+
+	template <typename WeaponType>
+	void AddWeapon(std::string _Name);
 
 protected:
 	void BeginPlay() override;

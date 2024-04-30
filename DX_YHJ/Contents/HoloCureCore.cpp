@@ -80,6 +80,21 @@ void UHoloCureCore::Initialize()
 		}
 	}
 
+	{
+		UEngineDirectory NewDir;
+		NewDir.MoveToSearchChild("Resources");
+		NewDir.Move("Image");
+		std::vector<UEngineFile> AllFiles = NewDir.GetAllFile({ ".ico" }, false);
+		if (AllFiles.empty() == true)
+		{
+			WindowIconPath = "";
+		}
+		else
+		{
+			WindowIconPath = AllFiles.front().GetFullPath();
+		}
+	}
+
 	ContentsValue::WindowSize = GEngine->EngineWindow.GetWindowScale();
 
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
