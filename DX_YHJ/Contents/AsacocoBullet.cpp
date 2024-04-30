@@ -8,6 +8,8 @@ AAsacocoBullet::AAsacocoBullet()
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 
 	Collision->SetScale({ 15.0f * ContentsValue::MultipleSize, 15.0f * ContentsValue::MultipleSize });
+
+	Angle = APlayGameMode::MainPlayer->GetAngle();
 }
 
 AAsacocoBullet::~AAsacocoBullet()

@@ -18,8 +18,6 @@ ABullet::ABullet()
 	SetRoot(Root);
 
 	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y });
-
-	Angle = APlayGameMode::MainPlayer->GetAngle();
 }
 
 ABullet::~ABullet()
@@ -41,6 +39,8 @@ void ABullet::Tick(float _DeltaTime)
 	Dir.Z = 0.0f;
 
 	AddActorLocation(Dir * _DeltaTime * BulletSpeed * ContentsValue::MultipleSize);
+
+	CheakTimeDestory(_DeltaTime);
 }
 
 void ABullet::CheakTimeDestory(float _DeltaTime)
