@@ -17,7 +17,7 @@ ABullet::ABullet()
 
 	SetRoot(Root);
 
-	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
+	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y });
 }
 
 ABullet::~ABullet()

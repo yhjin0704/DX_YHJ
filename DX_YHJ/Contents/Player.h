@@ -10,6 +10,7 @@ class APlayer : public AActor
 	GENERATED_BODY(AActor)
 
 public:
+	static float4 PlayerColPos;
 	static float4 PlayerPos;
 
 	// constrcuter destructer

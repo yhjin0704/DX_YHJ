@@ -35,7 +35,7 @@ void AMonster::BeginPlay()
 	Renderer->ChangeAnimation(Name);
 	Renderer->SetOrder(ERenderOrder::MonsterUp);
 
-	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (5.0f * ContentsValue::MultipleSize) });
+	//Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (10.0f * ContentsValue::MultipleSize) });
 }
 
 
@@ -70,7 +70,7 @@ void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp,
 
 FVector AMonster::CreateGroupToPlayerDir()
 {
-	FVector GroupDir = APlayer::PlayerPos - GetActorLocation();
+	FVector GroupDir = APlayer::PlayerColPos - GetActorLocation();
 	GroupDir = GroupDir.Normalize2DReturn();
 	return GroupDir;
 }
@@ -87,7 +87,7 @@ void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
 	switch (_MoveType)
 	{
 	case EMonsterMoveType::Follow:
-		Dir = APlayer::PlayerPos - MonsterPos;
+		Dir = APlayer::PlayerColPos - MonsterPos;
 		Dir = Dir.Normalize2DReturn();
 		break;
 	case EMonsterMoveType::StraightToPlayer:

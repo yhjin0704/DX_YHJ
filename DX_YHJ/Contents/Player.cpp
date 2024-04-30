@@ -8,6 +8,7 @@
 #include "KiaraWeapon.h"
 #include "Asacoco.h"
 
+float4 APlayer::PlayerColPos = float4::Zero;
 float4 APlayer::PlayerPos = float4::Zero;
 
 APlayer::APlayer()
@@ -20,7 +21,7 @@ APlayer::APlayer()
 
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
-	Collision->SetScale({ 8.0f * ContentsValue::MultipleSize, 8.0f * ContentsValue::MultipleSize });
+	Collision->SetScale({ 16.0f * ContentsValue::MultipleSize, 16.0f * ContentsValue::MultipleSize });
 	Collision->SetCollisionGroup(ECollisionOrder::Player);
 	Collision->SetCollisionType(ECollisionType::Rect);
 
@@ -51,7 +52,7 @@ void APlayer::BeginPlay()
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::Player);
 	                                                                        
-	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (5.0f * ContentsValue::MultipleSize) });
+	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (10.0f * ContentsValue::MultipleSize) });
 
 	AtkDir->SetOrder(ERenderOrder::Cursor);
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
@@ -77,7 +78,8 @@ void APlayer::Tick(float _DeltaTime)
 
 	State.Update(_DeltaTime);
 
-	PlayerPos = GetActorLocation();
+	PlayerColPos = GetActorLocation();
+	PlayerPos = float4{ PlayerColPos.X, PlayerColPos.Y + (20.0f * ContentsValue::MultipleSize) };
 
 	CheckMouseAimMode();
 	ChangeMoveAimAtkDir();

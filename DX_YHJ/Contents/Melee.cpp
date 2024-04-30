@@ -60,6 +60,6 @@ void AMelee::SetKnifeTypeMeleeLocation(float _DistanceFromPlayer)
 	Dir = float4::DegToDir(Angle);
 	Dir.Z = 0.0f;
 
-	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
+	SetActorLocation(FVector{ APlayer::PlayerPos.X, APlayer::PlayerPos.Y });
 	AddActorLocation(Dir * _DistanceFromPlayer * ContentsValue::MultipleSize);
 }
