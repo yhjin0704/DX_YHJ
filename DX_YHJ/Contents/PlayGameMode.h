@@ -55,6 +55,9 @@ protected:
 	void InfinityGroundCheck();
 
 	// 몬스터 스폰 관련
+	template <typename Monster>
+	std::shared_ptr<Monster> SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
+
 	void RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group, int _Quantity);
 	float4 RandomLocation(bool _Group);
 	
@@ -63,7 +66,6 @@ protected:
 	void PlayDebugText();
 
 private:
-
 	FIntPoint CurIndex;
 
 	float4 GroupMonsterPos;
