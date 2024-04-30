@@ -39,7 +39,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayerData.h">
+    <ClInclude Include="PlayLevelUI.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -104,7 +104,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayerData.cpp">
+    <ClCompile Include="PlayLevelUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>

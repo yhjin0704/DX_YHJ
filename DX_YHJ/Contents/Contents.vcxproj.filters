@@ -61,7 +61,7 @@
     <ClCompile Include="AsacocoBullet.cpp">
       <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerData.cpp">
+    <ClCompile Include="PlayLevelUI.cpp">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -126,7 +126,7 @@
     <ClInclude Include="AsacocoBullet.h">
       <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerData.h">
+    <ClInclude Include="PlayLevelUI.h">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClInclude>
   </ItemGroup>

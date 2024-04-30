@@ -2,20 +2,20 @@
 #include <EngineCore/Actor.h>
 #include <EngineCore/Image.h>
 
-class APlayerData : public AActor
+class APlayLevelUI : public AActor
 {
 	GENERATED_BODY(AActor)
 
 public:
 	// constrcuter destructer
-	APlayerData();
-	~APlayerData();
+	APlayLevelUI();
+	~APlayLevelUI();
 
 	// delete Function
-	APlayerData(const APlayerData& _Other) = delete;
-	APlayerData(APlayerData&& _Other) noexcept = delete;
-	APlayerData& operator=(const APlayerData& _Other) = delete;
-	APlayerData& operator=(APlayerData&& _Other) noexcept = delete;
+	APlayLevelUI(const APlayLevelUI& _Other) = delete;
+	APlayLevelUI(APlayLevelUI&& _Other) noexcept = delete;
+	APlayLevelUI& operator=(const APlayLevelUI& _Other) = delete;
+	APlayLevelUI& operator=(APlayLevelUI&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;
