@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include <EngineCore/Image.h>
 
 class APlayerData : public AActor
 {
@@ -21,6 +22,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	UImage* ExpBar = nullptr;
+	UImage* HpBar = nullptr;
+	UImage* Money = nullptr;
+	UImage* KillCount = nullptr;
 };
-

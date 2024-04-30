@@ -110,7 +110,7 @@ void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
 
 void AMonster::CheckPosComparePlayer()
 {
-	if (APlayer::PlayerPos.Y <= GetActorLocation().Y)
+	if (APlayer::PlayerColPos.Y <= GetActorLocation().Y)
 	{
 		Renderer->SetOrder(ERenderOrder::MonsterUp);
 	}
