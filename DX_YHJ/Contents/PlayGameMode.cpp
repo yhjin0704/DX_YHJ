@@ -84,18 +84,18 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
-	SpawnNomalMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f,
-		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
-		false, 10);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 10.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		false, 10);
+	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 10.0f, SpawnTerm2,
+		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		true, 10);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, SpawnTerm1,
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
 		false, 5);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, SpawnTerm1,
 		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, SpawnTerm1,
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 10);
 
@@ -306,20 +306,21 @@ void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, floa
 	GroupSpawn = false;
 }
 
-void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term,
+void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm,
 	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
 	bool _Group, int _Quantity)
 {
 	if (PlayTime >= _SpawnBegin && PlayTime < _SpawnEnd)
 	{
-		if (SpawnTerm <= 0)
+		if (0.0f >= _SpawnTerm)
 		{
 			RandomSpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
-			SpawnTerm = _Term;
+			_SpawnTerm = _Term;
+			int a = 0;
 		}
 		else
 		{
-			SpawnTerm -= _DeltaTime;
+			_SpawnTerm -= _DeltaTime;
 		}
 	}
 }

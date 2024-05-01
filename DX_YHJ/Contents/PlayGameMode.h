@@ -64,7 +64,7 @@ protected:
 	float4 RandomLocation(bool _Group);
 	void RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group, int _Quantity);
 
-	void SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group = false, int _Quantity = 1);
+	void SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group = false, int _Quantity = 1);
 	
 	template<typename BossType>
 	void SpawnBossMonsterTimeSet(float _SpawnBegin, std::string _Name);
@@ -78,7 +78,12 @@ private:
 	bool GroupSpawn = false;
 
 	float PlayTime = 0;
-	float SpawnTerm = 0;
+
+	float SpawnTerm1 = 0;
+	float SpawnTerm2 = 0;
+	float SpawnTerm3 = 0;
+	float SpawnTerm4 = 0;
+	float SpawnTerm5 = 0;
 
 };
 
