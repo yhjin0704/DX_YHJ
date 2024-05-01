@@ -37,6 +37,7 @@ void APlayGameMode::BeginPlay()
 	Player->SetName("Kiara");
 	Player->SetActorLocation(PlayerStartPos);
 	MainPlayer = Player;
+	Player->State.ChangeState("Idle");
 
 	// 커서 생성
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
