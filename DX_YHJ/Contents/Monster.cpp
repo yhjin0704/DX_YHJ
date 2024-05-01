@@ -10,6 +10,11 @@ AMonster::AMonster()
 	Renderer->SetupAttachment(Root);
 	Renderer->SetPivot(EPivot::BOT);
 
+	SavedRenderer = CreateDefaultSubObject<USpriteRenderer>("SavedRenderer");
+	SavedRenderer->SetupAttachment(Root);
+	SavedRenderer->SetAutoSize(ContentsValue::MultipleSize, true);
+	SavedRenderer->SetActive(false);
+
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
 	Collision->SetCollisionGroup(ECollisionOrder::Monster);
@@ -34,6 +39,10 @@ void AMonster::BeginPlay()
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation(Name);
 	Renderer->SetOrder(ERenderOrder::MonsterUp);
+
+	SavedRenderer->CreateAnimation("MonsterSavedHeart", "MonsterSavedHeart", 0.1f, false);
+	SavedRenderer->SetOrder(ERenderOrder::MonsterUIUp);
+	SavedRenderer->ChangeAnimation("MonsterSavedHeart");
 }
 
 
@@ -41,19 +50,28 @@ void AMonster::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	Move(_DeltaTime, MoveType);
-
-	if (0 > Dir.X)
+	if (false == IsSaved)
 	{
-		Renderer->SetDir(EEngineDir::Left);
+		Move(_DeltaTime, MoveType);
+
+		if (0 > Dir.X)
+		{
+			Renderer->SetDir(EEngineDir::Left);
+		}
+		else
+		{
+			Renderer->SetDir(EEngineDir::Right);
+		}
+
+		CheakSaved();
+		CheckHit();
 	}
 	else
 	{
-		Renderer->SetDir(EEngineDir::Right);
+		Saved(_DeltaTime);
 	}
-
+	
 	CheckPosComparePlayer();
-	CheckHit();
 }
 
 void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
@@ -113,10 +131,12 @@ void AMonster::CheckPosComparePlayer()
 	if (APlayer::PlayerColPos.Y <= GetActorLocation().Y)
 	{
 		Renderer->SetOrder(ERenderOrder::MonsterUp);
+		SavedRenderer->SetOrder(ERenderOrder::MonsterUIUp);
 	}
 	else
 	{
 		Renderer->SetOrder(ERenderOrder::MonsterDown);
+		SavedRenderer->SetOrder(ERenderOrder::MonsterUIDown);
 	}
 }
 
@@ -127,4 +147,37 @@ void AMonster::CheckHit()
 			
 		}
 	);
+}
+
+void AMonster::CheakSaved()
+{
+	if ( 0 >= Hp)
+	{
+		IsSaved = true;
+		SavedDir = Renderer->GetDir();
+	}
+}
+
+void AMonster::Saved(float _DeltaTime)
+{
+	SavedRenderer->SetActive(true);
+
+	if (EEngineDir::Left == SavedDir)
+	{
+		Renderer->AddPosition(FVector{ 1.0f, 0.0f } *_DeltaTime * 20.0f * ContentsValue::MultipleSize);
+	}
+	else if (EEngineDir::Right == SavedDir)
+	{
+		Renderer->AddPosition(FVector{ -1.0f, 0.0f } *_DeltaTime * 20.0f * ContentsValue::MultipleSize);
+	}
+	else
+	{
+		MsgBoxAssert("몬스터의 SavedDir값이 잘못됐습니다.");
+		return;
+	}
+
+	if (true == SavedRenderer->IsCurAnimationEnd())
+	{
+		Destroy();
+	}
 }

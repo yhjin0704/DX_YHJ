@@ -56,8 +56,9 @@ void AKiaraWeapon::CheckHit()
 		{
 			AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
 
-			Monster->Destroy();
-			//Monster->GetEnemyData().Hp -= UMagicWand::Data.Damage;
+			float Hp = Monster->GetHp();
+			Hp -= Atk;
+			Monster->SetHp(Hp);
 		}
 	);
 }

@@ -4,8 +4,10 @@ enum class ERenderOrder
 {
 	BackGround,
 	MonsterUp,
+	MonsterUIUp,
 	Player,
 	MonsterDown,
+	MonsterUIDown,
 	Weapon,
 	Cursor,
 };

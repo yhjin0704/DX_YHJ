@@ -40,7 +40,7 @@ protected:
 	float4 Dir = float4::Zero;
 	float PlayerAngle;
 	float Angle = 0.0f;
-	float Atk;
+	float Atk = 18.0f;
 	float CriRate;
 	float AtkTime;
 	float Delay = 1.0f;

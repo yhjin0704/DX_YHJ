@@ -81,7 +81,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	InfinityGroundCheck();
 
 	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, 
-		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow, 
+		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow, 
 		false, 10);
 	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 10.0f,
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
@@ -197,6 +197,7 @@ std::shared_ptr<Monster> APlayGameMode::SpawnMonster(std::string _Name, float _S
 	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
 	Monster->GetCollosion()->SetScale({ _Size * 16.0f * ContentsValue::MultipleSize, _Size * 16.0f * ContentsValue::MultipleSize });
 	Monster->GetCollosion()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (_Size * 10.0f * ContentsValue::MultipleSize) });
+	Monster->GetSavedRenderer()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize)});
 
 	return Monster;
 }

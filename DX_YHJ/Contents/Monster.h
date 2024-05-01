@@ -28,9 +28,24 @@ public:
 		return Renderer;
 	}
 
+	USpriteRenderer* GetSavedRenderer()
+	{
+		return SavedRenderer;
+	}
+
 	UCollision* GetCollosion()
 	{
 		return Collision;
+	}
+
+	float GetHp()
+	{
+		return Hp;
+	}
+
+	void SetHp(float _Hp)
+	{
+		Hp = _Hp;
 	}
 
 	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
@@ -48,6 +63,7 @@ protected:
 
 private:
 	USpriteRenderer* Renderer;
+	USpriteRenderer* SavedRenderer;
 	UCollision* Collision;
 
 	FVector Dir = FVector::Zero;
@@ -62,10 +78,16 @@ private:
 
 	EMonsterMoveType MoveType = EMonsterMoveType::Follow;
 
+	bool IsSaved = false;
+	EEngineDir SavedDir = EEngineDir::MAX;
+
 	void CreateMonsterAnimation(std::string _Name, int _MaxIndex = 2);
 
 	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
 	void CheckPosComparePlayer();
 
 	void CheckHit();
+
+	void CheakSaved();
+	void Saved(float _DeltaTime);
 };
