@@ -40,13 +40,13 @@ void ABullet::Tick(float _DeltaTime)
 
 	AddActorLocation(Dir * _DeltaTime * BulletSpeed * ContentsValue::MultipleSize);
 
-	CheakTimeDestory(_DeltaTime);
+	TimeOutDestory(_DeltaTime);
 }
 
-void ABullet::CheakTimeDestory(float _DeltaTime)
+void ABullet::TimeOutDestory(float _DeltaTime)
 {
-	TimeDestory -= _DeltaTime;
-	if (0 > TimeDestory)
+	TimeOutDestoryTime -= _DeltaTime;
+	if (0 > TimeOutDestoryTime)
 	{
 		Destroy();
 	}
