@@ -176,6 +176,9 @@ void AMonster::Saved(float _DeltaTime)
 		return;
 	}
 
+	RendererAlpha -= _DeltaTime;
+	Renderer->SetMulColor(float4{ 1.0f, 1.0f, 1.0f, RendererAlpha });
+
 	if (true == SavedRenderer->IsCurAnimationEnd())
 	{
 		Destroy();
