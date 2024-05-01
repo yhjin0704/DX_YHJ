@@ -55,12 +55,14 @@ protected:
 	void InfinityGroundCheck();
 
 	// 몬스터 스폰 관련
-	template <typename Monster>
-	std::shared_ptr<Monster> SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
+	template <typename MonsterType>
+	std::shared_ptr<MonsterType> SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
 
+	template <typename MonsterType>
 	void RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group, int _Quantity);
 	float4 RandomLocation(bool _Group);
-	
+
+	template <typename MonsterType>
 	void SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group = false, int _Quantity = 1);
 
 	void PlayDebugText();

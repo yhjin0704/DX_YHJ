@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "AsacocoBullet.h"
 #include "Monster.h"
+#include "NomalMonster.h"
 
 AAsacocoBullet::AAsacocoBullet()
 {

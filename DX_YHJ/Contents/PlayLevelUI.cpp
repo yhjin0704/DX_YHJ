@@ -12,6 +12,8 @@ APlayLevelUI::~APlayLevelUI()
 void APlayLevelUI::BeginPlay()
 {
 	Super::BeginPlay();
+
+
 }
 
 void APlayLevelUI::Tick(float _DeltaTime)

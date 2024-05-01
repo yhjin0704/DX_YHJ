@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "PlayGameMode.h"
 #include "ContentsValue.h"
-#include "Monster.h"
+#include "NomalMonster.h"
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
 #include <EngineCore/EngineDebugMsgWindow.h>
@@ -31,7 +31,7 @@ void APlayGameMode::BeginPlay()
 	float4 CameraPos = PlayerStartPos;
 	CameraPos.Z = -500.0f;
 	Camera->SetActorLocation(CameraPos);
-	
+
 	// 플레이어 생성
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kiara");
@@ -81,18 +81,18 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
-	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f, 
-		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow, 
+	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 0.0f, 20.0f, 5.0f,
+		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		false, 10);
-	SpawnMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 10.0f,
+	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 0.0f, 20.0f, 10.0f,
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		true, 10);
-	SpawnMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, 
+	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 20.0f, 40.0f, 5.0f,
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
 		false, 5);
-	SpawnMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, 
+	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 40.0f, 60.0f, 5.0f,
 		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
-	SpawnMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, 
+	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 60.0f, 80.0f, 5.0f,
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 10);
 
@@ -187,23 +187,24 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-template <typename Monster>
-std::shared_ptr<Monster> APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
+template <typename MonsterType>
+std::shared_ptr<MonsterType> APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
 {
-	std::shared_ptr<AMonster> Monster;
+	std::shared_ptr<MonsterType> Monster;
 
-	Monster = GetWorld()->SpawnActor<AMonster>(_Name);
+	Monster = GetWorld()->SpawnActor<MonsterType>(_Name);
 	Monster->GetRenderer()->SetAutoSize(_Size * ContentsValue::MultipleSize, true);
 	Monster->GetRenderer()->ChangeAnimation(_Name);
 	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
 	Monster->GetCollosion()->SetScale({ _Size * 16.0f * ContentsValue::MultipleSize, _Size * 16.0f * ContentsValue::MultipleSize });
 	Monster->GetCollosion()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (_Size * 10.0f * ContentsValue::MultipleSize) });
-	Monster->GetSavedRenderer()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize)});
+	Monster->GetSavedRenderer()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize) });
 
 	return Monster;
 }
 
-void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
+template <typename MonsterType>
+void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
 	bool _Group, int _Quantity)
 {
 	if (0 >= _Quantity)
@@ -213,10 +214,10 @@ void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp
 	}
 
 	FVector GroupToPlayerDir;
-	
+
 	for (int i = 0; i < _Quantity; i++)
 	{
-		std::shared_ptr<AMonster> Monster = SpawnMonster<AMonster>(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType);
+		std::shared_ptr<MonsterType> Monster = SpawnMonster<MonsterType>(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType);
 
 		FVector GroupPos = RandomLocation(_Group);
 		Monster->SetActorLocation(GroupPos);
@@ -265,7 +266,7 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 		//뭉쳐서 나올 때 
 		if (false == GroupSpawn)
 		{
-			GroupMonsterPos = APlayer::PlayerPos; 
+			GroupMonsterPos = APlayer::PlayerPos;
 
 			while (GroupMonsterPos.X > (APlayer::PlayerPos.X - 300.0f) && GroupMonsterPos.X < (APlayer::PlayerPos.X + 300.0f))
 			{
@@ -282,19 +283,20 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 		MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 10.0f;
 		MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 10.0f;
 	}
-	
+
 	return MonsterPos;
 }
 
-void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, 
-	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
+template <typename MonsterType>
+void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term,
+	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
 	bool _Group, int _Quantity)
 {
 	if (PlayTime >= _SpawnBegin && PlayTime < _SpawnEnd)
 	{
 		if (SpawnTerm <= 0)
 		{
-			RandomSpawnMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
+			RandomSpawnMonster<MonsterType>(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
 			SpawnTerm = _Term;
 		}
 		else
@@ -310,12 +312,12 @@ void APlayGameMode::PlayDebugText()
 
 	FIntPoint Index = PosToIndex(APlayer::PlayerPos);
 	CurIndex = Index;
-	
+
 	//플레이어 위치
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : X : {}, Y : {}", APlayer::PlayerPos.X, APlayer::PlayerPos.Y));
 	//플레이어가 있는 BackGround
 	UEngineDebugMsgWindow::PushMsg(std::format("BackGroundIndex : {}, {}", Index.X, Index.Y));
-	
+
 	std::string PlayerDir = "";
 	switch (Player->GetPlayerDir())
 	{

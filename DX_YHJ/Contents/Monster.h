@@ -7,6 +7,7 @@ class USpriteRenderer;
 class AMonster : public AActor
 {
 	GENERATED_BODY(AActor)
+
 public:
 	// constrcuter destructer
 	AMonster();
@@ -61,7 +62,6 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
 	USpriteRenderer* Renderer;
 	USpriteRenderer* SavedRenderer;
 	UCollision* Collision;
@@ -78,17 +78,19 @@ private:
 
 	EMonsterMoveType MoveType = EMonsterMoveType::Follow;
 
-	bool IsSaved = false;
-	EEngineDir SavedDir = EEngineDir::MAX;
-	float RendererAlpha = 1.0f;
+//	bool IsSaved = false;
+//	EEngineDir SavedDir = EEngineDir::MAX;
+//	float RendererAlpha = 1.0f;
+//
+//	void CreateMonsterAnimation(std::string _Name, int _MaxIndex = 2);
+//
+//	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
+//	void CheckPosComparePlayer();
+//
+//	void CheckHit();
+//
+//	void CheakSaved();
+//	void Saved(float _DeltaTime);
+private:
 
-	void CreateMonsterAnimation(std::string _Name, int _MaxIndex = 2);
-
-	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
-	void CheckPosComparePlayer();
-
-	void CheckHit();
-
-	void CheakSaved();
-	void Saved(float _DeltaTime);
 };

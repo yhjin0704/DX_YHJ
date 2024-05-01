@@ -23,7 +23,7 @@ void AKiaraWeapon::BeginPlay()
 	Name = "KiaraWeapon";
 
 	Renderer->CreateAnimation("KiaraAttack", "KiaraAttack", 0.05f);
-	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
+	Renderer->SetAutoSize(1.0f * ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation("KiaraAttack");
 
 	SetKnifeTypeMeleeLocation(35.0f);
