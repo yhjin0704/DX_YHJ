@@ -164,11 +164,11 @@ void AMonster::Saved(float _DeltaTime)
 
 	if (EEngineDir::Left == SavedDir)
 	{
-		Renderer->AddPosition(FVector{ 1.0f, 0.0f } *_DeltaTime * 20.0f * ContentsValue::MultipleSize);
+		Renderer->AddPosition(FVector{ 1.0f, 0.0f } *_DeltaTime * 100.0f * ContentsValue::MultipleSize);
 	}
 	else if (EEngineDir::Right == SavedDir)
 	{
-		Renderer->AddPosition(FVector{ -1.0f, 0.0f } *_DeltaTime * 20.0f * ContentsValue::MultipleSize);
+		Renderer->AddPosition(FVector{ -1.0f, 0.0f } *_DeltaTime * 100.0f * ContentsValue::MultipleSize);
 	}
 	else
 	{
