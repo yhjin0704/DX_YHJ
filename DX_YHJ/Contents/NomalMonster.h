@@ -21,18 +21,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	bool IsSaved = false;
-	EEngineDir SavedDir = EEngineDir::MAX;
-	float RendererAlpha = 1.0f;
-
 	void CreateMonsterAnimation(std::string _Name, int _MaxIndex = 2);
 
 	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
-	void CheckPosComparePlayer();
-
-	void CheckHit();
-
-	void CheakSaved();
-	void Saved(float _DeltaTime);
 };
 

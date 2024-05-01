@@ -21,7 +21,3 @@ void ARanged::Tick(float _DeltaTime)
 
 	Delay -= _DeltaTime;
 }
-
-void ARanged::CreateBullet()
-{
-}

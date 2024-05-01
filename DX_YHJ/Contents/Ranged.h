@@ -22,7 +22,11 @@ protected:
 
 	bool IsMultiShot = false;
 
-	void CreateBullet();
+	template<typename BulletType>
+	void CreateBullet()
+	{
+		std::shared_ptr<BulletType> Bullet = GetWorld()->SpawnActor<BulletType>("Bullet");
+	}
 
 private:
 

@@ -67,6 +67,15 @@
     <ClCompile Include="NomalMonster.cpp">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="Fubuzilla.cpp">
+      <Filter>Level\PlayLevel\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SmolAme.cpp">
+      <Filter>Level\PlayLevel\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnMonster.cpp">
+      <Filter>Level\PlayLevel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -134,6 +143,15 @@
     </ClInclude>
     <ClInclude Include="NomalMonster.h">
       <Filter>Level\PlayLevel\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Fubuzilla.h">
+      <Filter>Level\PlayLevel\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SmolAme.h">
+      <Filter>Level\PlayLevel\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnMonster.h">
+      <Filter>Level\PlayLevel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

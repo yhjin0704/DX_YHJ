@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SmolAme.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Fubuzilla.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NomalMonster.h">
       <SubType>
       </SubType>
@@ -64,6 +72,10 @@
     </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
+    <ClInclude Include="SpawnMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <SubType>
       </SubType>
@@ -88,6 +100,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SmolAme.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Fubuzilla.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NomalMonster.cpp">
       <SubType>
       </SubType>
@@ -133,6 +153,10 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player_State.cpp" />
     <ClCompile Include="PlayGameMode.cpp" />
+    <ClCompile Include="SpawnMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <SubType>
       </SubType>

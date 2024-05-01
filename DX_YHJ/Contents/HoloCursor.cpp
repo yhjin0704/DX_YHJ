@@ -34,9 +34,11 @@ void AHoloCursor::BeginPlay()
 void AHoloCursor::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-	ChangeAimMode();
-	CheckAimMode();
+	if ("PlayLevel" == GetWorld()->GetName())
+	{
+		ChangeAimMode();
+		CheckAimMode();
+	}
 }
 
 void AHoloCursor::CursorOFf()

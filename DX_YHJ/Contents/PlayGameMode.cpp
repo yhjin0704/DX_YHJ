@@ -1,11 +1,11 @@
 #include "PreCompile.h"
 #include "PlayGameMode.h"
 #include "ContentsValue.h"
-#include "NomalMonster.h"
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
 #include <EngineCore/EngineDebugMsgWindow.h>
 #include <EngineBase/EngineRandom.h>
+#include "Fubuzilla.h"
 
 std::shared_ptr<APlayer> APlayGameMode::MainPlayer = nullptr;
 
@@ -69,6 +69,9 @@ void APlayGameMode::BeginPlay()
 			BackGroundVector.push_back(BackGround);
 		}
 	}
+
+	//std::shared_ptr<AFubuzilla> Boss = GetWorld()->SpawnActor<AFubuzilla>("Fubuzilla");
+	//std::shared_ptr<AFubuzilla> Boss = SpawnBossMonster<AFubuzilla>("Fubuzilla");
 }
 
 void APlayGameMode::Tick(float _DeltaTime)
@@ -81,18 +84,18 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
-	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 0.0f, 20.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 5.0f,
 		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		false, 10);
-	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 0.0f, 20.0f, 10.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 0.0f, 20.0f, 10.0f,
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		true, 10);
-	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 20.0f, 40.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f,
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
 		false, 5);
-	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 40.0f, 60.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f,
 		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
-	SpawnMonsterTimeSet<ANomalMonster>(_DeltaTime, 60.0f, 80.0f, 5.0f,
+	SpawnNomalMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f,
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 10);
 
@@ -187,12 +190,11 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-template <typename MonsterType>
-std::shared_ptr<MonsterType> APlayGameMode::SpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
+std::shared_ptr<ANomalMonster> APlayGameMode::SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
 {
-	std::shared_ptr<MonsterType> Monster;
+	std::shared_ptr<ANomalMonster> Monster;
 
-	Monster = GetWorld()->SpawnActor<MonsterType>(_Name);
+	Monster = GetWorld()->SpawnActor<ANomalMonster>(_Name);
 	Monster->GetRenderer()->SetAutoSize(_Size * ContentsValue::MultipleSize, true);
 	Monster->GetRenderer()->ChangeAnimation(_Name);
 	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
@@ -203,45 +205,22 @@ std::shared_ptr<MonsterType> APlayGameMode::SpawnMonster(std::string _Name, floa
 	return Monster;
 }
 
-template <typename MonsterType>
-void APlayGameMode::RandomSpawnMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
-	bool _Group, int _Quantity)
+template<typename BossType>
+std::shared_ptr<BossType> APlayGameMode::SpawnBossMonster(std::string _Name)
 {
-	if (0 >= _Quantity)
+	std::shared_ptr<BossType> Boss;
+
+	if ("Fubuzilla" == _Name)
 	{
-		MsgBoxAssert("스폰하려는 몬스터의 수가 0 이하 입니다.");
+		std::shared_ptr<BossType> Boss = GetWorld()->SpawnActor<AFubuzilla>("Fubuzilla");
+
+		return Boss;
+	}
+	else
+	{
+		MsgBoxAssert("존재하지 않는 보스를 스폰하려 했습니다.");
 		return;
 	}
-
-	FVector GroupToPlayerDir;
-
-	for (int i = 0; i < _Quantity; i++)
-	{
-		std::shared_ptr<MonsterType> Monster = SpawnMonster<MonsterType>(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType);
-
-		FVector GroupPos = RandomLocation(_Group);
-		Monster->SetActorLocation(GroupPos);
-		if (true == _Group)
-		{
-			if (false == GroupSpawn)
-			{
-				GroupToPlayerDir = Monster->CreateGroupToPlayerDir();
-				Monster->SetToPlayerDir(GroupToPlayerDir);
-				GroupSpawn = true;
-			}
-			else
-			{
-				Monster->SetToPlayerDir(GroupToPlayerDir);
-			}
-		}
-		else
-		{
-			FVector Dir = APlayer::PlayerPos - Monster->GetActorLocation();
-			Dir = Dir.Normalize2DReturn();
-			Monster->SetToPlayerDir(Dir);
-		}
-	}
-	GroupSpawn = false;
 }
 
 float4 APlayGameMode::RandomLocation(bool _Group)
@@ -287,8 +266,47 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	return MonsterPos;
 }
 
-template <typename MonsterType>
-void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term,
+void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
+	bool _Group, int _Quantity)
+{
+	if (0 >= _Quantity)
+	{
+		MsgBoxAssert("스폰하려는 몬스터의 수가 0 이하 입니다.");
+		return;
+	}
+
+	FVector GroupToPlayerDir;
+
+	for (int i = 0; i < _Quantity; i++)
+	{
+		std::shared_ptr<ANomalMonster> Monster = SpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType);
+
+		FVector GroupPos = RandomLocation(_Group);
+		Monster->SetActorLocation(GroupPos);
+		if (true == _Group)
+		{
+			if (false == GroupSpawn)
+			{
+				GroupToPlayerDir = Monster->CreateGroupToPlayerDir();
+				Monster->SetToPlayerDir(GroupToPlayerDir);
+				GroupSpawn = true;
+			}
+			else
+			{
+				Monster->SetToPlayerDir(GroupToPlayerDir);
+			}
+		}
+		else
+		{
+			FVector Dir = APlayer::PlayerPos - Monster->GetActorLocation();
+			Dir = Dir.Normalize2DReturn();
+			Monster->SetToPlayerDir(Dir);
+		}
+	}
+	GroupSpawn = false;
+}
+
+void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term,
 	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
 	bool _Group, int _Quantity)
 {
@@ -296,13 +314,22 @@ void APlayGameMode::SpawnMonsterTimeSet(float _DeltaTime, float _SpawnBegin, flo
 	{
 		if (SpawnTerm <= 0)
 		{
-			RandomSpawnMonster<MonsterType>(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
+			RandomSpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
 			SpawnTerm = _Term;
 		}
 		else
 		{
 			SpawnTerm -= _DeltaTime;
 		}
+	}
+}
+
+template<typename BossType>
+void APlayGameMode::SpawnBossMonsterTimeSet(float _SpawnBegin, std::string _Name)
+{
+	if (PlayTime >= _SpawnBegin)
+	{
+		SpawnBossMonster<BossType>(_Name);
 	}
 }
 

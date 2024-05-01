@@ -27,9 +27,7 @@ void AAsacoco::Tick(float _DeltaTime)
 	}
 	else // 공격 시작
 	{
-		std::shared_ptr<AAsacocoBullet> Bullet;
-		Bullet = GetWorld()->SpawnActor<AAsacocoBullet>("Bullet");
-
+		CreateBullet<AAsacocoBullet>();
 		Delay = APlayGameMode::MainPlayer->GetAtkTime();
 	}
 }
