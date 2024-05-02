@@ -40,7 +40,7 @@ void ANomalMonster::Tick(float _DeltaTime)
 			Renderer->SetDir(EEngineDir::Right);
 		}
 
-		CheakSaved();
+		CheckSaved();
 	}
 	else
 	{

@@ -4,6 +4,13 @@
 
 AFubuzilla::AFubuzilla()
 {
+	SavedRenderer->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize) });
+
+	Collision->SetScale({ 96.0f * ContentsValue::MultipleSize, 96.0f * ContentsValue::MultipleSize });
+
+	OverCheckCollision->SetScale({ 192.0f * ContentsValue::MultipleSize, 120.0f * ContentsValue::MultipleSize });
+	OverCheckCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (78.0f * ContentsValue::MultipleSize) });
+
 	LaserRenderer = CreateDefaultSubObject<USpriteRenderer>("LaserRenderer");
 	LaserRenderer->SetupAttachment(Root);
 	LaserRenderer->SetAutoSize(5.0f * ContentsValue::MultipleSize, true);
@@ -24,13 +31,6 @@ AFubuzilla::AFubuzilla()
 
 	LaserRenderer->SetActive(false);
 	LaserCollision->SetActive(false);
-
-	SavedRenderer->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize) });
-
-	Collision->SetScale({ 96.0f * ContentsValue::MultipleSize, 96.0f * ContentsValue::MultipleSize });
-
-	OverCheckCollision->SetScale({ 192.0f * ContentsValue::MultipleSize, 120.0f * ContentsValue::MultipleSize });
-	OverCheckCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (78.0f * ContentsValue::MultipleSize) });
 
 	Name = "Fubuzilla";
 	Hp = 8000.0f;
@@ -86,7 +86,7 @@ void AFubuzilla::Tick(float _DeltaTime)
 			
 			UseLaser(EEngineDir::Right);
 		}
-		CheakSaved();
+		CheckSaved();
 	}
 	else
 	{

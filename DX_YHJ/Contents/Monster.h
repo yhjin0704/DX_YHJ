@@ -49,6 +49,11 @@ public:
 		return Hp;
 	}
 
+	float GetAtk()
+	{
+		return Atk;
+	}
+
 	void SetHp(float _Hp)
 	{
 		Hp = _Hp;
@@ -94,7 +99,7 @@ protected:
 
 	void CheckOverPlayer();
 
-	void CheakSaved();
+	void CheckSaved();
 	void Saved(float _DeltaTime);
 private:
 

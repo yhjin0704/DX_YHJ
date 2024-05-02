@@ -98,7 +98,7 @@ void AMonster::CheckOverPlayer()
 	);
 }
 
-void AMonster::CheakSaved()
+void AMonster::CheckSaved()
 {
 	if (0 >= Hp)
 	{

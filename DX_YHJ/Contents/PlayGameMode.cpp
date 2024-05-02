@@ -84,7 +84,8 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	if (true == IsPlayStart)
 	{
-		SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
+		SpawnBossMonsterTimeSet(600.0f, "Fubuzilla");
+
 		IsPlayStart = false;
 	}
 	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,

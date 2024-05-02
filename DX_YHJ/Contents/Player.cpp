@@ -76,6 +76,8 @@ void APlayer::Tick(float _DeltaTime)
 	ChangeMoveAimAtkDir();
 	ChangeMouseAimAtkDir();
 
+	CheckHit(_DeltaTime);
+
 	{
 		for (VPlayerWeaponsIter = VPlayerWeapons.begin(); VPlayerWeaponsIter != VPlayerWeapons.end(); ++VPlayerWeaponsIter)
 		{
@@ -181,4 +183,36 @@ void APlayer::ChangeMouseAimAtkDir()
 			Renderer->SetDir(EEngineDir::Left);
 		}
 	}
+}
+
+void APlayer::CheckHit(float _DeltaTime)
+{
+	HitDelay -= _DeltaTime;
+	if (0.0f >= HitDelay)
+	{
+		HitDelay = 0.0f;
+	}
+
+	Collision->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
+		{
+			AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
+
+			float MAtk = Monster->GetAtk();
+			Hp -= MAtk;
+		}
+	);
+
+	Collision->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
+		{
+			if (0.0f >= HitDelay)
+			{
+				AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
+
+				float MAtk = Monster->GetAtk();
+				Hp -= MAtk;
+
+				HitDelay = 0.5f;
+			}
+		}
+	);
 }

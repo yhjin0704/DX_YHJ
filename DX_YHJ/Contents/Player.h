@@ -79,6 +79,7 @@ private:
 
 	std::string Name = "Kronii";
 	EPlayerDir PlayerDir = EPlayerDir::E;
+	float MaxHp = 100.0f;
 	float Hp = 100.0f;
 	float Atk = 1;
 	float CriRate = 0.05f;
@@ -92,6 +93,8 @@ private:
 	std::vector<std::shared_ptr<AWeapon>> VPlayerWeapons;
 	std::vector<std::shared_ptr<AWeapon>>::iterator VPlayerWeaponsIter = VPlayerWeapons.begin();
 
+	float HitDelay = 0.0f;
+
 	void CreatePlayerAnimation(std::string _Name);
 
 	void CalStatus();
@@ -99,6 +102,8 @@ private:
 	void CheckMouseAimMode();
 	void ChangeMoveAimAtkDir();
 	void ChangeMouseAimAtkDir();
+
+	void CheckHit(float _DeltaTime);
 
 	//State
 	void StateInit();
