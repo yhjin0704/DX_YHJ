@@ -39,6 +39,11 @@ public:
 		return Collision;
 	}
 
+	UCollision* GetOverCheckCollision()
+	{
+		return OverCheckCollision;
+	}
+
 	float GetHp()
 	{
 		return Hp;
@@ -67,6 +72,7 @@ protected:
 	USpriteRenderer* Renderer;
 	USpriteRenderer* SavedRenderer;
 	UCollision* Collision;
+	UCollision* OverCheckCollision;
 
 	FVector Dir = FVector::Zero;
 	FVector ToPlayerDir;
@@ -86,10 +92,10 @@ protected:
 	
 	void CheckPosComparePlayer();
 
-	virtual void CheckHit();
+	void CheckOverPlayer();
 
-	virtual void CheakSaved();
-	virtual void Saved(float _DeltaTime);
+	void CheakSaved();
+	void Saved(float _DeltaTime);
 private:
 
 };

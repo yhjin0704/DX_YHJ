@@ -16,6 +16,8 @@ enum class ECollisionOrder
 {
 	Player,
 	Monster,
+	MonsterRender,
+	ZoneCheck,
 	Weapon,
 	Obstacle,
 };

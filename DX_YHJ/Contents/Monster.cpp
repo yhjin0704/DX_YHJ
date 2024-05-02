@@ -20,6 +20,11 @@ AMonster::AMonster()
 	Collision->SetCollisionGroup(ECollisionOrder::Monster);
 	Collision->SetCollisionType(ECollisionType::Rect);
 
+	OverCheckCollision = CreateDefaultSubObject<UCollision>("OverCheckCollision");
+	OverCheckCollision->SetupAttachment(Root);
+	OverCheckCollision->SetCollisionGroup(ECollisionOrder::MonsterRender);
+	OverCheckCollision->SetCollisionType(ECollisionType::Rect);
+
 	SetRoot(Root);
 }
 
@@ -44,6 +49,7 @@ void AMonster::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	CheckPosComparePlayer();
+	CheckOverPlayer();
 }
 
 void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
@@ -77,11 +83,17 @@ void AMonster::CheckPosComparePlayer()
 	}
 }
 
-void AMonster::CheckHit()
+void AMonster::CheckOverPlayer()
 {
-	Collision->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
+	OverCheckCollision->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
 		{
+			Renderer->SetMulColor(float4{ 1.0f, 1.0f, 1.0f, 0.5f });
+		}
+	);
 
+	OverCheckCollision->CollisionExit(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
+		{
+			Renderer->SetMulColor(float4::One);
 		}
 	);
 }

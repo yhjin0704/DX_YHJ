@@ -8,6 +8,7 @@
 #include "Fubuzilla.h"
 
 std::shared_ptr<APlayer> APlayGameMode::MainPlayer = nullptr;
+bool APlayGameMode::IsPlayStart = true;
 
 APlayGameMode::APlayGameMode()
 {
@@ -69,9 +70,6 @@ void APlayGameMode::BeginPlay()
 			BackGroundVector.push_back(BackGround);
 		}
 	}
-
-	//std::shared_ptr<AFubuzilla> Boss = GetWorld()->SpawnActor<AFubuzilla>("Fubuzilla");
-	//std::shared_ptr<AFubuzilla> Boss = SpawnBossMonster<AFubuzilla>("Fubuzilla");
 }
 
 void APlayGameMode::Tick(float _DeltaTime)
@@ -84,11 +82,16 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	InfinityGroundCheck();
 
+	if (true == IsPlayStart)
+	{
+		SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
+		IsPlayStart = false;
+	}
 	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
-		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		false, 10);
 	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 10.0f, SpawnTerm2,
-		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		true, 10);
 	SpawnNomalMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, SpawnTerm1,
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
@@ -201,26 +204,10 @@ std::shared_ptr<ANomalMonster> APlayGameMode::SpawnNomalMonster(std::string _Nam
 	Monster->GetCollosion()->SetScale({ _Size * 16.0f * ContentsValue::MultipleSize, _Size * 16.0f * ContentsValue::MultipleSize });
 	Monster->GetCollosion()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (_Size * 10.0f * ContentsValue::MultipleSize) });
 	Monster->GetSavedRenderer()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize) });
+	Monster->GetOverCheckCollision()->SetScale({ _Size * 16.0f * ContentsValue::MultipleSize, _Size * 32.0f * ContentsValue::MultipleSize });
+	Monster->GetOverCheckCollision()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (_Size * 18.0f * ContentsValue::MultipleSize)});
 
 	return Monster;
-}
-
-template<typename BossType>
-std::shared_ptr<BossType> APlayGameMode::SpawnBossMonster(std::string _Name)
-{
-	std::shared_ptr<BossType> Boss;
-
-	if ("Fubuzilla" == _Name)
-	{
-		std::shared_ptr<BossType> Boss = GetWorld()->SpawnActor<AFubuzilla>("Fubuzilla");
-
-		return Boss;
-	}
-	else
-	{
-		MsgBoxAssert("존재하지 않는 보스를 스폰하려 했습니다.");
-		return;
-	}
 }
 
 float4 APlayGameMode::RandomLocation(bool _Group)
@@ -231,13 +218,13 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	{
 		MonsterPos = APlayer::PlayerPos;
 
-		while (MonsterPos.X > (APlayer::PlayerPos.X - 300.0f) && MonsterPos.X < (APlayer::PlayerPos.X + 300.0f))
+		while (MonsterPos.X > (APlayer::PlayerPos.X - 350.0f) && MonsterPos.X < (APlayer::PlayerPos.X + 350.0f))
 		{
-			MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 100.0f;
+			MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-450.0f, 450.0f);
 		}
-		while (MonsterPos.Y > (APlayer::PlayerPos.Y - 250.0f) && MonsterPos.Y < (APlayer::PlayerPos.Y + 250.0f))
+		while (MonsterPos.Y > (APlayer::PlayerPos.Y - 300.0f) && MonsterPos.Y < (APlayer::PlayerPos.Y + 300.0f))
 		{
-			MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 100.0f;
+			MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-450.0f, 450.0f);
 		}
 	}
 	else
@@ -247,20 +234,20 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 		{
 			GroupMonsterPos = APlayer::PlayerPos;
 
-			while (GroupMonsterPos.X > (APlayer::PlayerPos.X - 300.0f) && GroupMonsterPos.X < (APlayer::PlayerPos.X + 300.0f))
+			while (GroupMonsterPos.X > (APlayer::PlayerPos.X - 350.0f) && GroupMonsterPos.X < (APlayer::PlayerPos.X + 350.0f))
 			{
-				GroupMonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 100.0f;
+				GroupMonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-450.0f, 450.0f);
 			}
-			while (GroupMonsterPos.Y > (APlayer::PlayerPos.Y - 250.0f) && GroupMonsterPos.Y < (APlayer::PlayerPos.Y + 250.0f))
+			while (GroupMonsterPos.Y > (APlayer::PlayerPos.Y - 300.0f) && GroupMonsterPos.Y < (APlayer::PlayerPos.Y + 300.0f))
 			{
-				GroupMonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 100.0f;
+				GroupMonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-450.0f, 450.0f);
 			}
 		}
 
 		MonsterPos = GroupMonsterPos;
 
-		MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 10.0f;
-		MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-5.0f, 5.0f) * 10.0f;
+		MonsterPos.X += UEngineRandom::MainRandom.RandomFloat(-50.0f, 50.0f);
+		MonsterPos.Y += UEngineRandom::MainRandom.RandomFloat(-50.0f, 50.0f);
 	}
 
 	return MonsterPos;
@@ -325,13 +312,17 @@ void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin
 	}
 }
 
-template<typename BossType>
-void APlayGameMode::SpawnBossMonsterTimeSet(float _SpawnBegin, std::string _Name)
+void APlayGameMode::SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name)
 {
-	if (PlayTime >= _SpawnBegin)
-	{
-		SpawnBossMonster<BossType>(_Name);
-	}
+	DelayCallBack(_SpawnTime, [=]
+		{
+			if (UEngineString::ToUpper("Fubuzilla") == UEngineString::ToUpper(_Name))
+			{
+				std::shared_ptr<AFubuzilla> Boss = GetWorld()->SpawnActor<AFubuzilla>("Fubuzilla");
+				Boss->SetActorLocation(RandomLocation());
+			}
+		}
+	);
 }
 
 void APlayGameMode::PlayDebugText()

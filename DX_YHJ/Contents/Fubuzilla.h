@@ -1,6 +1,13 @@
 #pragma once
 #include "Monster.h"
 
+enum class ELaser
+{
+	Stay,
+	Ready,
+	Shot,
+};
+
 class AFubuzilla : public AMonster
 {
 	GENERATED_BODY(AMonster)
@@ -21,6 +28,16 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	USpriteRenderer* LaserRenderer;
+	UCollision* LaserCollision;
+	UCollision* UseLaserCheckCollision;
+
+	ELaser Laser = ELaser::Stay;
+	bool IsUseLaser = false;
+
 	void Move(float _DeltaTime);
+
+	void UseLaserCheck();
+	void UseLaser(EEngineDir _Dir);
 };
 

@@ -73,9 +73,6 @@
     <ClCompile Include="SmolAme.cpp">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="SpawnMonster.cpp">
-      <Filter>Level\PlayLevel</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -149,9 +146,6 @@
     </ClInclude>
     <ClInclude Include="SmolAme.h">
       <Filter>Level\PlayLevel\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="SpawnMonster.h">
-      <Filter>Level\PlayLevel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

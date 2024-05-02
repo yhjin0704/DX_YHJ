@@ -41,7 +41,6 @@ void ANomalMonster::Tick(float _DeltaTime)
 		}
 
 		CheakSaved();
-		CheckHit();
 	}
 	else
 	{

@@ -25,6 +25,7 @@ class APlayGameMode : public AGameMode
 
 public:
 	static std::shared_ptr<APlayer> MainPlayer;
+	static bool IsPlayStart;
 
 	// constrcuter destructer
 	APlayGameMode();
@@ -58,21 +59,18 @@ protected:
 	// 몬스터 스폰 관련
 	std::shared_ptr<ANomalMonster> SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType = EMonsterMoveType::Follow);
 
-	template<typename BossType>
-	std::shared_ptr<BossType> SpawnBossMonster(std::string _Name);
-
-	float4 RandomLocation(bool _Group);
+	float4 RandomLocation(bool _Group = false);
 	void RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group, int _Quantity);
 
 	void SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group = false, int _Quantity = 1);
 	
-	template<typename BossType>
-	void SpawnBossMonsterTimeSet(float _SpawnBegin, std::string _Name);
+	void SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name);
 
 	void PlayDebugText();
 
 private:
 	FIntPoint CurIndex;
+
 
 	float4 GroupMonsterPos;
 	bool GroupSpawn = false;
