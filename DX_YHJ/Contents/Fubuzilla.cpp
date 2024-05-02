@@ -72,7 +72,7 @@ void AFubuzilla::Tick(float _DeltaTime)
 		{
 			Renderer->SetDir(EEngineDir::Left);
 
-			FVector DirLeftPos = { (32.0f * ContentsValue::MultipleSize), (50.0f * ContentsValue::MultipleSize) };
+			FVector DirLeftPos = { (-32.0f * ContentsValue::MultipleSize), (50.0f * ContentsValue::MultipleSize) };
 			Collision->SetPosition(DirLeftPos);
 
 			UseLaser(EEngineDir::Left);

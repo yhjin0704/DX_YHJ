@@ -23,7 +23,7 @@ protected:
 	UCollision* Collision;
 
 	float BulletSpeed = 0.0f;
-	float TimeOutDestoryTime = 20.0f;
+	float TimeOutDestoryTime = 5.0f;
 
 	void TimeOutDestory(float _DeltaTime);
 
