@@ -84,7 +84,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	if (true == IsPlayStart)
 	{
-		SpawnBossMonsterTimeSet(600.0f, "Fubuzilla");
+		SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
 
 		IsPlayStart = false;
 	}

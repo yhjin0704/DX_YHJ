@@ -59,6 +59,12 @@ public:
 		Hp = _Hp;
 	}
 
+	void SetSpeed(float _Speed)
+	{
+		Speed = _Speed;
+		CalSpeed = ContentsValue::BaseSpeed * Speed;
+	}
+
 	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
 
 	FVector CreateGroupToPlayerDir();
@@ -95,6 +101,8 @@ protected:
 	EEngineDir SavedDir = EEngineDir::MAX;
 	float RendererAlpha = 1.0f;
 	
+	virtual void Move(float _DeltaTime, EMonsterMoveType _MoveType = EMonsterMoveType::Follow);
+
 	void CheckPosComparePlayer();
 
 	void CheckOverPlayer();

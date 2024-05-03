@@ -69,6 +69,36 @@ FVector AMonster::CreateGroupToPlayerDir()
 	return GroupDir;
 }
 
+void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
+{
+	FVector MonsterPos = GetActorLocation();
+
+	switch (_MoveType)
+	{
+	case EMonsterMoveType::Follow:
+		Dir = APlayer::PlayerColPos - MonsterPos;
+		Dir = Dir.Normalize2DReturn();
+		break;
+	case EMonsterMoveType::StraightToPlayer:
+		Dir = ToPlayerDir;
+		break;
+	case EMonsterMoveType::StraightToUp:
+		break;
+	case EMonsterMoveType::StraightToDown:
+		break;
+	case EMonsterMoveType::StraightToRight:
+		break;
+	case EMonsterMoveType::StraightToLeft:
+		break;
+	case EMonsterMoveType::Stop:
+		break;
+	default:
+		break;
+	}
+
+	AddActorLocation(Dir * _DeltaTime * CalSpeed);
+}
+
 void AMonster::CheckPosComparePlayer()
 {
 	if (APlayer::PlayerColPos.Y <= GetActorLocation().Y)

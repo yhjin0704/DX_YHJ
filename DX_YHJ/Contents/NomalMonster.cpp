@@ -52,33 +52,3 @@ void ANomalMonster::CreateMonsterAnimation(std::string _Name, int _MaxIndex)
 {
 	Renderer->CreateAnimation(_Name, _Name, 0.1f, true, 0, _MaxIndex);
 }
-
-void ANomalMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
-{
-	FVector MonsterPos = GetActorLocation();
-
-	switch (_MoveType)
-	{
-	case EMonsterMoveType::Follow:
-		Dir = APlayer::PlayerColPos - MonsterPos;
-		Dir = Dir.Normalize2DReturn();
-		break;
-	case EMonsterMoveType::StraightToPlayer:
-		Dir = ToPlayerDir;
-		break;
-	case EMonsterMoveType::StraightToUp:
-		break;
-	case EMonsterMoveType::StraightToDown:
-		break;
-	case EMonsterMoveType::StraightToRight:
-		break;
-	case EMonsterMoveType::StraightToLeft:
-		break;
-	case EMonsterMoveType::Stop:
-		break;
-	default:
-		break;
-	}
-
-	AddActorLocation(Dir * _DeltaTime * CalSpeed);
-}

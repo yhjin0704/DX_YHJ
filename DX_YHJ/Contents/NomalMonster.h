@@ -22,7 +22,5 @@ protected:
 
 private:
 	void CreateMonsterAnimation(std::string _Name, int _MaxIndex = 2);
-
-	void Move(float _DeltaTime, EMonsterMoveType _MoveType);
 };
 

@@ -35,8 +35,6 @@ private:
 	ELaser Laser = ELaser::Stay;
 	bool IsUseLaser = false;
 
-	void Move(float _DeltaTime);
-
 	void UseLaserCheck();
 	void UseLaser(EEngineDir _Dir);
 };

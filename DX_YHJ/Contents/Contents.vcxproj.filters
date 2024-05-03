@@ -206,5 +206,8 @@
     <Filter Include="Level\PlayLevel\UI">
       <UniqueIdentifier>{bd5553ad-9786-491f-b66f-db23242cd9ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\LobbyLevel">
+      <UniqueIdentifier>{1373a541-7b9e-4d64-be05-2035797b009f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -25,6 +25,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	USpriteRenderer* Renderer;
+	UCollision* Collision;
 
 	void CursorOFf();
 	void ChangeAimMode();

@@ -94,14 +94,6 @@ void AFubuzilla::Tick(float _DeltaTime)
 	}
 }
 
-void AFubuzilla::Move(float _DeltaTime)
-{
-	Dir = APlayer::PlayerColPos - GetActorLocation();
-	Dir = Dir.Normalize2DReturn();
-
-	AddActorLocation(Dir * _DeltaTime * CalSpeed);
-}
-
 void AFubuzilla::UseLaserCheck()
 {
 	UseLaserCheckCollision->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)

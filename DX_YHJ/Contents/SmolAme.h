@@ -1,6 +1,10 @@
 #pragma once
-class ASmolAme
+#include "Monster.h"
+
+class ASmolAme : public AMonster
 {
+	GENERATED_BODY(AMonster)
+
 public:
 	// constrcuter destructer
 	ASmolAme();
@@ -13,8 +17,9 @@ public:
 	ASmolAme& operator=(ASmolAme&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
-
 };
 
