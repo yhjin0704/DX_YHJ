@@ -25,6 +25,7 @@ void ALobbyBackAnimationBar::BeginPlay()
 	Renderer->SetPosition(FVector{ 1.5f,0.0f });
 	Renderer->SetOrder(ERenderOrder::BackObject);
 	Renderer->SetRotationDeg({ 0.0f,0.0f,-10.0f });
+	Renderer->SetMulColor(float4{ 1.0f, 1.0f, 1.0f, 0.7f });
 
 	DelayCallBack(8.0f, [=]()
 		{

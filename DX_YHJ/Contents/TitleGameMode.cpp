@@ -19,7 +19,7 @@ void ATitleGameMode::BeginPlay()
 
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
-	GetWorld()->SpawnActor<ATitleLogo>("TitleLogo");
+
 	GetWorld()->SpawnActor<ATitleBackGround>("TitleBackGround");
 
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
@@ -28,11 +28,6 @@ void ATitleGameMode::BeginPlay()
 void ATitleGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-	if (true == IsAnykeyDown())
-	{
-		GEngine->ChangeLevel("LobbyLevel");
-	}
 }
 
 void ATitleGameMode::LevelEnd(ULevel* _NextLevel)

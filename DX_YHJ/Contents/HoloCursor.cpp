@@ -82,7 +82,7 @@ void AHoloCursor::CheckAimMode(FVector _CursorPos)
 	if (true != MouseAimOn)
 	{
 		CursorOFf();
-		Renderer->SetSprite("spr_GameCursor_0.png");+-
+		Renderer->SetSprite("spr_GameCursor_0.png");
 		Renderer->SetPosition(_CursorPos);
 	}
 	else
