@@ -24,6 +24,13 @@ enum class ECollisionOrder
 	Cursor,
 };
 
+enum class EUIOrder
+{
+	Frame,
+	PlayInfo,
+	Cursor,
+};
+
 enum class EDir
 {
 	Left,

@@ -24,16 +24,26 @@ void ALobbyGameMode::BeginPlay()
 
 	std::shared_ptr<ALobbyBackAnimationBar> InitialBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
 	LBar.push_back(InitialBackBar);
+
+	FVector TPos = InitialBackBar->GetActorLocation();
+	for (int i = 1; i < 47; i++)
+	{
+		std::shared_ptr<ALobbyBackAnimationBar> InitialBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
+		InitialBackBar->SetActorLocation({ TPos.X - (38 * i), TPos.Y });
+		LBar.push_back(InitialBackBar);
+	}
 }
 
 void ALobbyGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true == IsAnykeyDown())
+	if (true == IsDown('P'))
 	{
 		GEngine->ChangeLevel("PlayLevel");
 	}
+
+	SpawnBackBar(_DeltaTime);
 }
 
 void ALobbyGameMode::LevelEnd(ULevel* _NextLevel)

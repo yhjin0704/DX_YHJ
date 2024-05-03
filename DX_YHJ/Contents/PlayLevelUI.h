@@ -21,9 +21,21 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void TimeUpdate(float _DeltaTime);
+
 private:
+	UImage* CharacterImage = nullptr;
+	UImage* CharacterFrame = nullptr;
+
 	UImage* ExpBar = nullptr;
+	UImage* ExpBarFrame = nullptr;
+
 	UImage* HpBar = nullptr;
+	UImage* HpBarFrame = nullptr;
+
 	UImage* Money = nullptr;
 	UImage* KillCount = nullptr;
+
+	UImage* StageText = nullptr;
+	UImage* PlayTime = nullptr;
 };
