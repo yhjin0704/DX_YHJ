@@ -1,7 +1,8 @@
 #include "PreCompile.h"
 #include "HoloCureCore.h"
-#include "PlayGameMode.h"
 #include "TitleGameMode.h"
+#include "LobbyGameMode.h"
+#include "PlayGameMode.h"
 #include <EngineCore/EngineSprite.h>
 #include <EnginePlatform/EngineWindow.h>
 #include "ContentsValue.h"
@@ -97,7 +98,8 @@ void UHoloCureCore::Initialize()
 
 	ContentsValue::WindowSize = GEngine->EngineWindow.GetWindowScale();
 
-	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
+	GEngine->CreateLevel<ALobbyGameMode>("LobbyLevel");
+	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->ChangeLevel("TitleLevel");
 }

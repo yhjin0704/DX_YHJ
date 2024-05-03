@@ -31,7 +31,7 @@ void ATitleGameMode::Tick(float _DeltaTime)
 
 	if (true == IsAnykeyDown())
 	{
-		GEngine->ChangeLevel("PlayLevel");
+		GEngine->ChangeLevel("LobbyLevel");
 	}
 }
 

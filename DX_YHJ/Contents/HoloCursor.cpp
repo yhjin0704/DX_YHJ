@@ -11,12 +11,12 @@ AHoloCursor::AHoloCursor()
 
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
-	Collision->SetCollisionGroup(ECollisionOrder::Player);
+	Collision->SetCollisionGroup(ECollisionOrder::Cursor);
 	Collision->SetCollisionType(ECollisionType::Rect);
-	Collision->SetScale({ 10.0f,20.f });
-	Collision->SetPosition({ -10.0f,10.0f });
+	Collision->SetScale({ 100.0f * ContentsValue::MultipleSize,100.0f * ContentsValue::MultipleSize });
 
 	SetRoot(Root);
+
 	InputOn();
 }
 
@@ -41,13 +41,20 @@ void AHoloCursor::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	CursorPos = GEngine->EngineWindow.GetScreenMousePos();
-	Renderer->SetPosition(FVector{ AHoloCursor::CursorPos.X - (ContentsValue::WindowSize.X / 2.0f), (AHoloCursor::CursorPos.Y - (ContentsValue::WindowSize.Y / 2.0f)) * -1.0f });
+	FVector CursorScreenPos = { CursorPos.X - (ContentsValue::WindowSize.X / 2.0f), -CursorPos.Y + (ContentsValue::WindowSize.Y / 2.0f) };
 
 	if ("PlayLevel" == GetWorld()->GetName())
 	{
 		ChangeAimMode();
-		CheckAimMode();
+
+		Collision->SetPosition(ContentsValue::PlayLevelMousePos);
 	}
+	else
+	{
+		Collision->SetPosition(CursorScreenPos);
+	}
+	
+	CheckAimMode(CursorScreenPos);
 }
 
 void AHoloCursor::CursorOFf()
@@ -70,18 +77,19 @@ void AHoloCursor::ChangeAimMode()
 	}
 }
 
-void AHoloCursor::CheckAimMode()
+void AHoloCursor::CheckAimMode(FVector _CursorPos)
 {
 	if (true != MouseAimOn)
 	{
 		CursorOFf();
-		Renderer->SetSprite("spr_GameCursor_0.png");
-		//Renderer->SetPivot(EPivot::LEFTTOP);
+		Renderer->SetSprite("spr_GameCursor_0.png");+-
+		Renderer->SetPosition(_CursorPos);
 	}
 	else
 	{
 		CursorOFf();
 		Renderer->SetSprite("spr_GameCursor1_0.png");
-		//Renderer->SetPivot(EPivot::MAX);
+		Renderer->SetPosition(_CursorPos);
 	}
+	
 }

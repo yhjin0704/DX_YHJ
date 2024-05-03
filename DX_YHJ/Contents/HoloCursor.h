@@ -27,7 +27,7 @@ protected:
 
 	void CursorOFf();
 	void ChangeAimMode();
-	void CheckAimMode();
+	void CheckAimMode(FVector _CursorPos);
 
 private:
 	UImage* Renderer;

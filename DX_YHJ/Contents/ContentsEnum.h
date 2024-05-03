@@ -3,6 +3,7 @@
 enum class ERenderOrder
 {
 	BackGround,
+	BackObject,
 	MonsterUp,
 	MonsterUIUp,
 	Player,
@@ -19,7 +20,8 @@ enum class ECollisionOrder
 	MonsterRender,
 	ZoneCheck,
 	Weapon,
-	Obstacle,
+	Obstacle, 
+	Cursor,
 };
 
 enum class EDir

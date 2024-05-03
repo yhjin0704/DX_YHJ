@@ -19,6 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AExpObject.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LobbyBackAnimationBar.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LobbyBackGround.h" />
+    <ClInclude Include="LobbyGameMode.h" />
     <ClInclude Include="SmolAme.h">
       <SubType>
       </SubType>
@@ -96,6 +106,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AExpObject.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LobbyBackAnimationBar.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LobbyBackGround.cpp" />
+    <ClCompile Include="LobbyGameMode.cpp" />
     <ClCompile Include="SmolAme.cpp">
       <SubType>
       </SubType>

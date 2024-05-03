@@ -3,7 +3,7 @@
 
 class ATitleBackGround : public ABackGround
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(ABackGround)
 
 public:
 	// constrcuter destructer
