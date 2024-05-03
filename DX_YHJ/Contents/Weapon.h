@@ -44,6 +44,7 @@ protected:
 	float CriRate;
 	float AtkTime;
 	float Delay = 1.0f;
+	float HitDelay = 0.0f;
 
 	int Level;
 

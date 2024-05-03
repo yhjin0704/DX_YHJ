@@ -97,6 +97,8 @@ protected:
 
 	EMonsterMoveType MoveType = EMonsterMoveType::Follow;
 
+	bool IsContectPlayer = false;
+
 	bool IsSaved = false;
 	EEngineDir SavedDir = EEngineDir::MAX;
 	float RendererAlpha = 1.0f;

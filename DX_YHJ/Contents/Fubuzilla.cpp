@@ -9,7 +9,7 @@ AFubuzilla::AFubuzilla()
 	Collision->SetScale({ 96.0f * ContentsValue::MultipleSize, 96.0f * ContentsValue::MultipleSize });
 
 	OverCheckCollision->SetScale({ 192.0f * ContentsValue::MultipleSize, 120.0f * ContentsValue::MultipleSize });
-	OverCheckCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (78.0f * ContentsValue::MultipleSize) });
+	OverCheckCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (79.0f * ContentsValue::MultipleSize) });
 
 	LaserRenderer = CreateDefaultSubObject<USpriteRenderer>("LaserRenderer");
 	LaserRenderer->SetupAttachment(Root);
@@ -67,24 +67,37 @@ void AFubuzilla::Tick(float _DeltaTime)
 		Move(_DeltaTime);
 
 		UseLaserCheck();
+		UseLaser(Renderer->GetDir());
 
-		if (0 > Dir.X)
+		Collision->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
+			{
+				IsContectPlayer = true;
+			}
+		);
+		Collision->CollisionExit(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
+			{
+				IsContectPlayer = false;
+			}
+		);
+
+		if (false == IsContectPlayer)
 		{
-			Renderer->SetDir(EEngineDir::Left);
+			if (0 > Dir.X)
+			{
+				Renderer->SetDir(EEngineDir::Left);
 
-			FVector DirLeftPos = { (-32.0f * ContentsValue::MultipleSize), (50.0f * ContentsValue::MultipleSize) };
-			Collision->SetPosition(DirLeftPos);
+				FVector DirLeftPos = { (-32.0f * ContentsValue::MultipleSize), (50.0f * ContentsValue::MultipleSize) };
+				Collision->SetPosition(DirLeftPos);
+			}
+			else
+			{
+				Renderer->SetDir(EEngineDir::Right);
 
-			UseLaser(EEngineDir::Left);
-		}
-		else
-		{
-			Renderer->SetDir(EEngineDir::Right);
+				FVector DirRightPos = { (32.0f * ContentsValue::MultipleSize), (50.0f * ContentsValue::MultipleSize) };
+				Collision->SetPosition(DirRightPos);
 
-			FVector DirRightPos = { (32.0f * ContentsValue::MultipleSize), (50.0f * ContentsValue::MultipleSize) };
-			Collision->SetPosition(DirRightPos);
-			
-			UseLaser(EEngineDir::Right);
+				
+			}
 		}
 		CheckSaved();
 	}

@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Monster.h"
 #include "Player.h"
+#include "Weapon.h"
 
 AMonster::AMonster()
 {

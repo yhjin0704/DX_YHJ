@@ -31,13 +31,27 @@ void ANomalMonster::Tick(float _DeltaTime)
 	{
 		Move(_DeltaTime, MoveType);
 
-		if (0 > Dir.X)
+		Collision->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
+			{
+				IsContectPlayer = true;
+			}
+		);
+		Collision->CollisionExit(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
+			{
+				IsContectPlayer = false;
+			}
+		);
+
+		if (false == IsContectPlayer)
 		{
-			Renderer->SetDir(EEngineDir::Left);
-		}
-		else
-		{
-			Renderer->SetDir(EEngineDir::Right);
+			if (0 > Dir.X)
+			{
+				Renderer->SetDir(EEngineDir::Left);
+			}
+			else
+			{
+				Renderer->SetDir(EEngineDir::Right);
+			}
 		}
 
 		CheckSaved();

@@ -42,9 +42,6 @@ void APlayGameMode::BeginPlay()
 
 	// 目辑 积己
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
-	AHoloCursor::MouseAimOn = false;
-	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
-	Cursor->SetActorLocation(AHoloCursor::CursorPos);
 
 	// 瘤搁 积己
 	for (int y = -1; y < 2; y++)
@@ -76,9 +73,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
 	ContentsValue::PlayLevelMousePos = FVector{ APlayer::PlayerColPos.X + AHoloCursor::CursorPos.X - (ContentsValue::WindowSize.X / 2.0f), APlayer::PlayerColPos.Y - AHoloCursor::CursorPos.Y + (ContentsValue::WindowSize.Y / 2.0f) };
-	Cursor->SetActorLocation(ContentsValue::PlayLevelMousePos);
 
 	InfinityGroundCheck();
 

@@ -23,16 +23,11 @@ void ATitleGameMode::BeginPlay()
 	GetWorld()->SpawnActor<ATitleBackGround>("TitleBackGround");
 
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
-	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
-	Cursor->SetActorLocation(FVector{ AHoloCursor::CursorPos.X - 1280.0f, AHoloCursor::CursorPos.Y - 360.0f });
 }
 
 void ATitleGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-	AHoloCursor::CursorPos = GEngine->EngineWindow.GetScreenMousePos();
-	Cursor->SetActorLocation(FVector{ AHoloCursor::CursorPos.X - (ContentsValue::WindowSize.X / 2.0f), (AHoloCursor::CursorPos.Y - (ContentsValue::WindowSize.Y / 2.0f)) * -1.0f });
 
 	if (true == IsAnykeyDown())
 	{

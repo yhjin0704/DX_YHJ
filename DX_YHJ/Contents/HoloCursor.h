@@ -6,6 +6,7 @@ class USpriteRenderer;
 class AHoloCursor : public AActor
 {
 	GENERATED_BODY(AActor)
+
 public:
 	static float4 CursorPos;
 	static bool MouseAimOn;
@@ -24,13 +25,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	USpriteRenderer* Renderer;
-	UCollision* Collision;
-
 	void CursorOFf();
 	void ChangeAimMode();
 	void CheckAimMode();
 
 private:
+	UImage* Renderer;
+	UCollision* Collision;
 };
 
