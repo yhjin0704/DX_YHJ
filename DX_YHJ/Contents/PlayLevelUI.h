@@ -27,11 +27,14 @@ private:
 	UImage* CharacterImage = nullptr;
 	UImage* CharacterFrame = nullptr;
 
-	UImage* ExpBar = nullptr;
-	UImage* ExpBarFrame = nullptr;
+	UImage* ExpBarBack = nullptr;
 
+	UImage* HpHUD = nullptr;
 	UImage* HpBar = nullptr;
-	UImage* HpBarFrame = nullptr;
+
+	UImage* EquipHUDFrame = nullptr;
+	UImage* Weapon = nullptr;
+	UImage* Item = nullptr;
 
 	UImage* Money = nullptr;
 	UImage* KillCount = nullptr;

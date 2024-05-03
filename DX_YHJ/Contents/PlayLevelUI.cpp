@@ -12,21 +12,20 @@ APlayLevelUI::~APlayLevelUI()
 void APlayLevelUI::BeginPlay()
 {
 	Super::BeginPlay();
-	CharacterImage = CreateWidget<UImage>(GetWorld(), "HUDCharacter");
+	CharacterImage = CreateWidget<UImage>(GetWorld(), "CharacterImage");
 
-	CharacterFrame = nullptr;
+	CharacterFrame = CreateWidget<UImage>(GetWorld(), "CharacterFrame");
 
-	ExpBar = nullptr;
-	ExpBarFrame = nullptr;
+	ExpBarBack = CreateWidget<UImage>(GetWorld(), "ExpBarBack");
 
-	HpBar = nullptr;
-	HpBarFrame = nullptr;
+	HpHUD = CreateWidget<UImage>(GetWorld(), "HpHUD");
+	HpBar = CreateWidget<UImage>(GetWorld(), "HpBar");
 
-	Money = nullptr;
-	KillCount = nullptr;
+	Money = CreateWidget<UImage>(GetWorld(), "Money");
+	KillCount = CreateWidget<UImage>(GetWorld(), "KillCount");
 
-	StageText = nullptr;
-	PlayTime = nullptr;
+	StageText = CreateWidget<UImage>(GetWorld(), "StageText");
+	PlayTime = CreateWidget<UImage>(GetWorld(), "PlayTime");
 
 }
 
