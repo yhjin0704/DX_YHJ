@@ -12,6 +12,7 @@ bool APlayGameMode::IsPlayStart = true;
 
 APlayGameMode::APlayGameMode()
 {
+	InputOn();
 }
 
 APlayGameMode::~APlayGameMode()
@@ -83,22 +84,44 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 		IsPlayStart = false;
 	}
-	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
+	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
 		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		false, 10);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 0.5f, 20.0f, 10.0f, SpawnTerm2,
+	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 10.0f, SpawnTerm2,
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		true, 10);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 20.0f, 40.0f, 5.0f, SpawnTerm1,
+	SpawnNomalMonsterTimeSet(PlayTime, 20.0f, 40.0f, 5.0f, SpawnTerm1,
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
 		false, 5);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, SpawnTerm1,
+	SpawnNomalMonsterTimeSet(PlayTime, 40.0f, 60.0f, 5.0f, SpawnTerm1,
 		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
-	SpawnNomalMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, SpawnTerm1,
+	SpawnNomalMonsterTimeSet(PlayTime, 60.0f, 80.0f, 5.0f, SpawnTerm1,
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 20.0f, true, 10);
 
-	PlayTime += _DeltaTime;
+
+	if (true == IsDown(VK_ESCAPE))
+	{
+		if (true == IsPause)
+		{
+			IsPause = false;
+		}
+		else
+		{
+			IsPause = true;
+		}
+	}
+	
+	if (false == IsPause)
+	{
+		PlayDeltaTime = _DeltaTime;
+	}
+	else
+	{
+		PlayDeltaTime = 0.0f;
+	}
+	PlayTime += PlayDeltaTime;
+	_DeltaTime = 0.0f;
 
 	PlayDebugText();
 }
@@ -303,7 +326,7 @@ void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin
 		}
 		else
 		{
-			_SpawnTerm -= _DeltaTime;
+			_SpawnTerm -= PlayDeltaTime;
 		}
 	}
 }

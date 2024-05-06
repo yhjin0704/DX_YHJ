@@ -77,6 +77,7 @@ private:
 	float4 GroupMonsterPos;
 	bool GroupSpawn = false;
 
+	float PlayDeltaTime = 0.0f;
 	float PlayTime = 0;
 
 	float SpawnTerm1 = 0;
@@ -85,5 +86,6 @@ private:
 	float SpawnTerm4 = 0;
 	float SpawnTerm5 = 0;
 
+	bool IsPause = false;
 };
 

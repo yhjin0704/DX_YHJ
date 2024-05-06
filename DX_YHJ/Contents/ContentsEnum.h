@@ -10,6 +10,7 @@ enum class ERenderOrder
 	MonsterDown,
 	MonsterUIDown,
 	Weapon,
+	UI,
 	Cursor,
 };
 

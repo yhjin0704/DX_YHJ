@@ -37,9 +37,6 @@
     <ClCompile Include="HoloCursor.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
-      <Filter>Level\TitleLevel\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClCompile>
@@ -73,9 +70,6 @@
     <ClCompile Include="SmolAme.cpp">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="AExpObject.cpp">
-      <Filter>Level\PlayLevel</Filter>
-    </ClCompile>
     <ClCompile Include="LobbyGameMode.cpp">
       <Filter>Level\LobbyLevel</Filter>
     </ClCompile>
@@ -83,6 +77,12 @@
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="LobbyBackAnimationBar.cpp">
+      <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="AExpObject.cpp">
+      <Filter>Level\PlayLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogo.cpp">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -123,9 +123,6 @@
     <ClInclude Include="HoloCursor.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="TitleLogo.h">
-      <Filter>Level\TitleLevel\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClInclude>
@@ -159,9 +156,6 @@
     <ClInclude Include="SmolAme.h">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="AExpObject.h">
-      <Filter>Level\PlayLevel</Filter>
-    </ClInclude>
     <ClInclude Include="LobbyGameMode.h">
       <Filter>Level\LobbyLevel</Filter>
     </ClInclude>
@@ -169,6 +163,12 @@
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="LobbyBackAnimationBar.h">
+      <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="AExpObject.h">
+      <Filter>Level\PlayLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogo.h">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>
