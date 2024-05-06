@@ -93,10 +93,10 @@ void APlayGameMode::Tick(float _DeltaTime)
 		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
 		false, 5);
 	SpawnNomalMonsterTimeSet(_DeltaTime, 40.0f, 60.0f, 5.0f, SpawnTerm1,
-		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f, EMonsterMoveType::Follow);
+		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
 	SpawnNomalMonsterTimeSet(_DeltaTime, 60.0f, 80.0f, 5.0f, SpawnTerm1,
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
-		true, 10);
+		true, 20.0f, true, 10);
 
 	PlayTime += _DeltaTime;
 
@@ -189,14 +189,14 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-std::shared_ptr<ANomalMonster> APlayGameMode::SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
+std::shared_ptr<ANomalMonster> APlayGameMode::SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay)
 {
 	std::shared_ptr<ANomalMonster> Monster;
 
 	Monster = GetWorld()->SpawnActor<ANomalMonster>(_Name);
 	Monster->GetRenderer()->SetAutoSize(_Size * ContentsValue::MultipleSize, true);
 	Monster->GetRenderer()->ChangeAnimation(_Name);
-	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType);
+	Monster->SetMonsterStatus(_Hp, _Atk, _Speed, _Exp, _MoveType, _WillTimeOutDestroy, _TimeOutDestoryDelay);
 	Monster->GetCollosion()->SetScale({ _Size * 16.0f * ContentsValue::MultipleSize, _Size * 16.0f * ContentsValue::MultipleSize });
 	Monster->GetCollosion()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (_Size * 10.0f * ContentsValue::MultipleSize) });
 	Monster->GetSavedRenderer()->SetPosition({ Monster->GetActorLocation().X, Monster->GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize) });
@@ -249,8 +249,8 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	return MonsterPos;
 }
 
-void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
-	bool _Group, int _Quantity)
+void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
+	bool _WillTimeOutDestroy, float _TimeOutDestoryDelay, bool _Group, int _Quantity)
 {
 	if (0 >= _Quantity)
 	{
@@ -262,7 +262,7 @@ void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, floa
 
 	for (int i = 0; i < _Quantity; i++)
 	{
-		std::shared_ptr<ANomalMonster> Monster = SpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType);
+		std::shared_ptr<ANomalMonster> Monster = SpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _WillTimeOutDestroy, _TimeOutDestoryDelay);
 
 		FVector GroupPos = RandomLocation(_Group);
 		Monster->SetActorLocation(GroupPos);
@@ -291,13 +291,13 @@ void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, floa
 
 void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm,
 	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
-	bool _Group, int _Quantity)
+	bool _WillTimeOutDestroy, float _TimeOutDestoryDelay, bool _Group, int _Quantity)
 {
 	if (PlayTime >= _SpawnBegin && PlayTime < _SpawnEnd)
 	{
 		if (0.0f >= _SpawnTerm)
 		{
-			RandomSpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity);
+			RandomSpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity, _WillTimeOutDestroy, _TimeOutDestoryDelay);
 			_SpawnTerm = _Term;
 			int a = 0;
 		}

@@ -57,12 +57,14 @@ protected:
 	void InfinityGroundCheck();
 
 	// 몬스터 스폰 관련
-	std::shared_ptr<ANomalMonster> SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType = EMonsterMoveType::Follow);
+	std::shared_ptr<ANomalMonster> SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay);
 
 	float4 RandomLocation(bool _Group = false);
-	void RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group, int _Quantity);
+	void RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay, bool _Group, int _Quantity);
 
-	void SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm, std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _Group = false, int _Quantity = 1);
+	void SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm, 
+		std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType = EMonsterMoveType::Follow, 
+		bool _WillTimeOutDestroy = false, float _TimeOutDestoryDelay = 20.0f, bool _Group = false, int _Quantity = 1);
 	
 	void SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name);
 

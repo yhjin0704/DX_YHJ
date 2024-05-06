@@ -65,13 +65,18 @@ public:
 		CalSpeed = ContentsValue::BaseSpeed * Speed;
 	}
 
-	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType);
+	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDelay);
 
 	FVector CreateGroupToPlayerDir();
 
 	void SetToPlayerDir(FVector _ToPlayerDir)
 	{
 		ToPlayerDir = _ToPlayerDir;
+	}
+
+	void SetTimeOutDestoryDelay(float _TimeOutDestoryDelay)
+	{
+		TimeOutDestoryDelay = _TimeOutDestoryDelay;
 	}
 
 protected:
@@ -102,6 +107,9 @@ protected:
 	bool IsSaved = false;
 	EEngineDir SavedDir = EEngineDir::MAX;
 	float RendererAlpha = 1.0f;
+
+	bool WillTimeOutDestory = false;
+	float TimeOutDestoryDelay = 20.0f;
 	
 	virtual void Move(float _DeltaTime, EMonsterMoveType _MoveType = EMonsterMoveType::Follow);
 
@@ -111,6 +119,8 @@ protected:
 
 	void CheckSaved();
 	void Saved(float _DeltaTime);
+
+	void TimeOutDestory(float _DeltaTime);
 private:
 
 };

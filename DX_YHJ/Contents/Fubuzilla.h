@@ -30,7 +30,6 @@ protected:
 private:
 	USpriteRenderer* LaserRenderer;
 	UCollision* LaserCollision;
-	UCollision* UseLaserCheckCollision;
 
 	ELaser Laser = ELaser::Stay;
 	bool IsUseLaser = false;

@@ -22,13 +22,6 @@ AFubuzilla::AFubuzilla()
 	LaserCollision->SetCollisionType(ECollisionType::Rect);
 	LaserCollision->SetScale({ 450.0f * 5.0f * ContentsValue::MultipleSize, 20.0f * 5.0f * ContentsValue::MultipleSize });
 
-	UseLaserCheckCollision = CreateDefaultSubObject<UCollision>("Collision");
-	UseLaserCheckCollision->SetupAttachment(Root);
-	UseLaserCheckCollision->SetCollisionGroup(ECollisionOrder::ZoneCheck);
-	UseLaserCheckCollision->SetCollisionType(ECollisionType::Rect);
-	UseLaserCheckCollision->SetScale({ 4800.0f * ContentsValue::MultipleSize, 216.0f * ContentsValue::MultipleSize });
-	UseLaserCheckCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (72.0f * ContentsValue::MultipleSize) });
-
 	LaserRenderer->SetActive(false);
 	LaserCollision->SetActive(false);
 
@@ -109,17 +102,13 @@ void AFubuzilla::Tick(float _DeltaTime)
 
 void AFubuzilla::UseLaserCheck()
 {
-	UseLaserCheckCollision->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
-		{
-			IsUseLaser = true;
-		}
-	);
+	FVector UseLaserCheckPos = APlayer::PlayerColPos - GetActorLocation();
 
-	UseLaserCheckCollision->CollisionStay(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collison)
-		{
-			IsUseLaser = true;
-		}
-	);
+	if (-4800.0f <= UseLaserCheckPos.X && 4800.0f >= UseLaserCheckPos.X
+		&& -108.0f <= UseLaserCheckPos.Y && 324.0f >= UseLaserCheckPos.Y)
+	{
+		IsUseLaser = true;
+	}
 }
 
 void AFubuzilla::UseLaser(EEngineDir _Dir)

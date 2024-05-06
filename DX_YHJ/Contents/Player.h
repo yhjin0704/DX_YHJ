@@ -85,7 +85,7 @@ private:
 	float CriRate = 0.05f;
 	float Haste = 0.0f;
 	float AtkTime = 1.0f;
-	float Speed = 1.0f;
+	float Speed = 10.0f;
 	float CalSpeed = ContentsValue::BaseSpeed * Speed;
 	float LineSpeed = CalSpeed * 0.75f;
 	float Exp = 0;

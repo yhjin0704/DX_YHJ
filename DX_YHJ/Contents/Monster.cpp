@@ -51,9 +51,10 @@ void AMonster::Tick(float _DeltaTime)
 
 	CheckPosComparePlayer();
 	CheckOverPlayer();
+	TimeOutDestory(_DeltaTime);
 }
 
-void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType)
+void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay)
 {
 	Hp = _Hp;
 	Atk = _Atk;
@@ -61,6 +62,8 @@ void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp,
 	CalSpeed = ContentsValue::BaseSpeed * Speed;
 	Exp = _Exp;
 	MoveType = _MoveType;
+	WillTimeOutDestory = _WillTimeOutDestroy;
+	TimeOutDestoryDelay = _TimeOutDestoryDelay;
 }
 
 FVector AMonster::CreateGroupToPlayerDir()
@@ -162,5 +165,22 @@ void AMonster::Saved(float _DeltaTime)
 	if (true == SavedRenderer->IsCurAnimationEnd())
 	{
 		Destroy();
+	}
+}
+
+void AMonster::TimeOutDestory(float _DeltaTime)
+{
+	if (true == WillTimeOutDestory)
+	{
+		TimeOutDestoryDelay -= _DeltaTime;
+		if (0.0f >= TimeOutDestoryDelay)
+		{
+			Renderer->SetActive(false);
+			SavedRenderer->SetActive(true);
+			if (true == SavedRenderer->IsCurAnimationEnd())
+			{
+				Destroy();
+			}
+		}
 	}
 }
