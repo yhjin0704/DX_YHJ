@@ -87,6 +87,8 @@ private:
 	float SpawnTerm4 = 0;
 	float SpawnTerm5 = 0;
 
+	float BossSpawn = 0.0f;
+
 	bool IsPrevMouseAim = false;
 
 	void Pause(float _DeltaTime);

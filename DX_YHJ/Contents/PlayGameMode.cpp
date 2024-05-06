@@ -81,8 +81,6 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	if (true == IsPlayStart)
 	{
-		SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
-
 		IsPause = false;
 
 		IsPlayStart = false;
@@ -101,6 +99,8 @@ void APlayGameMode::Tick(float _DeltaTime)
 	SpawnNomalMonsterTimeSet(PlayTime, 60.0f, 80.0f, 5.0f, SpawnTerm1,
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 20.0f, true, 10);
+	SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
+
 
 	Pause(_DeltaTime);
 
@@ -303,7 +303,6 @@ void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin
 		{
 			RandomSpawnNomalMonster(_Name, _Size, _Hp, _Atk, _Speed, _Exp, _MoveType, _Group, _Quantity, _WillTimeOutDestroy, _TimeOutDestoryDelay);
 			_SpawnTerm = _Term;
-			int a = 0;
 		}
 		else
 		{
@@ -314,15 +313,23 @@ void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin
 
 void APlayGameMode::SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name)
 {
-	DelayCallBack(_SpawnTime, [=]
+	if (PlayTime >= _SpawnTime && PlayTime < (_SpawnTime + 1.0f))
+	{
+		if (0.0f >= BossSpawn)
 		{
 			if (UEngineString::ToUpper("Fubuzilla") == UEngineString::ToUpper(_Name))
 			{
 				std::shared_ptr<AFubuzilla> Boss = GetWorld()->SpawnActor<AFubuzilla>("Fubuzilla");
 				Boss->SetActorLocation(RandomLocation());
+
+				BossSpawn = 1.5f;
 			}
 		}
-	);
+		else if (PlayTime >= (_SpawnTime + 1.0f) && PlayTime < (_SpawnTime + 2.0f))
+		{
+			BossSpawn = 0.0f;
+		}
+	}
 }
 
 void APlayGameMode::PlayDebugText()
