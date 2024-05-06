@@ -26,6 +26,7 @@ class APlayGameMode : public AGameMode
 public:
 	static std::shared_ptr<APlayer> MainPlayer;
 	static bool IsPlayStart;
+	static bool IsPause;
 
 	// constrcuter destructer
 	APlayGameMode();
@@ -86,6 +87,8 @@ private:
 	float SpawnTerm4 = 0;
 	float SpawnTerm5 = 0;
 
-	bool IsPause = false;
+	bool IsPrevMouseAim = false;
+
+	void Pause(float _DeltaTime);
 };
 

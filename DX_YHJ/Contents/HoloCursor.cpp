@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "HoloCursor.h"
+#include "PlayGameMode.h"
 #include "ContentsValue.h"
 
 float4 AHoloCursor::CursorPos = FVector::Zero;
@@ -45,13 +46,21 @@ void AHoloCursor::Tick(float _DeltaTime)
 
 	if ("PlayLevel" == GetWorld()->GetName())
 	{
-		ChangeAimMode();
+		if (true != APlayGameMode::IsPause)
+		{
+			ChangeAimMode();
+		}
 
 		Collision->SetPosition(ContentsValue::PlayLevelMousePos);
 	}
 	else
 	{
 		Collision->SetPosition(CursorScreenPos);
+	}
+
+	if (true == APlayGameMode::IsPause)
+	{
+		MouseAimOn = false;
 	}
 	
 	CheckAimMode(CursorScreenPos);

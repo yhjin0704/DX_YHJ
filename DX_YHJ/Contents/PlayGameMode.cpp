@@ -9,6 +9,7 @@
 
 std::shared_ptr<APlayer> APlayGameMode::MainPlayer = nullptr;
 bool APlayGameMode::IsPlayStart = true;
+bool APlayGameMode::IsPause = false;
 
 APlayGameMode::APlayGameMode()
 {
@@ -82,6 +83,8 @@ void APlayGameMode::Tick(float _DeltaTime)
 	{
 		SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
 
+		IsPause = false;
+
 		IsPlayStart = false;
 	}
 	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
@@ -99,29 +102,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 20.0f, true, 10);
 
-
-	if (true == IsDown(VK_ESCAPE))
-	{
-		if (true == IsPause)
-		{
-			IsPause = false;
-		}
-		else
-		{
-			IsPause = true;
-		}
-	}
-	
-	if (false == IsPause)
-	{
-		PlayDeltaTime = _DeltaTime;
-	}
-	else
-	{
-		PlayDeltaTime = 0.0f;
-	}
-	PlayTime += PlayDeltaTime;
-	_DeltaTime = 0.0f;
+	Pause(_DeltaTime);
 
 	PlayDebugText();
 }
@@ -390,4 +371,34 @@ void APlayGameMode::PlayDebugText()
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerDir : {}", PlayerDir));
 	//마우스모드 각도
 	UEngineDebugMsgWindow::PushMsg(std::format("Angle : {}", Player->GetAngle()));
+}
+
+void APlayGameMode::Pause(float _DeltaTime)
+{
+	if (true == IsDown(VK_ESCAPE))
+	{
+		if (true == IsPause)
+		{
+			IsPause = false;
+			AHoloCursor::MouseAimOn = IsPrevMouseAim;
+			GEngine->SetOrderTimeScale(0, 1.f);
+		}
+		else
+		{
+			IsPause = true;
+			IsPrevMouseAim = AHoloCursor::MouseAimOn;
+			GEngine->SetOrderTimeScale(0, 0.f);
+		}
+	}
+
+	if (false == IsPause)
+	{
+		PlayDeltaTime = _DeltaTime;
+	}
+	else
+	{
+		PlayDeltaTime = 0.0f;
+	}
+	PlayTime += PlayDeltaTime;
+	_DeltaTime = 0.0f;
 }
