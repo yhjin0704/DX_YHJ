@@ -82,7 +82,7 @@
     <ClCompile Include="AExpObject.cpp">
       <Filter>Level\PlayLevel</Filter>
     </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
+    <ClCompile Include="Logo.cpp">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -168,7 +168,7 @@
     <ClInclude Include="AExpObject.h">
       <Filter>Level\PlayLevel</Filter>
     </ClInclude>
-    <ClInclude Include="TitleLogo.h">
+    <ClInclude Include="Logo.h">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>

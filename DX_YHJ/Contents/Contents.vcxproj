@@ -99,7 +99,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TitleGameMode.h" />
-    <ClInclude Include="TitleLogo.h" />
+    <ClInclude Include="Logo.h" />
     <ClInclude Include="Weapon.h">
       <SubType>
       </SubType>
@@ -190,7 +190,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TitleGameMode.cpp" />
-    <ClCompile Include="TitleLogo.cpp" />
+    <ClCompile Include="Logo.cpp" />
     <ClCompile Include="Weapon.cpp">
       <SubType>
       </SubType>

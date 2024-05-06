@@ -2,6 +2,7 @@
 #include <EngineCore/GameMode.h>
 #include "HoloCursor.h"
 #include "LobbyBackAnimationBar.h"
+#include "Logo.h"
 
 // Ό³Έν :
 class ALobbyGameMode : public AGameMode
@@ -31,6 +32,7 @@ private:
 	std::shared_ptr<AHoloCursor> Cursor;
 
 	std::list<std::shared_ptr<ALobbyBackAnimationBar>> LBar;
+	std::shared_ptr<ALogo> Logo;
 
 	float DelaySpawnBar = 0.0f;
 

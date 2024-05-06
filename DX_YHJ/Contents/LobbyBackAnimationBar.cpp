@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "LobbyBackAnimationBar.h"
+#include "ContentsValue.h"
 
 ALobbyBackAnimationBar::ALobbyBackAnimationBar()
 {
@@ -21,7 +22,7 @@ void ALobbyBackAnimationBar::BeginPlay()
 
 	SetActorScale3D(FVector(700.0f, 300.0f, 100.0f));
 	Renderer->SetSprite("menu_charselec_bar_0.png");
-	Renderer->SetScale(FVector{ 1.0f,3.5f });
+	Renderer->SetScale(FVector{ 1.0f, 3.5f });
 	Renderer->SetPosition(FVector{ 1.5f, -0.2f });
 	Renderer->SetOrder(ERenderOrder::BackObject);
 	Renderer->SetRotationDeg({ 0.0f,0.0f,-10.0f });

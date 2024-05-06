@@ -3,20 +3,20 @@
 #include <EngineCore/SpriteRenderer.h>
 
 // Ό³Έν :
-class ATitleLogo : public AActor
+class ALogo : public AActor
 {
 	GENERATED_BODY(AActor)
 
 public:
 	// constrcuter destructer
-	ATitleLogo();
-	~ATitleLogo();
+	ALogo();
+	~ALogo();
 
 	// delete Function
-	ATitleLogo(const ATitleLogo& _Other) = delete;
-	ATitleLogo(ATitleLogo&& _Other) noexcept = delete;
-	ATitleLogo& operator=(const ATitleLogo& _Other) = delete;
-	ATitleLogo& operator=(ATitleLogo&& _Other) noexcept = delete;
+	ALogo(const ALogo& _Other) = delete;
+	ALogo(ALogo&& _Other) noexcept = delete;
+	ALogo& operator=(const ALogo& _Other) = delete;
+	ALogo& operator=(ALogo&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;
@@ -27,5 +27,9 @@ private:
 
 	float LogoMoveTime = 0;
 	float4 LogoMoveDir = FVector::Down * 10.0f;
+	float UpSpeed = 1.0f;
+	float DownSpeed = 1.0f;
+
+	void Move(float _DeltaTime);
 };
 

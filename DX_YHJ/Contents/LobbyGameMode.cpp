@@ -19,17 +19,17 @@ void ALobbyGameMode::BeginPlay()
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<ALobbyBackGround>("LobbyBackGround");
-
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
+	Logo = GetWorld()->SpawnActor<ALogo>("Logo");
 
 	std::shared_ptr<ALobbyBackAnimationBar> InitialBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
 	LBar.push_back(InitialBackBar);
 
-	FVector TPos = InitialBackBar->GetActorLocation();
+	FVector BarPos = InitialBackBar->GetActorLocation();
 	for (int i = 1; i < 47; i++)
 	{
 		std::shared_ptr<ALobbyBackAnimationBar> InitialBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
-		InitialBackBar->SetActorLocation({ TPos.X - (38 * i), TPos.Y });
+		InitialBackBar->SetActorLocation({ BarPos.X - (38 * i), BarPos.Y });
 		LBar.push_back(InitialBackBar);
 	}
 }
