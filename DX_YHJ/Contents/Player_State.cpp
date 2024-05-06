@@ -3,6 +3,7 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Camera.h>
 #include "HoloCursor.h"
+#include "PlayGameMode.h"
 
 void APlayer::StateInit()
 {
@@ -37,7 +38,10 @@ void APlayer::Idle(float _Update)
 {
 	if (true == IsPress('A') || true == IsPress('D') || true == IsPress('W') || true == IsPress('S'))
 	{
-		State.ChangeState("Run");
+		if (true != APlayGameMode::IsPause)
+		{
+			State.ChangeState("Run");
+		}
 		return;
 	}
 }
