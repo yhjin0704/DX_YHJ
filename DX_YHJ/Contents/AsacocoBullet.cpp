@@ -43,7 +43,7 @@ void AAsacocoBullet::CheckHit()
 		}
 	);
 
-	Collision->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
+	/*Collision->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
 		{
 			if (0.0f >= HitDelay)
 			{
@@ -56,5 +56,5 @@ void AAsacocoBullet::CheckHit()
 				HitDelay = 0.5f;
 			}
 		}
-	);
+	);*/
 }
