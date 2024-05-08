@@ -29,6 +29,12 @@ void AMainMenuButton::BeginPlay()
 
 	Renderer->SetSprite("hud_OptionButton_0.png");
 	Renderer->SetAutoSize(0.5f * ContentsValue::MultipleSize, true);
+
+	Text = CreateWidget<UTextWidget>(GetWorld(), "Text");
+	Text->AddToViewPort(EUIOrder::Text);
+	Text->SetScale(ContentsValue::MultipleSize * 10.0f);
+	Text->SetFont("Galmuri9");
+	Text->SetColor(Color8Bit::White);
 }
 
 void AMainMenuButton::Tick(float _DeltaTime)
@@ -55,14 +61,16 @@ void AMainMenuButton::CollisionCheck()
 
 void AMainMenuButton::SelectChange()
 {
-	if (true == IsCursorOn)
+	if (true == IsSelect)
 	{
 		Renderer->SetSprite("hud_OptionButton_1.png");
 		Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
+		Text->SetColor(Color8Bit::Black);
 	}
 	else
 	{
 		Renderer->SetSprite("hud_OptionButton_0.png");
 		Renderer->SetAutoSize(0.9f * ContentsValue::MultipleSize, true);
+		Text->SetColor(Color8Bit::White);
 	}
 }

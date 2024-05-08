@@ -64,12 +64,6 @@
     <ClCompile Include="NomalMonster.cpp">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Fubuzilla.cpp">
-      <Filter>Level\PlayLevel\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="SmolAme.cpp">
-      <Filter>Level\PlayLevel\Monster</Filter>
-    </ClCompile>
     <ClCompile Include="LobbyGameMode.cpp">
       <Filter>Level\LobbyLevel</Filter>
     </ClCompile>
@@ -87,6 +81,12 @@
     </ClCompile>
     <ClCompile Include="MainMenuButton.cpp">
       <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Fubuzilla.cpp">
+      <Filter>Level\PlayLevel\Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="SmolAme.cpp">
+      <Filter>Level\PlayLevel\Monster\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,12 +153,6 @@
     <ClInclude Include="NomalMonster.h">
       <Filter>Level\PlayLevel\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Fubuzilla.h">
-      <Filter>Level\PlayLevel\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="SmolAme.h">
-      <Filter>Level\PlayLevel\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="LobbyGameMode.h">
       <Filter>Level\LobbyLevel</Filter>
     </ClInclude>
@@ -176,6 +170,12 @@
     </ClInclude>
     <ClInclude Include="MainMenuButton.h">
       <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Fubuzilla.h">
+      <Filter>Level\PlayLevel\Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="SmolAme.h">
+      <Filter>Level\PlayLevel\Monster\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +241,9 @@
     </Filter>
     <Filter Include="Level\LobbyLevel\Actor">
       <UniqueIdentifier>{cb9bfbe3-972f-4f3c-9a3e-9b51d224a562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Monster\Boss">
+      <UniqueIdentifier>{105266ec-53ef-47d0-bbfa-bf4ed2bbad5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

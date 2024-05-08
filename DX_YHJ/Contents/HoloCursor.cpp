@@ -92,7 +92,7 @@ void AHoloCursor::CheckAimMode(FVector _CursorPos)
 	{
 		CursorOFf();
 		Renderer->SetSprite("spr_GameCursor_0.png");
-		Renderer->SetPosition(_CursorPos);
+		Renderer->SetPosition({ _CursorPos.X + (10.0f * ContentsValue::MultipleSize), _CursorPos.Y - (10.0f * ContentsValue::MultipleSize)});
 	}
 	else
 	{

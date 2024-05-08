@@ -16,7 +16,7 @@ enum class ERenderOrder
 
 enum class ECollisionOrder
 {
-	Player,
+	Player = 1,
 	Monster,
 	MonsterRender,
 	ZoneCheck,
@@ -30,6 +30,7 @@ enum class EUIOrder
 {
 	Frame,
 	PlayInfo,
+	Text,
 	Cursor,
 };
 

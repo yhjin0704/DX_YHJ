@@ -40,12 +40,9 @@ void ALobbyGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (true == IsDown('P'))
-	{
-		GEngine->ChangeLevel("PlayLevel");
-	}
-
 	SpawnBackBar(_DeltaTime);
+	
+	CheckMainButtonSelect();
 }
 
 void ALobbyGameMode::LevelEnd(ULevel* _NextLevel)
@@ -76,5 +73,77 @@ void ALobbyGameMode::SpawnMainMenuButton()
 		std::shared_ptr<AMainMenuButton> MainMenuButton = GetWorld()->SpawnActor<AMainMenuButton>("MainMenuButton");
 		MainMenuButton->SetActorLocation({ 430.0f, 125.0f - (i * 60.0f) });
 		VMainButton.push_back(MainMenuButton);
+	}
+
+	{
+		VMainButton[0]->GetTextWidget()->SetPosition(VMainButton[0]->GetActorLocation());
+		VMainButton[0]->GetTextWidget()->SetText("새 게임");
+	}
+
+	{
+		VMainButton[1]->GetTextWidget()->SetPosition(VMainButton[1]->GetActorLocation());
+		VMainButton[1]->GetTextWidget()->SetText("나가기");
+	}
+}
+
+void ALobbyGameMode::CheckMainButtonSelect()
+{
+	if (true == IsDown('W'))
+	{
+		--ButtonSelect;
+		if (0 > ButtonSelect)
+		{
+			ButtonSelect = VMainButton.size() - 1;
+		}
+	}
+	else if (true == IsDown('S'))
+	{
+		++ButtonSelect;
+		if (VMainButton.size() <= ButtonSelect)
+		{
+			ButtonSelect = 0;
+		}
+	}
+
+	for (int i = 0; i < VMainButton.size(); ++i)
+	{
+		if (true == VMainButton[i]->GetIsCursorOn())
+		{
+			ButtonSelect = i;
+		}
+		VMainButton[i]->SetIsSelect(false);
+	}
+
+	switch (ButtonSelect)
+	{
+	case 0:
+		if (true == IsDown(VK_RETURN))
+		{
+			GEngine->ChangeLevel("PlayLevel");
+		}
+		if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+		{
+			if (true == IsDown(VK_LBUTTON))
+			{
+				GEngine->ChangeLevel("PlayLevel");
+			}
+		}
+		VMainButton[ButtonSelect]->SetIsSelect(true);
+	case 1:
+		if (true == IsDown(VK_RETURN))
+		{
+			
+		}
+		if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+		{
+			if (true == IsDown(VK_LBUTTON))
+			{
+				
+			}
+		}
+		VMainButton[ButtonSelect]->SetIsSelect(true);
+		break;
+	default:
+		break;
 	}
 }
