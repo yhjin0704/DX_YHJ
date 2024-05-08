@@ -41,6 +41,9 @@ ULevel::~ULevel()
 
 void ULevel::Tick(float _DeltaTime)
 {
+	// 1 플레이어 그룹 [][]
+	// 2 몬스터 그룹 [][]
+
 	Super::Tick(_DeltaTime);
 	for (std::pair<const int, std::list<std::shared_ptr<AActor>>>& TickGroup : Actors)
 	{
@@ -55,6 +58,11 @@ void ULevel::Tick(float _DeltaTime)
 
 		for (std::shared_ptr<AActor> Actor : GroupActors)
 		{
+			if (false == Actor->IsActive())
+			{
+				continue;
+			}
+
 			Actor->Tick(_DeltaTime * TimeScale);
 		}
 	}
