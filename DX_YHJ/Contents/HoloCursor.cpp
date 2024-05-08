@@ -14,7 +14,7 @@ AHoloCursor::AHoloCursor()
 	Collision->SetupAttachment(Root);
 	Collision->SetCollisionGroup(ECollisionOrder::Cursor);
 	Collision->SetCollisionType(ECollisionType::Rect);
-	Collision->SetScale({ 100.0f * ContentsValue::MultipleSize,100.0f * ContentsValue::MultipleSize });
+	Collision->SetScale({ 1.0f * ContentsValue::MultipleSize, 1.0f * ContentsValue::MultipleSize });
 
 	SetRoot(Root);
 

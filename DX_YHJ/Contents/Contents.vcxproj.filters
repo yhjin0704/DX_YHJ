@@ -85,6 +85,9 @@
     <ClCompile Include="Logo.cpp">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenuButton.cpp">
+      <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -169,6 +172,9 @@
       <Filter>Level\PlayLevel</Filter>
     </ClInclude>
     <ClInclude Include="Logo.h">
+      <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuButton.h">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>

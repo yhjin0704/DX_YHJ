@@ -21,8 +21,8 @@ void ALogo::BeginPlay()
 	Super::BeginPlay();
 
 	Renderer->SetSprite("holocure.png");
-	Renderer->SetAutoSize(0.2f, true);
-	Renderer->SetPosition(FVector({ 450.0f, 225.0f }));
+	Renderer->SetAutoSize(0.4f, true);
+	Renderer->SetPosition(FVector({ 350.0f, 125.0f }));
 	Renderer->SetOrder(ERenderOrder::UI);
 }
 
@@ -35,15 +35,15 @@ void ALogo::Tick(float _DeltaTime)
 
 void ALogo::Move(float _DeltaTime)
 {
-	if (0.0f <= LogoMoveTime && LogoMoveTime < 1.3f)
+	if (0.0f <= LogoMoveTime && LogoMoveTime < 1.5f)
 	{
-		UpSpeed -= _DeltaTime;
+		UpSpeed -= _DeltaTime * 2.0f;
 		Renderer->AddPosition(LogoMoveDir * UpSpeed * _DeltaTime);
 		DownSpeed = 1.0f;
 	}
-	else if (1.3f <= LogoMoveTime && LogoMoveTime < 2.6f)
+	else if (1.5f <= LogoMoveTime && LogoMoveTime < 3.0f)
 	{
-		DownSpeed -= _DeltaTime;
+		DownSpeed -= _DeltaTime * 2.0f;
 		Renderer->AddPosition(LogoMoveDir * -1 * DownSpeed * _DeltaTime);
 		UpSpeed = 1.0f;
 	}

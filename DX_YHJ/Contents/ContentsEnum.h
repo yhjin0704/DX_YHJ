@@ -21,7 +21,8 @@ enum class ECollisionOrder
 	MonsterRender,
 	ZoneCheck,
 	Weapon,
-	Obstacle, 
+	Obstacle,
+	UIButton,
 	Cursor,
 };
 

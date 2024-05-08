@@ -22,16 +22,18 @@ void ALobbyGameMode::BeginPlay()
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
 	Logo = GetWorld()->SpawnActor<ALogo>("Logo");
 
-	std::shared_ptr<ALobbyBackAnimationBar> InitialBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
-	LBar.push_back(InitialBackBar);
+	std::shared_ptr<ALobbyBackAnimationBar> InitBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
+	LBar.push_back(InitBackBar);
 
-	FVector BarPos = InitialBackBar->GetActorLocation();
+	FVector BarPos = InitBackBar->GetActorLocation();
 	for (int i = 1; i < 47; i++)
 	{
-		std::shared_ptr<ALobbyBackAnimationBar> InitialBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
-		InitialBackBar->SetActorLocation({ BarPos.X - (38 * i), BarPos.Y });
-		LBar.push_back(InitialBackBar);
+		std::shared_ptr<ALobbyBackAnimationBar> SpawnBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
+		SpawnBackBar->SetActorLocation({ BarPos.X - (38 * i), BarPos.Y });
+		LBar.push_back(SpawnBackBar);
 	}
+
+	SpawnMainMenuButton();
 }
 
 void ALobbyGameMode::Tick(float _DeltaTime)
@@ -65,4 +67,14 @@ void ALobbyGameMode::SpawnBackBar(float _DeltaTime)
 		DelaySpawnBar = 0.0f;
 	}
 	DelaySpawnBar += _DeltaTime;
+}
+
+void ALobbyGameMode::SpawnMainMenuButton()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		std::shared_ptr<AMainMenuButton> MainMenuButton = GetWorld()->SpawnActor<AMainMenuButton>("MainMenuButton");
+		MainMenuButton->SetActorLocation({ 430.0f, 125.0f - (i * 60.0f) });
+		VMainButton.push_back(MainMenuButton);
+	}
 }

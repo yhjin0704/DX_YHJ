@@ -1,10 +1,11 @@
 #include "PreCompile.h"
 #include "HoloCureCore.h"
+#include <EnginePlatform/EngineWindow.h>
+#include <EngineCore/EngineSprite.h>
+#include <EngineCore/EngineFont.h>
 #include "TitleGameMode.h"
 #include "LobbyGameMode.h"
 #include "PlayGameMode.h"
-#include <EngineCore/EngineSprite.h>
-#include <EnginePlatform/EngineWindow.h>
 #include "ContentsValue.h"
 
 UHoloCureCore::UHoloCureCore()
@@ -17,6 +18,8 @@ UHoloCureCore::~UHoloCureCore()
 
 void UHoloCureCore::Initialize()
 {
+	UEngineFont::Load("Galmuri9");
+
 	{
 		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("Resources");

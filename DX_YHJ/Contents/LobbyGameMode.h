@@ -3,6 +3,7 @@
 #include "HoloCursor.h"
 #include "LobbyBackAnimationBar.h"
 #include "Logo.h"
+#include "MainMenuButton.h"
 
 // Ό³Έν :
 class ALobbyGameMode : public AGameMode
@@ -32,10 +33,14 @@ private:
 	std::shared_ptr<AHoloCursor> Cursor;
 
 	std::list<std::shared_ptr<ALobbyBackAnimationBar>> LBar;
-	std::shared_ptr<ALogo> Logo;
-
 	float DelaySpawnBar = 0.0f;
 
+	std::shared_ptr<ALogo> Logo;
+
+	std::vector<std::shared_ptr<AMainMenuButton>> VMainButton;
+
 	void SpawnBackBar(float _DeltaTime);
+
+	void SpawnMainMenuButton();
 };
 
