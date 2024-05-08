@@ -86,7 +86,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 		IsPlayStart = false;
 	}
 	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
-		"Shrimp", 2.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		false, 10);
 	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 10.0f, SpawnTerm2,
 		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
@@ -104,7 +104,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	Pause(_DeltaTime);
 
-	PlayDebugText();
+	PlayDebugText(_DeltaTime);
 }
 
 void APlayGameMode::LevelEnd(ULevel* _NextLevel)
@@ -332,13 +332,46 @@ void APlayGameMode::SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name)
 	}
 }
 
-void APlayGameMode::PlayDebugText()
+
+void APlayGameMode::Pause(float _DeltaTime)
+{
+	if (true == IsDown(VK_ESCAPE))
+	{
+		if (true == IsPause)
+		{
+			IsPause = false;
+			AHoloCursor::MouseAimOn = IsPrevMouseAim;
+			GEngine->SetOrderTimeScale(0, 1.f);
+		}
+		else
+		{
+			IsPause = true;
+			IsPrevMouseAim = AHoloCursor::MouseAimOn;
+			GEngine->SetOrderTimeScale(0, 0.f);
+		}
+	}
+
+	if (false == IsPause)
+	{
+		PlayDeltaTime = _DeltaTime;
+	}
+	else
+	{
+		PlayDeltaTime = 0.0f;
+	}
+	PlayTime += PlayDeltaTime;
+	_DeltaTime = 0.0f;
+}
+
+void APlayGameMode::PlayDebugText(float _DeltaTime)
 {
 	AGameMode* ThisLevel = dynamic_cast<AGameMode*>(this);
 
 	FIntPoint Index = PosToIndex(APlayer::PlayerPos);
 	CurIndex = Index;
 
+	//프레임 체크
+	UEngineDebugMsgWindow::PushMsg(std::format("Frame : {}\n", 1.0f / _DeltaTime));
 	//플레이어 위치
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerPos : X : {}, Y : {}", APlayer::PlayerPos.X, APlayer::PlayerPos.Y));
 	//플레이어가 있는 BackGround
@@ -378,34 +411,4 @@ void APlayGameMode::PlayDebugText()
 	UEngineDebugMsgWindow::PushMsg(std::format("PlayerDir : {}", PlayerDir));
 	//마우스모드 각도
 	UEngineDebugMsgWindow::PushMsg(std::format("Angle : {}", Player->GetAngle()));
-}
-
-void APlayGameMode::Pause(float _DeltaTime)
-{
-	if (true == IsDown(VK_ESCAPE))
-	{
-		if (true == IsPause)
-		{
-			IsPause = false;
-			AHoloCursor::MouseAimOn = IsPrevMouseAim;
-			GEngine->SetOrderTimeScale(0, 1.f);
-		}
-		else
-		{
-			IsPause = true;
-			IsPrevMouseAim = AHoloCursor::MouseAimOn;
-			GEngine->SetOrderTimeScale(0, 0.f);
-		}
-	}
-
-	if (false == IsPause)
-	{
-		PlayDeltaTime = _DeltaTime;
-	}
-	else
-	{
-		PlayDeltaTime = 0.0f;
-	}
-	PlayTime += PlayDeltaTime;
-	_DeltaTime = 0.0f;
 }

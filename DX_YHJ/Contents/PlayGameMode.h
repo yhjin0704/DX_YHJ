@@ -69,8 +69,6 @@ protected:
 	
 	void SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name);
 
-	void PlayDebugText();
-
 private:
 	FIntPoint CurIndex;
 
@@ -92,5 +90,7 @@ private:
 	bool IsPrevMouseAim = false;
 
 	void Pause(float _DeltaTime);
+
+	void PlayDebugText(float _DeltaTime);
 };
 

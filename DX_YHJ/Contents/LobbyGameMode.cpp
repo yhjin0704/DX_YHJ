@@ -2,6 +2,7 @@
 #include "LobbyGameMode.h"
 #include "LobbyBackGround.h"
 #include <EngineCore/Camera.h>
+#include <format>
 
 ALobbyGameMode::ALobbyGameMode()
 {
@@ -43,6 +44,8 @@ void ALobbyGameMode::Tick(float _DeltaTime)
 	SpawnBackBar(_DeltaTime);
 	
 	CheckMainButtonSelect();
+
+	LobbyDebugText(_DeltaTime);
 }
 
 void ALobbyGameMode::LevelEnd(ULevel* _NextLevel)
@@ -105,7 +108,7 @@ void ALobbyGameMode::CheckMainButtonSelect()
 		}
 	}
 
-	for (int i = 0; i < VMainButton.size(); ++i)
+	for (int i = 0; i < 2; ++i)
 	{
 		if (true == VMainButton[i]->GetIsCursorOn())
 		{
@@ -117,33 +120,39 @@ void ALobbyGameMode::CheckMainButtonSelect()
 	switch (ButtonSelect)
 	{
 	case 0:
+		VMainButton[ButtonSelect]->SetIsSelect(true);
 		if (true == IsDown(VK_RETURN))
 		{
 			GEngine->ChangeLevel("PlayLevel");
 		}
-		if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+		else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
 		{
 			if (true == IsDown(VK_LBUTTON))
 			{
 				GEngine->ChangeLevel("PlayLevel");
 			}
 		}
-		VMainButton[ButtonSelect]->SetIsSelect(true);
+		break;
 	case 1:
+		VMainButton[ButtonSelect]->SetIsSelect(true);
 		if (true == IsDown(VK_RETURN))
 		{
-			
+			GEngine->EngineWindow.Off();
 		}
-		if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+		else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
 		{
 			if (true == IsDown(VK_LBUTTON))
 			{
-				
+				GEngine->EngineWindow.Off();
 			}
 		}
-		VMainButton[ButtonSelect]->SetIsSelect(true);
 		break;
 	default:
 		break;
 	}
+}
+
+void ALobbyGameMode::LobbyDebugText(float _DeltaTime)
+{
+	UEngineDebugMsgWindow::PushMsg(std::format("Frame : {}\n", 1.0f / _DeltaTime));
 }

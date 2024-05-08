@@ -16,5 +16,7 @@
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/Image.h>
 
+#include <format>
+
 #include "ContentsEnum.h"
 #include "ContentsValue.h"

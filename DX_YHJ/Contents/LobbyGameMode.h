@@ -46,5 +46,7 @@ private:
 
 	void SpawnMainMenuButton();
 	void CheckMainButtonSelect();
+
+	void LobbyDebugText(float _DeltaTime);
 };
 
