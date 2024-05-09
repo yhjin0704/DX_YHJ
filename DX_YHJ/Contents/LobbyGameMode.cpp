@@ -195,15 +195,15 @@ void ALobbyGameMode::SpawnLobbyChar()
 	VLobbyChar[27]->Setting("spr_Title_Azki_5.png", { -180.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
 	VLobbyChar[28]->Setting("spr_Title_Miko_5.png", { -5.0f * ContentsValue::MultipleSize, 40.0f * ContentsValue::MultipleSize });
 																					 
-	VLobbyChar[29]->Setting("spr_Title_Hosinoba_0.png", { -100.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[30]->Setting("spr_Title_Eopiputin_1.png", { -135.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[31]->Setting("spr_Title_Rice_1.png", { -50.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[32]->Setting("spr_Title_Olri_0.png", { -185.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[33]->Setting("spr_Title_Kanaeru_2.png", { -10.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[34]->Setting("spr_Title_Laine_1.png", { -220.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[35]->Setting("spr_Title_Cobalskia_3.png", { 35.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[36]->Setting("spr_Title_Melpitsa_0.png", { -275.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
-	VLobbyChar[37]->Setting("spr_Title_Zeta_4.png", { 70.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[29]->Setting("spr_Title_Hosinoba_0.png", { -90.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
+	VLobbyChar[30]->Setting("spr_Title_Eopiputin_1.png", { -130.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
+	VLobbyChar[31]->Setting("spr_Title_Rice_1.png", { -50.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
+	VLobbyChar[32]->Setting("spr_Title_Olri_0.png", { -170.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
+	VLobbyChar[33]->Setting("spr_Title_Kanaeru_2.png", { -5.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
+	VLobbyChar[34]->Setting("spr_Title_Laine_1.png", { -225.0f * ContentsValue::MultipleSize, 70.0f * ContentsValue::MultipleSize });
+	VLobbyChar[35]->Setting("spr_Title_Cobalskia_3.png", { 30.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize });
+	VLobbyChar[36]->Setting("spr_Title_Melpitsa_0.png", { -260.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize });
+	VLobbyChar[37]->Setting("spr_Title_Zeta_4.png", { 75.0f * ContentsValue::MultipleSize, 50.0f * ContentsValue::MultipleSize });
 }
 
 void ALobbyGameMode::LobbyDebugText(float _DeltaTime)
