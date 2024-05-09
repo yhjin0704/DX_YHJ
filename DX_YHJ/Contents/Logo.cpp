@@ -35,22 +35,22 @@ void ALogo::Tick(float _DeltaTime)
 
 void ALogo::Move(float _DeltaTime)
 {
-	if (0.0f <= LogoMoveTime && LogoMoveTime < 1.5f)
+	if (0.0f <= MoveTime && MoveTime < 1.5f)
 	{
 		UpSpeed -= _DeltaTime * 2.0f;
-		Renderer->AddPosition(LogoMoveDir * UpSpeed * _DeltaTime);
+		Renderer->AddPosition(MoveDir * UpSpeed * _DeltaTime);
 		DownSpeed = 1.0f;
 	}
-	else if (1.5f <= LogoMoveTime && LogoMoveTime < 3.0f)
+	else if (1.5f <= MoveTime && MoveTime < 3.0f)
 	{
 		DownSpeed -= _DeltaTime * 2.0f;
-		Renderer->AddPosition(LogoMoveDir * -1 * DownSpeed * _DeltaTime);
+		Renderer->AddPosition(MoveDir * -1 * DownSpeed * _DeltaTime);
 		UpSpeed = 1.0f;
 	}
 	else
 	{
-		LogoMoveTime = 0.0f;
+		MoveTime = 0.0f;
 	}
 
-	LogoMoveTime += _DeltaTime;
+	MoveTime += _DeltaTime;
 }

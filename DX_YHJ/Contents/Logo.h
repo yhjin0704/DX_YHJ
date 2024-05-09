@@ -25,8 +25,8 @@ protected:
 private:
 	USpriteRenderer* Renderer = nullptr;
 
-	float LogoMoveTime = 0;
-	float4 LogoMoveDir = FVector::Down * 10.0f;
+	float MoveTime = 0;
+	float4 MoveDir = FVector::Down * 10.0f;
 	float UpSpeed = 1.0f;
 	float DownSpeed = 1.0f;
 

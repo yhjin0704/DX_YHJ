@@ -99,7 +99,7 @@ void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
 	default:
 		break;
 	}
-
+	
 	AddActorLocation(Dir * _DeltaTime * CalSpeed);
 }
 

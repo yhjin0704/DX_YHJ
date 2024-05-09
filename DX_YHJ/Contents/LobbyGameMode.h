@@ -4,6 +4,7 @@
 #include "LobbyBackAnimationBar.h"
 #include "Logo.h"
 #include "MainMenuButton.h"
+#include "LobbyChar.h"
 
 // Ό³Έν :
 class ALobbyGameMode : public AGameMode
@@ -40,12 +41,16 @@ private:
 	std::vector<std::shared_ptr<AMainMenuButton>> VMainButton;
 	std::vector<std::shared_ptr<AMainMenuButton>>::iterator VMainButtonIter = VMainButton.begin();
 
+	std::vector<std::shared_ptr<ALobbyChar>> VLobbyChar;
+
 	int ButtonSelect = 0;
 
 	void SpawnBackBar(float _DeltaTime);
 
 	void SpawnMainMenuButton();
 	void CheckMainButtonSelect();
+
+	void SpawnLobbyChar();
 
 	void LobbyDebugText(float _DeltaTime);
 };

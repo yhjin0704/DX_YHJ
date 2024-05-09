@@ -88,6 +88,9 @@
     <ClCompile Include="SmolAme.cpp">
       <Filter>Level\PlayLevel\Monster\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="LobbyChar.cpp">
+      <Filter>Level\LobbyLevel\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -176,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="SmolAme.h">
       <Filter>Level\PlayLevel\Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyChar.h">
+      <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
