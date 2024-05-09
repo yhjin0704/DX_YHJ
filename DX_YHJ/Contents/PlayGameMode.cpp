@@ -40,7 +40,7 @@ void APlayGameMode::BeginPlay()
 	Player->SetName("Kiara");
 	Player->SetActorLocation(PlayerStartPos);
 	MainPlayer = Player;
-	Player->State.ChangeState("Idle");
+	//Player->State.ChangeState("Idle");
 
 	// 커서 생성
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
@@ -115,6 +115,8 @@ void APlayGameMode::LevelEnd(ULevel* _NextLevel)
 void APlayGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+
+	Player->State.ChangeState("Idle");
 }
 
 float4 APlayGameMode::IndexToCenterPos(FIntPoint _Index)

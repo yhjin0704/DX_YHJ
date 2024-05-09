@@ -10,7 +10,10 @@ enum class ERenderOrder
 	MonsterDown,
 	MonsterUIDown,
 	Weapon,
-	UI = 20,
+	BackUI = 20,
+	UI,
+	UIFrame,
+	FrontUI,
 	Cursor,
 };
 

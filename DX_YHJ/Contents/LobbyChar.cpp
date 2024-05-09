@@ -31,9 +31,9 @@ void ALobbyChar::Tick(float _DeltaTime)
 	Move(_DeltaTime);
 }
 
-void ALobbyChar::Setting(std::string _Image, FVector _Pos)
+void ALobbyChar::Setting(std::string _Image, FVector _Pos, int _RenderOrder)
 {
-	std::string Separator = "_";
+	/*std::string Separator = "_";
 	std::string PngSeparator = ".";
 
 	int cur_position = 10;
@@ -49,12 +49,12 @@ void ALobbyChar::Setting(std::string _Image, FVector _Pos)
 	
 	Result = Result.substr(cur_position, len);
 	
-	int Order = std::stoi(Result) + 2;
+	int Order = std::stoi(Result) + 2;*/
 
 	Renderer->SetSprite(_Image);
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetPosition(_Pos);
-	Renderer->SetOrder(Order);
+	Renderer->SetOrder(_RenderOrder + 2);
 }
 
 void ALobbyChar::Move(float _DeltaTime)

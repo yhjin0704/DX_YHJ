@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharSelectUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CharSelectButton.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="AExpObject.h">
       <SubType>
       </SubType>
@@ -114,6 +122,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharSelectUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CharSelectButton.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="AExpObject.cpp">
       <SubType>
       </SubType>

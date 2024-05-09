@@ -3,6 +3,7 @@
 #include <format>
 #include <EngineCore/Camera.h>
 #include "LobbyBackGround.h"
+#include "PlayGameMode.h"
 #include "ContentsValue.h"
 
 ALobbyGameMode::ALobbyGameMode()
@@ -22,7 +23,6 @@ void ALobbyGameMode::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<ALobbyBackGround>("LobbyBackGround");
 	Cursor = GetWorld()->SpawnActor<AHoloCursor>("Cursor");
-	Logo = GetWorld()->SpawnActor<ALogo>("Logo");
 
 	std::shared_ptr<ALobbyBackAnimationBar> InitBackBar = GetWorld()->SpawnActor<ALobbyBackAnimationBar>("Bar");
 	LBar.push_back(InitBackBar);
@@ -35,8 +35,14 @@ void ALobbyGameMode::BeginPlay()
 		LBar.push_back(SpawnBackBar);
 	}
 
+	Logo = GetWorld()->SpawnActor<ALogo>("Logo");
 	SpawnMainMenuButton();
 	SpawnLobbyChar();
+
+	CharSelectUI = GetWorld()->SpawnActor<ACharSelectUI>("CharSelectUI");
+	CharSelectUI->AllActiveOff();
+
+
 }
 
 void ALobbyGameMode::Tick(float _DeltaTime)
@@ -47,17 +53,75 @@ void ALobbyGameMode::Tick(float _DeltaTime)
 
 	CheckMainButtonSelect();
 
+	if (true != IsMainLobby)
+	{
+		if (true == IsDown(VK_ESCAPE))
+		{
+			ReturnMainLobby();
+		}
+		else if (true == IsDown('P'))
+		{
+			GEngine->ChangeLevel("PlayLevel");
+		}
+	}
+
 	LobbyDebugText(_DeltaTime);
 }
 
 void ALobbyGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+
+	APlayGameMode::MainPlayer->SetName(SelectCharName);
 }
 
 void ALobbyGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+}
+
+void ALobbyGameMode::StartCharSelect()
+{
+	if (true == IsMainLobby)
+	{
+		Logo->SetActive(false);
+		for (VMainButtonIter = VMainButton.begin(); VMainButtonIter != VMainButton.end(); ++VMainButtonIter)
+		{
+			std::shared_ptr<AMainMenuButton> MainButton = *VMainButtonIter;
+			MainButton->AllActiveOff();
+		}
+		for (VLobbyCharIter = VLobbyChar.begin(); VLobbyCharIter != VLobbyChar.end(); ++VLobbyCharIter)
+		{
+			std::shared_ptr<ALobbyChar> LobbyChar = *VLobbyCharIter;
+			LobbyChar->SetActive(false);
+		}
+
+		CharSelectUI->AllActiveOn();
+
+		IsMainLobby = false;
+	}
+}
+
+void ALobbyGameMode::ReturnMainLobby()
+{
+	if (true != IsMainLobby)
+	{
+		Logo->SetActive(true);
+		for (VMainButtonIter = VMainButton.begin(); VMainButtonIter != VMainButton.end(); ++VMainButtonIter)
+		{
+			std::shared_ptr<AMainMenuButton> MainButton = *VMainButtonIter;
+			MainButton->AllActiveOn();
+		}
+		for (VLobbyCharIter = VLobbyChar.begin(); VLobbyCharIter != VLobbyChar.end(); ++VLobbyCharIter)
+		{
+			std::shared_ptr<ALobbyChar> LobbyChar = *VLobbyCharIter;
+			LobbyChar->SetActive(true);
+		}
+
+		CharSelectUI->AllActiveOff();
+
+		IsMainLobby = true;
+	}
 }
 
 void ALobbyGameMode::SpawnBackBar(float _DeltaTime)
@@ -93,64 +157,69 @@ void ALobbyGameMode::SpawnMainMenuButton()
 
 void ALobbyGameMode::CheckMainButtonSelect()
 {
-	if (true == IsDown('W'))
+	if (true == IsMainLobby)
 	{
-		--ButtonSelect;
-		if (0 > ButtonSelect)
+		if (true == IsDown('W'))
 		{
-			ButtonSelect = VMainButton.size() - 1;
-		}
-	}
-	else if (true == IsDown('S'))
-	{
-		++ButtonSelect;
-		if (VMainButton.size() <= ButtonSelect)
-		{
-			ButtonSelect = 0;
-		}
-	}
-
-	for (int i = 0; i < 2; ++i)
-	{
-		if (true == VMainButton[i]->GetIsCursorOn())
-		{
-			ButtonSelect = i;
-		}
-		VMainButton[i]->SetIsSelect(false);
-	}
-
-	switch (ButtonSelect)
-	{
-	case 0:
-		VMainButton[ButtonSelect]->SetIsSelect(true);
-		if (true == IsDown(VK_RETURN))
-		{
-			GEngine->ChangeLevel("PlayLevel");
-		}
-		else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
-		{
-			if (true == IsDown(VK_LBUTTON))
+			--ButtonSelect;
+			if (0 > ButtonSelect)
 			{
-				GEngine->ChangeLevel("PlayLevel");
+				ButtonSelect = VMainButton.size() - 1;
 			}
 		}
-		break;
-	case 1:
-		VMainButton[ButtonSelect]->SetIsSelect(true);
-		if (true == IsDown(VK_RETURN))
+		else if (true == IsDown('S'))
 		{
-			GEngine->EngineWindow.Off();
+			++ButtonSelect;
+			if (VMainButton.size() <= ButtonSelect)
+			{
+				ButtonSelect = 0;
+			}
 		}
-		else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+
+		for (int i = 0; i < 2; ++i)
 		{
-			if (true == IsDown(VK_LBUTTON))
+			if (true == VMainButton[i]->GetIsCursorOn())
+			{
+				ButtonSelect = i;
+			}
+			VMainButton[i]->SetIsSelect(false);
+		}
+
+		switch (ButtonSelect)
+		{
+		case 0:
+			VMainButton[ButtonSelect]->SetIsSelect(true);
+			if (true == IsDown(VK_RETURN))
+			{
+				StartCharSelect();
+				//GEngine->ChangeLevel("PlayLevel");
+			}
+			else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+			{
+				if (true == IsDown(VK_LBUTTON))
+				{
+					StartCharSelect();
+					//GEngine->ChangeLevel("PlayLevel");
+				}
+			}
+			break;
+		case 1:
+			VMainButton[ButtonSelect]->SetIsSelect(true);
+			if (true == IsDown(VK_RETURN))
 			{
 				GEngine->EngineWindow.Off();
 			}
+			else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+			{
+				if (true == IsDown(VK_LBUTTON))
+				{
+					GEngine->EngineWindow.Off();
+				}
+			}
+			break;
+		default:
+			break;
 		}
-		break;
-	default:
-		break;
 	}
 }
 
@@ -162,48 +231,48 @@ void ALobbyGameMode::SpawnLobbyChar()
 		VLobbyChar.push_back(LobbyChar);
 	}
 
-	VLobbyChar[0]->Setting("spr_Title_Ame_19.png", { -65.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize });
-	VLobbyChar[1]->Setting("spr_Title_bae_18.png", { -115.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize });
-	VLobbyChar[2]->Setting("spr_Title_Gura_17.png", { -30.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize });
-	VLobbyChar[3]->Setting("spr_Title_Mumei_16.png", { -170.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize });
-	VLobbyChar[4]->Setting("spr_Title_Ina_16.png", { 20.0f * ContentsValue::MultipleSize, -90.0f * ContentsValue::MultipleSize });
-	VLobbyChar[5]->Setting("spr_Title_Fauna_15.png", { -215.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize });
-	VLobbyChar[6]->Setting("spr_Title_Kiara_15.png", { 60.0f * ContentsValue::MultipleSize, -80.0f * ContentsValue::MultipleSize });
-	VLobbyChar[7]->Setting("spr_Title_Kronii_14.png", { -275.0f * ContentsValue::MultipleSize, -70.0f * ContentsValue::MultipleSize });
+	VLobbyChar[0]->Setting("spr_Title_Ame.png", { -65.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize }, 19);
+	VLobbyChar[1]->Setting("spr_Title_bae.png", { -115.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize }, 18);
+	VLobbyChar[2]->Setting("spr_Title_Gura.png", { -30.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize }, 17);
+	VLobbyChar[3]->Setting("spr_Title_Mumei.png", { -170.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize }, 16);
+	VLobbyChar[4]->Setting("spr_Title_Ina.png", { 20.0f * ContentsValue::MultipleSize, -90.0f * ContentsValue::MultipleSize }, 16);
+	VLobbyChar[5]->Setting("spr_Title_Fauna.png", { -215.0f * ContentsValue::MultipleSize, -105.0f * ContentsValue::MultipleSize }, 15);
+	VLobbyChar[6]->Setting("spr_Title_Kiara.png", { 60.0f * ContentsValue::MultipleSize, -80.0f * ContentsValue::MultipleSize }, 15);
+	VLobbyChar[7]->Setting("spr_Title_Kronii.png", { -275.0f * ContentsValue::MultipleSize, -70.0f * ContentsValue::MultipleSize }, 14);
 
-	VLobbyChar[8]->Setting("spr_Title_Shion_13.png", { -100.0f * ContentsValue::MultipleSize, -60.0f * ContentsValue::MultipleSize });
-	VLobbyChar[9]->Setting("spr_Title_Choco_12.png", { -135.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
-	VLobbyChar[10]->Setting("spr_Title_Irys_13.png", { -185.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
-	VLobbyChar[11]->Setting("spr_Title_Subaru_12.png", { -50.0f * ContentsValue::MultipleSize, -60.0f * ContentsValue::MultipleSize });
-	VLobbyChar[12]->Setting("spr_Title_Ayame_13.png", { -10.0f * ContentsValue::MultipleSize, -45.0f * ContentsValue::MultipleSize });
-	VLobbyChar[13]->Setting("spr_Title_Aqua_12.png", { 35.0f * ContentsValue::MultipleSize, -40.0f * ContentsValue::MultipleSize });
-	VLobbyChar[14]->Setting("spr_Title_Calli_13.png", { 70.0f * ContentsValue::MultipleSize, -35.0f * ContentsValue::MultipleSize });
-	VLobbyChar[15]->Setting("spr_Title_Sana_12.png", { -220.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
+	VLobbyChar[8]->Setting("spr_Title_Shion.png", { -100.0f * ContentsValue::MultipleSize, -60.0f * ContentsValue::MultipleSize }, 13);
+	VLobbyChar[9]->Setting("spr_Title_Choco.png", { -135.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize }, 12);
+	VLobbyChar[10]->Setting("spr_Title_Irys.png", { -185.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize }, 13);
+	VLobbyChar[11]->Setting("spr_Title_Subaru.png", { -50.0f * ContentsValue::MultipleSize, -60.0f * ContentsValue::MultipleSize }, 12);
+	VLobbyChar[12]->Setting("spr_Title_Ayame.png", { -10.0f * ContentsValue::MultipleSize, -45.0f * ContentsValue::MultipleSize }, 13);
+	VLobbyChar[13]->Setting("spr_Title_Aqua.png", { 35.0f * ContentsValue::MultipleSize, -40.0f * ContentsValue::MultipleSize }, 12);
+	VLobbyChar[14]->Setting("spr_Title_Calli.png", { 70.0f * ContentsValue::MultipleSize, -35.0f * ContentsValue::MultipleSize }, 13);
+	VLobbyChar[15]->Setting("spr_Title_Sana.png", { -220.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize }, 12);
 																						 
-	VLobbyChar[16]->Setting("spr_Title_Matsuri_11.png", { -110.0f * ContentsValue::MultipleSize, -5.0f * ContentsValue::MultipleSize });
-	VLobbyChar[17]->Setting("spr_Title_Fubuki_10.png", { -75.0f * ContentsValue::MultipleSize, -15.0f * ContentsValue::MultipleSize });
-	VLobbyChar[18]->Setting("spr_Title_Mel_10.png", { -155.0f * ContentsValue::MultipleSize, -5.0f * ContentsValue::MultipleSize });
-	VLobbyChar[19]->Setting("spr_Title_Mio_11.png", { -35.0f * ContentsValue::MultipleSize, -10.0f * ContentsValue::MultipleSize });
-	VLobbyChar[20]->Setting("spr_Title_Haato_9.png", { -190.0f * ContentsValue::MultipleSize, 0.0f * ContentsValue::MultipleSize });
-	VLobbyChar[21]->Setting("spr_Title_Okayu_10.png", { 10.0f * ContentsValue::MultipleSize, 0.0f * ContentsValue::MultipleSize });
-	VLobbyChar[22]->Setting("spr_Title_Aki_8.png", { -245.0f * ContentsValue::MultipleSize, 5.0f * ContentsValue::MultipleSize });
-	VLobbyChar[23]->Setting("spr_Title_Korone_11.png", { 50.0f * ContentsValue::MultipleSize, 5.0f * ContentsValue::MultipleSize });
+	VLobbyChar[16]->Setting("spr_Title_Matsuri.png", { -110.0f * ContentsValue::MultipleSize, -5.0f * ContentsValue::MultipleSize }, 11);
+	VLobbyChar[17]->Setting("spr_Title_Fubuki.png", { -75.0f * ContentsValue::MultipleSize, -15.0f * ContentsValue::MultipleSize }, 10);
+	VLobbyChar[18]->Setting("spr_Title_Mel.png", { -155.0f * ContentsValue::MultipleSize, -5.0f * ContentsValue::MultipleSize }, 10);
+	VLobbyChar[19]->Setting("spr_Title_Mio.png", { -35.0f * ContentsValue::MultipleSize, -10.0f * ContentsValue::MultipleSize }, 11);
+	VLobbyChar[20]->Setting("spr_Title_Haato.png", { -190.0f * ContentsValue::MultipleSize, 0.0f * ContentsValue::MultipleSize }, 9);
+	VLobbyChar[21]->Setting("spr_Title_Okayu.png", { 10.0f * ContentsValue::MultipleSize, 0.0f * ContentsValue::MultipleSize }, 10);
+	VLobbyChar[22]->Setting("spr_Title_Aki.png", { -245.0f * ContentsValue::MultipleSize, 5.0f * ContentsValue::MultipleSize }, 8);
+	VLobbyChar[23]->Setting("spr_Title_Korone.png", { 50.0f * ContentsValue::MultipleSize, 5.0f * ContentsValue::MultipleSize }, 11);
 																					 
-	VLobbyChar[24]->Setting("spr_Title_Sora_7.png", { -100.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
-	VLobbyChar[25]->Setting("spr_Title_Roboco_6.png", { -140.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
-	VLobbyChar[26]->Setting("spr_Title_Suisei_6.png", { -50.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
-	VLobbyChar[27]->Setting("spr_Title_Azki_5.png", { -180.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
-	VLobbyChar[28]->Setting("spr_Title_Miko_5.png", { -5.0f * ContentsValue::MultipleSize, 40.0f * ContentsValue::MultipleSize });
+	VLobbyChar[24]->Setting("spr_Title_Sora.png", { -100.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize }, 7);
+	VLobbyChar[25]->Setting("spr_Title_Roboco.png", { -140.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize }, 6);
+	VLobbyChar[26]->Setting("spr_Title_Suisei.png", { -50.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize }, 6);
+	VLobbyChar[27]->Setting("spr_Title_Azki.png", { -180.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize }, 5);
+	VLobbyChar[28]->Setting("spr_Title_Miko.png", { -5.0f * ContentsValue::MultipleSize, 40.0f * ContentsValue::MultipleSize }, 5);
 																					 
-	VLobbyChar[29]->Setting("spr_Title_Hosinoba_0.png", { -90.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
-	VLobbyChar[30]->Setting("spr_Title_Eopiputin_1.png", { -130.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
-	VLobbyChar[31]->Setting("spr_Title_Rice_1.png", { -50.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
-	VLobbyChar[32]->Setting("spr_Title_Olri_0.png", { -170.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
-	VLobbyChar[33]->Setting("spr_Title_Kanaeru_2.png", { -5.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize });
-	VLobbyChar[34]->Setting("spr_Title_Laine_1.png", { -225.0f * ContentsValue::MultipleSize, 70.0f * ContentsValue::MultipleSize });
-	VLobbyChar[35]->Setting("spr_Title_Cobalskia_3.png", { 30.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize });
-	VLobbyChar[36]->Setting("spr_Title_Melpitsa_0.png", { -260.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize });
-	VLobbyChar[37]->Setting("spr_Title_Zeta_4.png", { 75.0f * ContentsValue::MultipleSize, 50.0f * ContentsValue::MultipleSize });
+	VLobbyChar[29]->Setting("spr_Title_Hosinoba.png", { -90.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize }, 0);
+	VLobbyChar[30]->Setting("spr_Title_Eopiputin.png", { -130.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize }, 1);
+	VLobbyChar[31]->Setting("spr_Title_Rice.png", { -50.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize }, 1);
+	VLobbyChar[32]->Setting("spr_Title_Olri.png", { -170.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize }, 0);
+	VLobbyChar[33]->Setting("spr_Title_Kanaeru.png", { -5.0f * ContentsValue::MultipleSize, 80.0f * ContentsValue::MultipleSize }, 2);
+	VLobbyChar[34]->Setting("spr_Title_Laine.png", { -225.0f * ContentsValue::MultipleSize, 70.0f * ContentsValue::MultipleSize }, 1);
+	VLobbyChar[35]->Setting("spr_Title_Cobalskia.png", { 30.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize }, 3);
+	VLobbyChar[36]->Setting("spr_Title_Melpitsa.png", { -260.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize }, 0);
+	VLobbyChar[37]->Setting("spr_Title_Zeta.png", { 75.0f * ContentsValue::MultipleSize, 50.0f * ContentsValue::MultipleSize }, 4);
 }
 
 void ALobbyGameMode::LobbyDebugText(float _DeltaTime)

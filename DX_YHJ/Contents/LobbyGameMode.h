@@ -5,6 +5,7 @@
 #include "Logo.h"
 #include "MainMenuButton.h"
 #include "LobbyChar.h"
+#include "CharSelectUI.h"
 
 // Ό³Έν :
 class ALobbyGameMode : public AGameMode
@@ -29,6 +30,10 @@ protected:
 	void LevelEnd(ULevel* _NextLevel);
 	void LevelStart(ULevel* _PrevLevel);
 
+	std::string GetSelectCharName()
+	{
+		return SelectCharName;
+	}
 
 private:
 	std::shared_ptr<AHoloCursor> Cursor;
@@ -36,20 +41,30 @@ private:
 	std::list<std::shared_ptr<ALobbyBackAnimationBar>> LBar;
 	float DelaySpawnBar = 0.0f;
 
+	bool IsMainLobby = true;
+
 	std::shared_ptr<ALogo> Logo;
 
 	std::vector<std::shared_ptr<AMainMenuButton>> VMainButton;
 	std::vector<std::shared_ptr<AMainMenuButton>>::iterator VMainButtonIter = VMainButton.begin();
 
 	std::vector<std::shared_ptr<ALobbyChar>> VLobbyChar;
+	std::vector<std::shared_ptr<ALobbyChar>>::iterator VLobbyCharIter = VLobbyChar.begin();
 
 	int ButtonSelect = 0;
+
+	std::shared_ptr<ACharSelectUI> CharSelectUI;
+	std::string SelectCharName = "Kronii";
+
+	void StartCharSelect();
+	void ReturnMainLobby();
 
 	void SpawnBackBar(float _DeltaTime);
 
 	void SpawnMainMenuButton();
 	void CheckMainButtonSelect();
 
+	
 	void SpawnLobbyChar();
 
 	void LobbyDebugText(float _DeltaTime);

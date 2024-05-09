@@ -17,7 +17,7 @@ public:
 	ALobbyChar& operator=(const ALobbyChar& _Other) = delete;
 	ALobbyChar& operator=(ALobbyChar&& _Other) noexcept = delete;
 
-	void Setting(std::string _Image, FVector _Pos);
+	void Setting(std::string _Image, FVector _Pos, int _RenderOrder);
 
 protected:
 	void BeginPlay() override;
