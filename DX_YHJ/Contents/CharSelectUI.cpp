@@ -41,6 +41,10 @@ void ACharSelectUI::BeginPlay()
 {
 	Super::BeginPlay();
 
+	CreateCharAnimation("Ame");
+	CreateCharAnimation("Aqua");
+	CreateCharAnimation("Ayame");
+	CreateCharAnimation("AZKiPortrait");
 	CreateCharAnimation("Kiara"); 
 	CreateCharAnimation("Kronii");
 

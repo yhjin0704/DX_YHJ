@@ -86,6 +86,7 @@ protected:
 	UDefaultSceneComponent* Root;
 
 	USpriteRenderer* Renderer;
+	USpriteRenderer* ShadowRenderer;
 	USpriteRenderer* SavedRenderer;
 	UCollision* Collision;
 	UCollision* OverCheckCollision;

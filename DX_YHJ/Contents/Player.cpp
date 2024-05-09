@@ -19,6 +19,11 @@ APlayer::APlayer()
 	Renderer->SetupAttachment(Root);
 	Renderer->SetPivot(EPivot::BOT);
 
+	ShadowRenderer = CreateDefaultSubObject<USpriteRenderer>("ShadowRenderer");
+	ShadowRenderer->SetupAttachment(Root);
+	ShadowRenderer->SetAutoSize(ContentsValue::MultipleSize, true);
+	ShadowRenderer->SetPivot(EPivot::BOT);
+
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
 	Collision->SetScale({ 16.0f * ContentsValue::MultipleSize, 16.0f * ContentsValue::MultipleSize });
@@ -51,6 +56,9 @@ void APlayer::BeginPlay()
 
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetOrder(ERenderOrder::Player);
+
+	ShadowRenderer->SetSprite("Shadow_0.png");
+	ShadowRenderer->SetOrder(ERenderOrder::Shadow);
 	                                                                        
 	Collision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (10.0f * ContentsValue::MultipleSize) });
 

@@ -6,6 +6,7 @@
 #include "MainMenuButton.h"
 #include "LobbyChar.h"
 #include "CharSelectUI.h"
+#include "CharSelectButton.h"
 
 // Ό³Έν :
 class ALobbyGameMode : public AGameMode
@@ -54,6 +55,10 @@ private:
 	int ButtonSelect = 0;
 
 	std::shared_ptr<ACharSelectUI> CharSelectUI;
+
+	std::vector<std::shared_ptr<ACharSelectButton>> VCharSelectButton;
+	std::vector<std::shared_ptr<ACharSelectButton>>::iterator VCharSelectButtonIter = VCharSelectButton.begin();
+
 	std::string SelectCharName = "Kronii";
 
 	void StartCharSelect();
@@ -64,8 +69,9 @@ private:
 	void SpawnMainMenuButton();
 	void CheckMainButtonSelect();
 
-	
 	void SpawnLobbyChar();
+
+	void SpawnCharSelectButton();
 
 	void LobbyDebugText(float _DeltaTime);
 };

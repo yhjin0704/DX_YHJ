@@ -6,6 +6,8 @@ AFubuzilla::AFubuzilla()
 {
 	SavedRenderer->SetPosition({ GetActorLocation().X, GetActorLocation().Y + (50.0f * ContentsValue::MultipleSize) });
 
+	ShadowRenderer->SetAutoSize(5.0f * ContentsValue::MultipleSize, true);
+
 	Collision->SetScale({ 96.0f * ContentsValue::MultipleSize, 96.0f * ContentsValue::MultipleSize });
 
 	OverCheckCollision->SetScale({ 192.0f * ContentsValue::MultipleSize, 120.0f * ContentsValue::MultipleSize });

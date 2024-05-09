@@ -35,20 +35,15 @@ void AAsacocoBullet::CheckHit()
 {
 	Collision->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
 		{
-			if (0.0f >= HitDelay)
-			{
-				AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
+			AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
 
-				float Hp = Monster->GetHp();
-				Hp -= Atk;
-				Monster->SetHp(Hp);
-
-				HitDelay = 0.5f;
-			}
+			float Hp = Monster->GetHp();
+			Hp -= Atk;
+			Monster->SetHp(Hp);
 		}
 	);
 
-	Collision->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
+	/*Collision->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
 		{
 			if (0.0f >= HitDelay)
 			{
@@ -61,5 +56,5 @@ void AAsacocoBullet::CheckHit()
 				HitDelay = 0.5f;
 			}
 		}
-	);
+	);*/
 }

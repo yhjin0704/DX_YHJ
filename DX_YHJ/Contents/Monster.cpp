@@ -16,6 +16,11 @@ AMonster::AMonster()
 	SavedRenderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	SavedRenderer->SetActive(false);
 
+	ShadowRenderer = CreateDefaultSubObject<USpriteRenderer>("ShadowRenderer");
+	ShadowRenderer->SetupAttachment(Root);
+	ShadowRenderer->SetAutoSize(ContentsValue::MultipleSize, true);
+	ShadowRenderer->SetPivot(EPivot::BOT);
+
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
 	Collision->SetCollisionGroup(ECollisionOrder::Monster);
@@ -42,6 +47,9 @@ void AMonster::BeginPlay()
 	SavedRenderer->CreateAnimation("MonsterSavedHeart", "MonsterSavedHeart", 0.1f, false);
 	SavedRenderer->SetOrder(ERenderOrder::MonsterUIUp);
 	SavedRenderer->ChangeAnimation("MonsterSavedHeart");
+
+	ShadowRenderer->SetSprite("Shadow_0.png");
+	ShadowRenderer->SetOrder(ERenderOrder::Shadow);
 }
 
 
@@ -144,6 +152,7 @@ void AMonster::CheckSaved()
 void AMonster::Saved(float _DeltaTime)
 {
 	SavedRenderer->SetActive(true);
+	ShadowRenderer->SetActive(false);
 
 	if (EEngineDir::Left == SavedDir)
 	{

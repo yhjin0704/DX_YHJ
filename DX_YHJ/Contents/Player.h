@@ -69,6 +69,7 @@ protected:
 
 private:
 	USpriteRenderer* Renderer;
+	USpriteRenderer* ShadowRenderer;
 	UCollision* Collision;
 
 	USpriteRenderer* AtkDir;

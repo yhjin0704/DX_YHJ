@@ -54,7 +54,7 @@ void ALobbyChar::Setting(std::string _Image, FVector _Pos, int _RenderOrder)
 	Renderer->SetSprite(_Image);
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->SetPosition(_Pos);
-	Renderer->SetOrder(_RenderOrder + 2);
+	Renderer->SetOrder(_RenderOrder + 3);
 }
 
 void ALobbyChar::Move(float _DeltaTime)

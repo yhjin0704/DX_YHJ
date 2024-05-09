@@ -42,7 +42,7 @@ void ALobbyGameMode::BeginPlay()
 	CharSelectUI = GetWorld()->SpawnActor<ACharSelectUI>("CharSelectUI");
 	CharSelectUI->AllActiveOff();
 
-
+	SpawnCharSelectButton();
 }
 
 void ALobbyGameMode::Tick(float _DeltaTime)
@@ -98,6 +98,12 @@ void ALobbyGameMode::StartCharSelect()
 
 		CharSelectUI->AllActiveOn();
 
+		for (VCharSelectButtonIter = VCharSelectButton.begin(); VCharSelectButtonIter != VCharSelectButton.end(); ++VCharSelectButtonIter)
+		{
+			std::shared_ptr<ACharSelectButton> CharSelectButton = *VCharSelectButtonIter;
+			CharSelectButton->AllActiveOn();
+		}
+
 		IsMainLobby = false;
 	}
 }
@@ -119,6 +125,12 @@ void ALobbyGameMode::ReturnMainLobby()
 		}
 
 		CharSelectUI->AllActiveOff();
+
+		for (VCharSelectButtonIter = VCharSelectButton.begin(); VCharSelectButtonIter != VCharSelectButton.end(); ++VCharSelectButtonIter)
+		{
+			std::shared_ptr<ACharSelectButton> CharSelectButton = *VCharSelectButtonIter;
+			CharSelectButton->AllActiveOff();
+		}
 
 		IsMainLobby = true;
 	}
@@ -273,6 +285,40 @@ void ALobbyGameMode::SpawnLobbyChar()
 	VLobbyChar[35]->Setting("spr_Title_Cobalskia.png", { 30.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize }, 3);
 	VLobbyChar[36]->Setting("spr_Title_Melpitsa.png", { -260.0f * ContentsValue::MultipleSize, 60.0f * ContentsValue::MultipleSize }, 0);
 	VLobbyChar[37]->Setting("spr_Title_Zeta.png", { 75.0f * ContentsValue::MultipleSize, 50.0f * ContentsValue::MultipleSize }, 4);
+}
+
+void ALobbyGameMode::SpawnCharSelectButton()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		std::shared_ptr<ACharSelectButton> CharSelectButton = GetWorld()->SpawnActor<ACharSelectButton>("CharSelectButton");
+		CharSelectButton->SetActorLocation({ -425.0f - (i * -95.0f) ,240.0f });
+		VCharSelectButton.push_back(CharSelectButton);
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		std::shared_ptr<ACharSelectButton> CharSelectButton = GetWorld()->SpawnActor<ACharSelectButton>("CharSelectButton");
+		CharSelectButton->SetActorLocation({ -425.0f - (i * -95.0f), 155.0f });
+		VCharSelectButton.push_back(CharSelectButton);
+	}
+	for (int i = 0; i < 9; i++)
+	{
+		std::shared_ptr<ACharSelectButton> CharSelectButton = GetWorld()->SpawnActor<ACharSelectButton>("CharSelectButton");
+		CharSelectButton->SetActorLocation({ -380.0f - (i * -95.0f), 70.0f });
+		VCharSelectButton.push_back(CharSelectButton);
+	}
+	for (int i = 0; i < 9; i++)
+	{
+		std::shared_ptr<ACharSelectButton> CharSelectButton = GetWorld()->SpawnActor<ACharSelectButton>("CharSelectButton");
+		CharSelectButton->SetActorLocation({ -380.0f - (i * -95.0f), -15.0f });
+		VCharSelectButton.push_back(CharSelectButton);
+	}
+
+	for (VCharSelectButtonIter = VCharSelectButton.begin(); VCharSelectButtonIter != VCharSelectButton.end(); ++VCharSelectButtonIter)
+	{
+		std::shared_ptr<ACharSelectButton> CharSelectButton = *VCharSelectButtonIter;
+		CharSelectButton->AllActiveOff();
+	}
 }
 
 void ALobbyGameMode::LobbyDebugText(float _DeltaTime)
