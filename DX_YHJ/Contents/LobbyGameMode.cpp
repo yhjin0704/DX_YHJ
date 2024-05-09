@@ -171,39 +171,39 @@ void ALobbyGameMode::SpawnLobbyChar()
 	VLobbyChar[6]->Setting("spr_Title_Kiara_15.png", { 60.0f * ContentsValue::MultipleSize, -80.0f * ContentsValue::MultipleSize });
 	VLobbyChar[7]->Setting("spr_Title_Kronii_14.png", { -275.0f * ContentsValue::MultipleSize, -70.0f * ContentsValue::MultipleSize });
 
-	VLobbyChar[8]->Setting("spr_Title_Shion_13.png", { -100.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
-	VLobbyChar[9]->Setting("spr_Title_Choco_12.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[10]->Setting("spr_Title_Irys_13.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[11]->Setting("spr_Title_Subaru_12.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[12]->Setting("spr_Title_Ayame_13.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[13]->Setting("spr_Title_Aqua_12.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[14]->Setting("spr_Title_Calli_13.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[15]->Setting("spr_Title_Sana_12.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
+	VLobbyChar[8]->Setting("spr_Title_Shion_13.png", { -100.0f * ContentsValue::MultipleSize, -60.0f * ContentsValue::MultipleSize });
+	VLobbyChar[9]->Setting("spr_Title_Choco_12.png", { -135.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
+	VLobbyChar[10]->Setting("spr_Title_Irys_13.png", { -185.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
+	VLobbyChar[11]->Setting("spr_Title_Subaru_12.png", { -50.0f * ContentsValue::MultipleSize, -60.0f * ContentsValue::MultipleSize });
+	VLobbyChar[12]->Setting("spr_Title_Ayame_13.png", { -10.0f * ContentsValue::MultipleSize, -45.0f * ContentsValue::MultipleSize });
+	VLobbyChar[13]->Setting("spr_Title_Aqua_12.png", { 35.0f * ContentsValue::MultipleSize, -40.0f * ContentsValue::MultipleSize });
+	VLobbyChar[14]->Setting("spr_Title_Calli_13.png", { 70.0f * ContentsValue::MultipleSize, -35.0f * ContentsValue::MultipleSize });
+	VLobbyChar[15]->Setting("spr_Title_Sana_12.png", { -220.0f * ContentsValue::MultipleSize, -55.0f * ContentsValue::MultipleSize });
 																						 
-	VLobbyChar[16]->Setting("spr_Title_Matsuri_11.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[17]->Setting("spr_Title_Fubuki_10.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[18]->Setting("spr_Title_Mel_10.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[19]->Setting("spr_Title_Mio_11.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[20]->Setting("spr_Title_Haato_9.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[21]->Setting("spr_Title_Okayu_10.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[22]->Setting("spr_Title_Aki_8.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[23]->Setting("spr_Title_Korone_11.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
+	VLobbyChar[16]->Setting("spr_Title_Matsuri_11.png", { -110.0f * ContentsValue::MultipleSize, -5.0f * ContentsValue::MultipleSize });
+	VLobbyChar[17]->Setting("spr_Title_Fubuki_10.png", { -75.0f * ContentsValue::MultipleSize, -15.0f * ContentsValue::MultipleSize });
+	VLobbyChar[18]->Setting("spr_Title_Mel_10.png", { -155.0f * ContentsValue::MultipleSize, -5.0f * ContentsValue::MultipleSize });
+	VLobbyChar[19]->Setting("spr_Title_Mio_11.png", { -35.0f * ContentsValue::MultipleSize, -10.0f * ContentsValue::MultipleSize });
+	VLobbyChar[20]->Setting("spr_Title_Haato_9.png", { -190.0f * ContentsValue::MultipleSize, 0.0f * ContentsValue::MultipleSize });
+	VLobbyChar[21]->Setting("spr_Title_Okayu_10.png", { 10.0f * ContentsValue::MultipleSize, 0.0f * ContentsValue::MultipleSize });
+	VLobbyChar[22]->Setting("spr_Title_Aki_8.png", { -245.0f * ContentsValue::MultipleSize, 5.0f * ContentsValue::MultipleSize });
+	VLobbyChar[23]->Setting("spr_Title_Korone_11.png", { 50.0f * ContentsValue::MultipleSize, 5.0f * ContentsValue::MultipleSize });
 																					 
-	VLobbyChar[24]->Setting("spr_Title_Sora_7.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[25]->Setting("spr_Title_Roboco_6.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[26]->Setting("spr_Title_Suisei_6.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[27]->Setting("spr_Title_Azki_5.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[28]->Setting("spr_Title_Miko_5.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
+	VLobbyChar[24]->Setting("spr_Title_Sora_7.png", { -100.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
+	VLobbyChar[25]->Setting("spr_Title_Roboco_6.png", { -140.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
+	VLobbyChar[26]->Setting("spr_Title_Suisei_6.png", { -50.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
+	VLobbyChar[27]->Setting("spr_Title_Azki_5.png", { -180.0f * ContentsValue::MultipleSize, 35.0f * ContentsValue::MultipleSize });
+	VLobbyChar[28]->Setting("spr_Title_Miko_5.png", { -5.0f * ContentsValue::MultipleSize, 40.0f * ContentsValue::MultipleSize });
 																					 
-	VLobbyChar[29]->Setting("spr_Title_Hosinoba_0.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[30]->Setting("spr_Title_Eopiputin_1.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[31]->Setting("spr_Title_Rice_1.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[32]->Setting("spr_Title_Olri_0.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[33]->Setting("spr_Title_Kanaeru_2.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[34]->Setting("spr_Title_Laine_1.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[35]->Setting("spr_Title_Cobalskia_3.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[36]->Setting("spr_Title_Melpitsa_0.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
-	VLobbyChar[37]->Setting("spr_Title_Zeta_4.png", { 0 * ContentsValue::MultipleSize, 0 * ContentsValue::MultipleSize });
+	VLobbyChar[29]->Setting("spr_Title_Hosinoba_0.png", { -100.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[30]->Setting("spr_Title_Eopiputin_1.png", { -135.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[31]->Setting("spr_Title_Rice_1.png", { -50.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[32]->Setting("spr_Title_Olri_0.png", { -185.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[33]->Setting("spr_Title_Kanaeru_2.png", { -10.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[34]->Setting("spr_Title_Laine_1.png", { -220.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[35]->Setting("spr_Title_Cobalskia_3.png", { 35.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[36]->Setting("spr_Title_Melpitsa_0.png", { -275.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
+	VLobbyChar[37]->Setting("spr_Title_Zeta_4.png", { 70.0f * ContentsValue::MultipleSize, 75.0f * ContentsValue::MultipleSize });
 }
 
 void ALobbyGameMode::LobbyDebugText(float _DeltaTime)
