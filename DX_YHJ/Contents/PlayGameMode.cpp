@@ -84,23 +84,22 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	if (true == IsPlayStart)
 	{
-		IsPause = false;
-
+		
 		IsPlayStart = false;
 	}
 	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 5.0f, SpawnTerm1,
-		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		"Shrimp", 1.0f, 8, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		false, 10);
 	SpawnNomalMonsterTimeSet(PlayTime, 0.5f, 20.0f, 10.0f, SpawnTerm2,
-		"Shrimp", 1.0f, 8.0f, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
+		"Shrimp", 1.0f, 8, 2.0f, 0.35f, 6.0f, EMonsterMoveType::Follow,
 		true, 10);
 	SpawnNomalMonsterTimeSet(PlayTime, 20.0f, 40.0f, 5.0f, SpawnTerm1,
-		"Deadbeat", 1.0f, 40.0f, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
+		"Deadbeat", 1.0f, 40, 4.0f, 0.4f, 7.0f, EMonsterMoveType::Follow,
 		false, 5);
 	SpawnNomalMonsterTimeSet(PlayTime, 40.0f, 60.0f, 5.0f, SpawnTerm1,
-		"Takodachi", 1.0f, 80.0f, 4.0f, 0.4f, 8.0f);
+		"Takodachi", 1.0f, 80, 4.0f, 0.4f, 8.0f);
 	SpawnNomalMonsterTimeSet(PlayTime, 60.0f, 80.0f, 5.0f, SpawnTerm1,
-		"KFP", 1.0f, 20.0f, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
+		"KFP", 1.0f, 20, 2.0f, 1.0f, 3.0f, EMonsterMoveType::StraightToPlayer,
 		true, 20.0f, true, 10);
 	SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
 
@@ -119,6 +118,9 @@ void APlayGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 
+	IsPause = false;
+
+	PlayLevelUI->StartSetting();
 	Player->State.ChangeState("Idle");
 }
 
@@ -198,7 +200,7 @@ void APlayGameMode::InfinityGroundCheck()
 	}
 }
 
-std::shared_ptr<ANomalMonster> APlayGameMode::SpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay)
+std::shared_ptr<ANomalMonster> APlayGameMode::SpawnNomalMonster(std::string _Name, float _Size, int _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay)
 {
 	std::shared_ptr<ANomalMonster> Monster;
 
@@ -258,7 +260,7 @@ float4 APlayGameMode::RandomLocation(bool _Group)
 	return MonsterPos;
 }
 
-void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
+void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, int _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, 
 	bool _WillTimeOutDestroy, float _TimeOutDestoryDelay, bool _Group, int _Quantity)
 {
 	if (0 >= _Quantity)
@@ -299,7 +301,7 @@ void APlayGameMode::RandomSpawnNomalMonster(std::string _Name, float _Size, floa
 }
 
 void APlayGameMode::SpawnNomalMonsterTimeSet(float _DeltaTime, float _SpawnBegin, float _SpawnEnd, float _Term, float& _SpawnTerm,
-	std::string _Name, float _Size, float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
+	std::string _Name, float _Size, int _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType,
 	bool _WillTimeOutDestroy, float _TimeOutDestoryDelay, bool _Group, int _Quantity)
 {
 	if (PlayTime >= _SpawnBegin && PlayTime < _SpawnEnd)

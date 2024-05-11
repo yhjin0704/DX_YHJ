@@ -73,7 +73,7 @@
     <ClCompile Include="LobbyBackAnimationBar.cpp">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="AExpObject.cpp">
+    <ClCompile Include="ExpObject.cpp">
       <Filter>Level\PlayLevel</Filter>
     </ClCompile>
     <ClCompile Include="Fubuzilla.cpp">
@@ -177,7 +177,7 @@
     <ClInclude Include="LobbyBackAnimationBar.h">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="AExpObject.h">
+    <ClInclude Include="ExpObject.h">
       <Filter>Level\PlayLevel</Filter>
     </ClInclude>
     <ClInclude Include="Fubuzilla.h">

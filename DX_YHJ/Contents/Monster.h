@@ -44,19 +44,19 @@ public:
 		return OverCheckCollision;
 	}
 
-	float GetHp()
+	int GetHp()
 	{
 		return Hp;
+	}
+
+	void SetHp(int _Hp)
+	{
+		Hp = _Hp;
 	}
 
 	float GetAtk()
 	{
 		return Atk;
-	}
-
-	void SetHp(float _Hp)
-	{
-		Hp = _Hp;
 	}
 
 	void SetSpeed(float _Speed)
@@ -65,7 +65,7 @@ public:
 		CalSpeed = ContentsValue::BaseSpeed * Speed;
 	}
 
-	void SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDelay);
+	void SetMonsterStatus(int _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDelay);
 
 	FVector CreateGroupToPlayerDir();
 
@@ -95,7 +95,7 @@ protected:
 	FVector ToPlayerDir;
 
 	std::string Name = "Shrimp";
-	float Hp = 8.0f;
+	int Hp = 8;
 	float Atk = 2.0f;
 	float Speed = 0.35f;
 	float CalSpeed = ContentsValue::BaseSpeed * Speed;

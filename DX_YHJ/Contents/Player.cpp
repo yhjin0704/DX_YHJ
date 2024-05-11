@@ -192,7 +192,7 @@ void APlayer::CheckHit(float _DeltaTime)
 	HitDelay -= _DeltaTime;
 	if (0.0f >= HitDelay)
 	{
-		HitDelay = 0.0f;
+		HitDelay = 0.1f;
 	}
 
 	Collision->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
@@ -200,7 +200,8 @@ void APlayer::CheckHit(float _DeltaTime)
 			AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
 
 			float MAtk = Monster->GetAtk();
-			Hp -= MAtk;
+
+			Hp -= lround(MAtk);
 		}
 	);
 
@@ -211,9 +212,9 @@ void APlayer::CheckHit(float _DeltaTime)
 				AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
 
 				float MAtk = Monster->GetAtk();
-				Hp -= MAtk;
+				Hp -= lround(MAtk);
 
-				HitDelay = 0.5f;
+				HitDelay = 0.1f;
 			}
 		}
 	);

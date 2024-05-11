@@ -25,6 +25,11 @@ public:
 
 	UStateManager State;
 
+	std::string GetName()
+	{
+		return Name;
+	}
+
 	void SetName(std::string _Name)
 	{
 		Name = _Name;
@@ -40,7 +45,7 @@ public:
 		return Angle;
 	}
 
-	float GetHp()
+	int GetHp()
 	{
 		return Hp;
 	}
@@ -85,8 +90,8 @@ private:
 
 	std::string Name = "Kronii";
 	EPlayerDir PlayerDir = EPlayerDir::E;
-	float MaxHp = 100.0f;
-	float Hp = 100.0f;
+	int MaxHp = 100;
+	int Hp = 100;
 	float Atk = 1;
 	float CriRate = 0.05f;
 	float Haste = 0.0f;

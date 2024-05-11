@@ -28,7 +28,7 @@ AFubuzilla::AFubuzilla()
 	LaserCollision->SetActive(false);
 
 	Name = "Fubuzilla";
-	Hp = 8000.0f;
+	Hp = 8000;
 	Atk = 15.0f;
 	Speed = 0.8f;
 	CalSpeed = ContentsValue::BaseSpeed * Speed;

@@ -17,6 +17,8 @@ public:
 	APlayLevelUI& operator=(const APlayLevelUI& _Other) = delete;
 	APlayLevelUI& operator=(APlayLevelUI&& _Other) noexcept = delete;
 
+	void StartSetting();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

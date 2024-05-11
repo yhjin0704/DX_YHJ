@@ -52,18 +52,7 @@ void ALobbyGameMode::Tick(float _DeltaTime)
 	SpawnBackBar(_DeltaTime);
 
 	CheckMainButtonSelect();
-
-	if (true != IsMainLobby)
-	{
-		if (true == IsDown(VK_ESCAPE))
-		{
-			ReturnMainLobby();
-		}
-		else if (true == IsDown(VK_RETURN))
-		{
-			GEngine->ChangeLevel("PlayLevel");
-		}
-	}
+	CheckCharSelectInput();
 
 	LobbyDebugText(_DeltaTime);
 }
@@ -167,74 +156,6 @@ void ALobbyGameMode::SpawnMainMenuButton()
 	}
 }
 
-void ALobbyGameMode::CheckMainButtonSelect()
-{
-	if (true == IsMainLobby)
-	{
-		if (true == IsDown('W'))
-		{
-			--ButtonSelect;
-			if (0 > ButtonSelect)
-			{
-				ButtonSelect = VMainButton.size() - 1;
-			}
-		}
-		else if (true == IsDown('S'))
-		{
-			++ButtonSelect;
-			if (VMainButton.size() <= ButtonSelect)
-			{
-				ButtonSelect = 0;
-			}
-		}
-
-		for (int i = 0; i < 2; ++i)
-		{
-			if (true == VMainButton[i]->GetIsCursorOn())
-			{
-				ButtonSelect = i;
-			}
-			VMainButton[i]->SetIsSelect(false);
-		}
-
-		switch (ButtonSelect)
-		{
-		case 0:
-			VMainButton[ButtonSelect]->SetIsSelect(true);
-			if (true == IsDown(VK_RETURN))
-			{
-				StartCharSelect();
-				//GEngine->ChangeLevel("PlayLevel");
-			}
-			else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
-			{
-				if (true == IsDown(VK_LBUTTON))
-				{
-					StartCharSelect();
-					//GEngine->ChangeLevel("PlayLevel");
-				}
-			}
-			break;
-		case 1:
-			VMainButton[ButtonSelect]->SetIsSelect(true);
-			if (true == IsDown(VK_RETURN))
-			{
-				GEngine->EngineWindow.Off();
-			}
-			else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
-			{
-				if (true == IsDown(VK_LBUTTON))
-				{
-					GEngine->EngineWindow.Off();
-				}
-			}
-			break;
-		default:
-			break;
-		}
-	}
-}
-
 void ALobbyGameMode::SpawnLobbyChar()
 {
 	for (int i = 0; i < 38; i++)
@@ -322,6 +243,89 @@ void ALobbyGameMode::SpawnCharSelectButton()
 
 	VCharSelectButton[3]->Setting("Kiara");
 	VCharSelectButton[6]->Setting("Kronii");
+}
+
+void ALobbyGameMode::CheckMainButtonSelect()
+{
+	if (true == IsMainLobby)
+	{
+		if (true == IsDown('W'))
+		{
+			--ButtonSelect;
+			if (0 > ButtonSelect)
+			{
+				ButtonSelect = VMainButton.size() - 1;
+			}
+		}
+		else if (true == IsDown('S'))
+		{
+			++ButtonSelect;
+			if (VMainButton.size() <= ButtonSelect)
+			{
+				ButtonSelect = 0;
+			}
+		}
+
+		for (int i = 0; i < 2; ++i)
+		{
+			if (true == VMainButton[i]->GetIsCursorOn())
+			{
+				ButtonSelect = i;
+			}
+			VMainButton[i]->SetIsSelect(false);
+		}
+
+		switch (ButtonSelect)
+		{
+		case 0:
+			VMainButton[ButtonSelect]->SetIsSelect(true);
+			if (true == IsDown(VK_RETURN))
+			{
+				StartCharSelect();
+				//GEngine->ChangeLevel("PlayLevel");
+			}
+			else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+			{
+				if (true == IsDown(VK_LBUTTON))
+				{
+					StartCharSelect();
+					//GEngine->ChangeLevel("PlayLevel");
+				}
+			}
+			break;
+		case 1:
+			VMainButton[ButtonSelect]->SetIsSelect(true);
+			if (true == IsDown(VK_RETURN))
+			{
+				GEngine->EngineWindow.Off();
+			}
+			else if (true == VMainButton[ButtonSelect]->GetIsCursorOn())
+			{
+				if (true == IsDown(VK_LBUTTON))
+				{
+					GEngine->EngineWindow.Off();
+				}
+			}
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void ALobbyGameMode::CheckCharSelectInput()
+{
+	if (true != IsMainLobby)
+	{
+		if (true == IsDown(VK_ESCAPE))
+		{
+			ReturnMainLobby();
+		}
+		else if (true == IsDown(VK_RETURN))
+		{
+			GEngine->ChangeLevel("PlayLevel");
+		}
+	}
 }
 
 void ALobbyGameMode::LobbyDebugText(float _DeltaTime)

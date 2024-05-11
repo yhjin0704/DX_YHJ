@@ -1,5 +1,5 @@
 #include "PreCompile.h"
-#include "AExpObject.h"
+#include "ExpObject.h"
 
 AExpObject::AExpObject()
 {

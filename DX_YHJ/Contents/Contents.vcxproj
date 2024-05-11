@@ -27,7 +27,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="AExpObject.h">
+    <ClInclude Include="ExpObject.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -142,7 +142,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="AExpObject.cpp">
+    <ClCompile Include="ExpObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>

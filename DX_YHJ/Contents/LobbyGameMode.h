@@ -60,13 +60,13 @@ private:
 	void ReturnMainLobby();
 
 	void SpawnBackBar(float _DeltaTime);
-
 	void SpawnMainMenuButton();
-	void CheckMainButtonSelect();
-
 	void SpawnLobbyChar();
 
 	void SpawnCharSelectButton();
+	
+	void CheckMainButtonSelect();
+	void CheckCharSelectInput();
 
 	void LobbyDebugText(float _DeltaTime);
 };

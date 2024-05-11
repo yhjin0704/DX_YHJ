@@ -9,7 +9,7 @@ AKiaraWeapon::AKiaraWeapon()
 	CollisionR0->SetScale({ 50.0f * ContentsValue::MultipleSize, 50.f * ContentsValue::MultipleSize });
 
 	CollisionR0->SetCollisionGroup(ECollisionOrder::Weapon);
-	CollisionR0->SetCollisionType(ECollisionType::Rect);
+	CollisionR0->SetCollisionType(ECollisionType::RotRect);
 }
 
 AKiaraWeapon::~AKiaraWeapon()
@@ -41,6 +41,8 @@ void AKiaraWeapon::Tick(float _DeltaTime)
 		CollisionR0->SetActive(true);
 		CollisionR0->SetPosition(Root->GetLocalPosition());
 		CollisionR0->AddPosition(Dir * 50.0f * ContentsValue::MultipleSize);
+
+		CollisionR0->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 
 		CheckHit();
 	}

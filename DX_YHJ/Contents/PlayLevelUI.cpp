@@ -4,8 +4,7 @@
 
 APlayLevelUI::APlayLevelUI()
 {
-	PlayerName = APlayGameMode::MainPlayer->GetName();
-	//CharacterImage->SetSprite("spr_" + PlayerName + "Portrait_0.png");
+	
 }
 
 APlayLevelUI::~APlayLevelUI()
@@ -46,4 +45,10 @@ void APlayLevelUI::BeginPlay()
 void APlayLevelUI::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+}
+
+void APlayLevelUI::StartSetting()
+{
+	PlayerName = APlayGameMode::MainPlayer->GetName();
+	CharacterImage->SetSprite("spr_" + PlayerName + "Portrait_0.png");
 }

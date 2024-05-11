@@ -62,7 +62,7 @@ void AMonster::Tick(float _DeltaTime)
 	TimeOutDestory(_DeltaTime);
 }
 
-void AMonster::SetMonsterStatus(float _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay)
+void AMonster::SetMonsterStatus(int _Hp, float _Atk, float _Speed, float _Exp, EMonsterMoveType _MoveType, bool _WillTimeOutDestroy, float _TimeOutDestoryDelay)
 {
 	Hp = _Hp;
 	Atk = _Atk;
