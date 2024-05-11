@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "NomalMonster.h"
 #include "PlayBackGround.h"
+#include "PlayLevelUI.h"
 
 struct FIntPoint
 {
@@ -36,9 +37,7 @@ public:
 	APlayGameMode(const APlayGameMode& _Other) = delete;
 	APlayGameMode(APlayGameMode&& _Other) noexcept = delete;
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
-	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
-
-	std::shared_ptr<APlayer> GetMainPlayer();
+	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;\
 
 protected:
 	void BeginPlay() override;
@@ -51,6 +50,7 @@ protected:
 
 	std::shared_ptr<AHoloCursor> Cursor;
 	std::shared_ptr<APlayer> Player;
+	std::shared_ptr<APlayLevelUI> PlayLevelUI;
 
 	float4 IndexToCenterPos(FIntPoint _Index);
 	FIntPoint PosToIndex(float4 _Pos);

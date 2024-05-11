@@ -2,6 +2,8 @@
 #include "CharSelectUI.h"
 #include "ContentsValue.h"
 
+std::string ACharSelectUI::SelectCharName = "Kronii";
+
 ACharSelectUI::ACharSelectUI()
 {
 	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Root");
@@ -105,6 +107,7 @@ void ACharSelectUI::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	ChangeSelectCharInfo();
 	ChangeSelectCharAnimation();
 }
 
@@ -112,6 +115,17 @@ void ACharSelectUI::CreateCharAnimation(std::string _Name)
 {
 	CharAnimation->CreateAnimation(_Name + "_Idle", _Name, 0.1f, true, 0, 3);
 	CharAnimation->CreateAnimation(_Name + "_Run", _Name, 0.1f, true, 4, 9);
+}
+
+void ACharSelectUI::ChangeSelectCharInfo()
+{
+	if (PrevSelectCharName != SelectCharName)
+	{
+		BackCharL->SetSprite("spr_Title_" + SelectCharName + ".png");
+		BackCharR->SetSprite("spr_Title_" + SelectCharName + ".png");
+		CharAnimation->ChangeAnimation(SelectCharName + "_Idle");
+	}
+	PrevSelectCharName = SelectCharName;
 }
 
 void ACharSelectUI::ChangeSelectCharAnimation()

@@ -41,4 +41,6 @@ private:
 
 	UImage* StageText = nullptr;
 	UImage* PlayTime = nullptr;
+
+	std::string PlayerName = "";
 };

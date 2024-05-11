@@ -33,14 +33,17 @@ void ABullet::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	TimeOutDestory(_DeltaTime);
+}
+
+void ABullet::MoveStraight(float _DeltaTime)
+{
 	Renderer->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 
 	Dir = float4::DegToDir(Angle);
 	Dir.Z = 0.0f;
 
 	AddActorLocation(Dir * _DeltaTime * BulletSpeed * ContentsValue::MultipleSize);
-
-	TimeOutDestory(_DeltaTime);
 }
 
 void ABullet::TimeOutDestory(float _DeltaTime)

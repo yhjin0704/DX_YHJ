@@ -26,6 +26,8 @@ void AAsacocoBullet::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	MoveStraight(_DeltaTime);
+
 	BulletSpeed = 500.0f;
 
 	CheckHit();

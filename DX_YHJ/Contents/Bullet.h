@@ -25,6 +25,8 @@ protected:
 	float BulletSpeed = 0.0f;
 	float TimeOutDestoryTime = 5.0f;
 
+	void MoveStraight(float _DeltaTime);
+
 	void TimeOutDestory(float _DeltaTime);
 
 private:

@@ -48,7 +48,16 @@ private:
 
 	std::string Name = "";
 
+	bool IsPlayable = false;
+
 	bool IsCursorOn = false;
 	bool IsSelect = false;
+
+	bool IsFadeIn = true;
+	float FadeAlpha = 0.0f;
+
+	void SelectWhiteFade(float _DeltaTime);
+
+	void ColCheak();
 };
 

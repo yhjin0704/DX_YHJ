@@ -45,6 +45,14 @@
     </ClInclude>
     <ClInclude Include="LobbyBackGround.h" />
     <ClInclude Include="LobbyGameMode.h" />
+    <ClInclude Include="PauseUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShopUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SmolAme.h">
       <SubType>
       </SubType>
@@ -116,6 +124,10 @@
     </ClInclude>
     <ClInclude Include="TitleGameMode.h" />
     <ClInclude Include="Logo.h" />
+    <ClInclude Include="VeiwStatusUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Weapon.h">
       <SubType>
       </SubType>
@@ -148,6 +160,14 @@
     </ClCompile>
     <ClCompile Include="LobbyBackGround.cpp" />
     <ClCompile Include="LobbyGameMode.cpp" />
+    <ClCompile Include="PauseUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShopUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SmolAme.cpp">
       <SubType>
       </SubType>
@@ -223,6 +243,10 @@
     </ClCompile>
     <ClCompile Include="TitleGameMode.cpp" />
     <ClCompile Include="Logo.cpp" />
+    <ClCompile Include="VeiwStatusUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <SubType>
       </SubType>

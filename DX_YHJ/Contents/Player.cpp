@@ -96,12 +96,6 @@ void APlayer::Tick(float _DeltaTime)
 	}
 }
 
-template<typename WeaponType>
-void APlayer::AddWeapon(std::string _Name)
-{
-	std::shared_ptr<AWeapon> Weapon = GetWorld()->SpawnActor<WeaponType>(_Name);
-	VPlayerWeapons.push_back(Weapon);
-}
 
 void APlayer::CreatePlayerAnimation(std::string _Name)
 {

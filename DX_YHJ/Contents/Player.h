@@ -60,8 +60,13 @@ public:
 		return Speed;
 	}
 
-	template <typename WeaponType>
-	void AddWeapon(std::string _Name);
+	template<typename WeaponType>
+	void AddWeapon(std::string _Name)
+	{
+		std::shared_ptr<AWeapon> Weapon = GetWorld()->SpawnActor<WeaponType>(_Name);
+		VPlayerWeapons.push_back(Weapon);
+	}
+
 
 protected:
 	void BeginPlay() override;

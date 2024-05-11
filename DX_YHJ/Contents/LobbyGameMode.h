@@ -14,6 +14,7 @@ class ALobbyGameMode : public AGameMode
 	GENERATED_BODY(AGameMode)
 
 public:
+
 	// constrcuter destructer
 	ALobbyGameMode();
 	~ALobbyGameMode();
@@ -30,11 +31,6 @@ protected:
 
 	void LevelEnd(ULevel* _NextLevel);
 	void LevelStart(ULevel* _PrevLevel);
-
-	std::string GetSelectCharName()
-	{
-		return SelectCharName;
-	}
 
 private:
 	std::shared_ptr<AHoloCursor> Cursor;
@@ -59,7 +55,6 @@ private:
 	std::vector<std::shared_ptr<ACharSelectButton>> VCharSelectButton;
 	std::vector<std::shared_ptr<ACharSelectButton>>::iterator VCharSelectButtonIter = VCharSelectButton.begin();
 
-	std::string SelectCharName = "Kronii";
 
 	void StartCharSelect();
 	void ReturnMainLobby();

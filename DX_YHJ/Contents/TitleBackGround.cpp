@@ -44,12 +44,12 @@ void ATitleBackGround::Tick(float _DeltaTime)
 				++Sequence;
 			}
 		}
-		if (true == IsAnykeyDown())
-		{
-			FadeSequence = 0;
-			FadeRenderer->SetMulColor(FVector::One);
-			Sequence = 2;
-		}
+		//if (true == IsDown(' '))
+		//{
+		//	FadeSequence = 0;
+		//	FadeRenderer->SetMulColor(FVector::One);
+		//	Sequence = 2;
+		//}
 		break;
 	case 1:
 		TitleChange(_DeltaTime, "Title_1.png");

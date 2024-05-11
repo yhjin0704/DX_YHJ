@@ -69,6 +69,9 @@ void APlayGameMode::BeginPlay()
 			BackGroundVector.push_back(BackGround);
 		}
 	}
+
+	PlayLevelUI = GetWorld()->SpawnActor<APlayLevelUI>("PlayLevelUI");
+
 }
 
 void APlayGameMode::Tick(float _DeltaTime)

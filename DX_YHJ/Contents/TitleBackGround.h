@@ -32,7 +32,7 @@ private:
 	bool IsFadeIn = false;
 	bool IsFadeOut = false;
 
-	void TitleChange(float _DeltaTime, std::string _SpriteName, float _Time = 2.0f);
+	void TitleChange(float _DeltaTime, std::string _SpriteName, float _Time = 3.0f);
 
 	void FadeIn(float _DeltaTime);
 	void FadeOut(float _DeltaTime);

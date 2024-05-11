@@ -97,6 +97,15 @@
     <ClCompile Include="CharSelectUI.cpp">
       <Filter>Level\LobbyLevel\Actor\CharSelect</Filter>
     </ClCompile>
+    <ClCompile Include="VeiwStatusUI.cpp">
+      <Filter>Level\PlayLevel\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopUI.cpp">
+      <Filter>Level\PlayLevel\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseUI.cpp">
+      <Filter>Level\PlayLevel\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -194,6 +203,15 @@
     </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Level\PlayLevel\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="VeiwStatusUI.h">
+      <Filter>Level\PlayLevel\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopUI.h">
+      <Filter>Level\PlayLevel\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseUI.h">
+      <Filter>Level\PlayLevel\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

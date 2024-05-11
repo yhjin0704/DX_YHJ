@@ -59,7 +59,7 @@ void ALobbyGameMode::Tick(float _DeltaTime)
 		{
 			ReturnMainLobby();
 		}
-		else if (true == IsDown('P'))
+		else if (true == IsDown(VK_RETURN))
 		{
 			GEngine->ChangeLevel("PlayLevel");
 		}
@@ -72,7 +72,7 @@ void ALobbyGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
 
-	APlayGameMode::MainPlayer->SetName(SelectCharName);
+	APlayGameMode::MainPlayer->SetName(ACharSelectUI::SelectCharName);
 }
 
 void ALobbyGameMode::LevelStart(ULevel* _PrevLevel)
@@ -319,6 +319,9 @@ void ALobbyGameMode::SpawnCharSelectButton()
 		std::shared_ptr<ACharSelectButton> CharSelectButton = *VCharSelectButtonIter;
 		CharSelectButton->AllActiveOff();
 	}
+
+	VCharSelectButton[3]->Setting("Kiara");
+	VCharSelectButton[6]->Setting("Kronii");
 }
 
 void ALobbyGameMode::LobbyDebugText(float _DeltaTime)

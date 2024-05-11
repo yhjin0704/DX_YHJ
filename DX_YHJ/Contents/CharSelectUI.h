@@ -8,6 +8,8 @@ class ACharSelectUI : public AActor
 	GENERATED_BODY(AActor)
 
 public:
+	static std::string SelectCharName;
+
 	// constrcuter destructer
 	ACharSelectUI();
 	~ACharSelectUI();
@@ -54,10 +56,10 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	std::string SelectCharName = "Kiara";
-
 	USpriteRenderer* SelectTextBox;
 	UTextWidget* SelectText;
+
+	std::string PrevSelectCharName = "Kronii";
 
 	USpriteRenderer* BackCharL;
 	USpriteRenderer* BackCharR;
@@ -72,6 +74,7 @@ private:
 	int Count = 0;
 
 	void CreateCharAnimation(std::string _Name);
+	void ChangeSelectCharInfo();
 	void ChangeSelectCharAnimation();
 };
 
