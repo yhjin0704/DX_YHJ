@@ -45,6 +45,11 @@ public:
 		return Angle;
 	}
 
+	int GetMaxHp()
+	{
+		return MaxHp;
+	}
+
 	int GetHp()
 	{
 		return Hp;
