@@ -103,6 +103,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 		true, 20.0f, true, 10);
 	SpawnBossMonsterTimeSet(5.0f, "Fubuzilla");
 
+	PlayLevelUI->SetPlayTime(PlayTime);
 
 	Pause(_DeltaTime);
 

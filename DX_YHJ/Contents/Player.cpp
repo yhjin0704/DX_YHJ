@@ -87,11 +87,9 @@ void APlayer::Tick(float _DeltaTime)
 	CheckHit(_DeltaTime);
 
 	{
-		for (VPlayerWeaponsIter = VPlayerWeapons.begin(); VPlayerWeaponsIter != VPlayerWeapons.end(); ++VPlayerWeaponsIter)
+		for (MPlayerWeaponsIter = MPlayerWeapons.begin(); MPlayerWeaponsIter != MPlayerWeapons.end(); ++MPlayerWeaponsIter)
 		{
-			std::shared_ptr<AWeapon> Weapon = *VPlayerWeaponsIter;
-
-			*VPlayerWeaponsIter = Weapon;
+			*MPlayerWeaponsIter;
 		}
 	}
 }

@@ -69,7 +69,7 @@ public:
 	void AddWeapon(std::string _Name)
 	{
 		std::shared_ptr<AWeapon> Weapon = GetWorld()->SpawnActor<WeaponType>(_Name);
-		VPlayerWeapons.push_back(Weapon);
+		MPlayerWeapons.insert({ _Name, Weapon });
 	}
 
 
@@ -92,7 +92,7 @@ private:
 	EPlayerDir PlayerDir = EPlayerDir::E;
 	int MaxHp = 100;
 	int Hp = 100;
-	float Atk = 1;
+	float Atk = 1.0f;
 	float CriRate = 0.05f;
 	float Haste = 0.0f;
 	float AtkTime = 1.0f;
@@ -101,8 +101,8 @@ private:
 	float LineSpeed = CalSpeed * 0.75f;
 	float Exp = 0;
 
-	std::vector<std::shared_ptr<AWeapon>> VPlayerWeapons;
-	std::vector<std::shared_ptr<AWeapon>>::iterator VPlayerWeaponsIter = VPlayerWeapons.begin();
+	std::map<std::string, std::shared_ptr<AWeapon>> MPlayerWeapons;
+	std::map<std::string, std::shared_ptr<AWeapon>>::iterator MPlayerWeaponsIter = MPlayerWeapons.begin();
 
 	float HitDelay = 0.0f;
 

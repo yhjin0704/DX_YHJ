@@ -36,7 +36,7 @@ void ATitleBackGround::Tick(float _DeltaTime)
 	{
 	case 0:
 		CheckTitleTime += _DeltaTime;
-		if (2.0f < CheckTitleTime)
+		if (1.0f < CheckTitleTime)
 		{
 			FadeOut(_DeltaTime);
 			if (false == IsFadeOut)
