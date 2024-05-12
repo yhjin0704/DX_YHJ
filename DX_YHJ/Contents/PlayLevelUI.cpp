@@ -2,6 +2,8 @@
 #include "PlayLevelUI.h"
 #include "PlayGameMode.h"
 
+int APlayLevelUI::KillCount = 0;
+
 APlayLevelUI::APlayLevelUI()
 {
 	
@@ -55,7 +57,7 @@ void APlayLevelUI::BeginPlay()
 
 	HpText = CreateWidget<UTextWidget>(GetWorld(), "HpText");
 	HpText->AddToViewPort(EUIOrder::PlayInfo);
-	HpText->SetScale(15.f);
+	HpText->SetScale(7.5f * ContentsValue::MultipleSize);
 	HpText->SetFont("Galmuri9");
 	HpText->SetColor(Color8Bit::White);
 	HpText->SetPosition(FVector(-225.f, 320.f));

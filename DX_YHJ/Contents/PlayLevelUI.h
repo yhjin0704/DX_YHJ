@@ -8,6 +8,8 @@ class APlayLevelUI : public AActor
 	GENERATED_BODY(AActor)
 
 public:
+	static int KillCount;
+
 	// constrcuter destructer
 	APlayLevelUI();
 	~APlayLevelUI();
@@ -54,7 +56,6 @@ private:
 
 	std::string PlayerName = "";
 	int Money = 0;
-	int KillCount = 0;
 	int PlayTime = 0;
 
 	void HpUpdate();
