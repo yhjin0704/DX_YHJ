@@ -20,19 +20,16 @@
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Level\PlayLevel\Player</Filter>
+      <Filter>Level\PlayLevel\Actor\Player</Filter>
     </ClCompile>
     <ClCompile Include="Player_State.cpp">
-      <Filter>Level\PlayLevel\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayBackGround.cpp">
-      <Filter>Level\PlayLevel</Filter>
+      <Filter>Level\PlayLevel\Actor\Player</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>Level\PlayLevel\Monster</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Level\PlayLevel\Equipment</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment</Filter>
     </ClCompile>
     <ClCompile Include="HoloCursor.cpp">
       <Filter>Actor</Filter>
@@ -41,28 +38,28 @@
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="KiaraWeapon.cpp">
-      <Filter>Level\PlayLevel\Equipment\Melee\CharacterInherence</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\CharacterInherence</Filter>
     </ClCompile>
     <ClCompile Include="Melee.cpp">
-      <Filter>Level\PlayLevel\Equipment\Melee</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee</Filter>
     </ClCompile>
     <ClCompile Include="Ranged.cpp">
-      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged</Filter>
     </ClCompile>
     <ClCompile Include="Asacoco.cpp">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClCompile>
     <ClCompile Include="AsacocoBullet.cpp">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClCompile>
     <ClCompile Include="PlayLevelUI.cpp">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClCompile>
     <ClCompile Include="NomalMonster.cpp">
-      <Filter>Level\PlayLevel\Monster</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster</Filter>
     </ClCompile>
     <ClCompile Include="LobbyGameMode.cpp">
       <Filter>Level\LobbyLevel</Filter>
@@ -73,14 +70,11 @@
     <ClCompile Include="LobbyBackAnimationBar.cpp">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="ExpObject.cpp">
-      <Filter>Level\PlayLevel</Filter>
-    </ClCompile>
     <ClCompile Include="Fubuzilla.cpp">
-      <Filter>Level\PlayLevel\Monster\Boss</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="SmolAme.cpp">
-      <Filter>Level\PlayLevel\Monster\Boss</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="LobbyChar.cpp">
       <Filter>Level\LobbyLevel\Actor\MainLobby</Filter>
@@ -106,6 +100,12 @@
     <ClCompile Include="PauseUI.cpp">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClCompile>
+    <ClCompile Include="PlayBackGround.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpObject.cpp">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -130,13 +130,10 @@
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Level\PlayLevel\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayBackGround.h">
-      <Filter>Level\PlayLevel</Filter>
+      <Filter>Level\PlayLevel\Actor\Player</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
-      <Filter>Level\PlayLevel\Monster</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster</Filter>
     </ClInclude>
     <ClInclude Include="HoloCursor.h">
       <Filter>Actor</Filter>
@@ -145,28 +142,28 @@
       <Filter>Level\TitleLevel\Actor</Filter>
     </ClInclude>
     <ClInclude Include="KiaraWeapon.h">
-      <Filter>Level\PlayLevel\Equipment\Melee\CharacterInherence</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\CharacterInherence</Filter>
     </ClInclude>
     <ClInclude Include="Melee.h">
-      <Filter>Level\PlayLevel\Equipment\Melee</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee</Filter>
     </ClInclude>
     <ClInclude Include="Ranged.h">
-      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Level\PlayLevel\Equipment\Ranged</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged</Filter>
     </ClInclude>
     <ClInclude Include="Asacoco.h">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClInclude>
     <ClInclude Include="AsacocoBullet.h">
-      <Filter>Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\Asacoco</Filter>
     </ClInclude>
     <ClInclude Include="PlayLevelUI.h">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClInclude>
     <ClInclude Include="NomalMonster.h">
-      <Filter>Level\PlayLevel\Monster</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster</Filter>
     </ClInclude>
     <ClInclude Include="LobbyGameMode.h">
       <Filter>Level\LobbyLevel</Filter>
@@ -177,14 +174,11 @@
     <ClInclude Include="LobbyBackAnimationBar.h">
       <Filter>Level\LobbyLevel\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="ExpObject.h">
-      <Filter>Level\PlayLevel</Filter>
-    </ClInclude>
     <ClInclude Include="Fubuzilla.h">
-      <Filter>Level\PlayLevel\Monster\Boss</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster\Boss</Filter>
     </ClInclude>
     <ClInclude Include="SmolAme.h">
-      <Filter>Level\PlayLevel\Monster\Boss</Filter>
+      <Filter>Level\PlayLevel\Actor\Monster\Boss</Filter>
     </ClInclude>
     <ClInclude Include="LobbyChar.h">
       <Filter>Level\LobbyLevel\Actor\MainLobby</Filter>
@@ -202,7 +196,7 @@
       <Filter>Level\LobbyLevel\Actor\CharSelect</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.h">
-      <Filter>Level\PlayLevel\Equipment</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment</Filter>
     </ClInclude>
     <ClInclude Include="VeiwStatusUI.h">
       <Filter>Level\PlayLevel\UI</Filter>
@@ -212,6 +206,12 @@
     </ClInclude>
     <ClInclude Include="PauseUI.h">
       <Filter>Level\PlayLevel\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayBackGround.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpObject.h">
+      <Filter>Level\PlayLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,38 +236,8 @@
     <Filter Include="Global">
       <UniqueIdentifier>{4dbe0f79-8413-440c-9a91-031851ebfa2a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\PlayLevel\Equipment">
-      <UniqueIdentifier>{54deb598-2160-441e-807b-e65f27714166}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Player">
-      <UniqueIdentifier>{deca0dda-3d74-44c9-a42b-b3a2852408ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Monster">
-      <UniqueIdentifier>{d32ab972-11dd-4503-acb9-c4518c2f433c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\TitleLevel\Actor">
       <UniqueIdentifier>{fa849d48-1d6e-4472-8d58-e3918e6031da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Melee">
-      <UniqueIdentifier>{47eb42bd-2753-4639-bc4f-03d8f50091aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Ranged">
-      <UniqueIdentifier>{419617ae-2e4c-4892-ae5c-248acedc5c46}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Ranged\NomalWeapons">
-      <UniqueIdentifier>{234de6c4-8e0c-4eee-8864-60be56f96ce6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Melee\CharacterInherence">
-      <UniqueIdentifier>{240af979-6a32-40fb-b699-7669ec2d4e6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Ranged\CharacterInherence">
-      <UniqueIdentifier>{d1ed3a35-65c7-446d-8d0a-0a54edfea1cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Melee\NomalWeapons">
-      <UniqueIdentifier>{5de64815-7b88-42d9-854f-c98d80186cca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\PlayLevel\Equipment\Ranged\NomalWeapons\Asacoco">
-      <UniqueIdentifier>{9cebc663-736f-4df2-bd1a-9c3fb2d0fdd3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\PlayLevel\UI">
       <UniqueIdentifier>{bd5553ad-9786-491f-b66f-db23242cd9ea}</UniqueIdentifier>
@@ -278,14 +248,47 @@
     <Filter Include="Level\LobbyLevel\Actor">
       <UniqueIdentifier>{cb9bfbe3-972f-4f3c-9a3e-9b51d224a562}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\PlayLevel\Monster\Boss">
-      <UniqueIdentifier>{105266ec-53ef-47d0-bbfa-bf4ed2bbad5e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\LobbyLevel\Actor\MainLobby">
       <UniqueIdentifier>{8e12504d-4d8a-498b-9e5c-55930ae6b942}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\LobbyLevel\Actor\CharSelect">
       <UniqueIdentifier>{fa4606ac-11fe-4342-a70d-2dc8121b224c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor">
+      <UniqueIdentifier>{7e44579d-cb61-4b59-9fcc-39773cdfd263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment">
+      <UniqueIdentifier>{54deb598-2160-441e-807b-e65f27714166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Melee">
+      <UniqueIdentifier>{47eb42bd-2753-4639-bc4f-03d8f50091aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Melee\CharacterInherence">
+      <UniqueIdentifier>{240af979-6a32-40fb-b699-7669ec2d4e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons">
+      <UniqueIdentifier>{5de64815-7b88-42d9-854f-c98d80186cca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Ranged">
+      <UniqueIdentifier>{419617ae-2e4c-4892-ae5c-248acedc5c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons">
+      <UniqueIdentifier>{234de6c4-8e0c-4eee-8864-60be56f96ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\Asacoco">
+      <UniqueIdentifier>{9cebc663-736f-4df2-bd1a-9c3fb2d0fdd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Ranged\CharacterInherence">
+      <UniqueIdentifier>{d1ed3a35-65c7-446d-8d0a-0a54edfea1cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Monster">
+      <UniqueIdentifier>{d32ab972-11dd-4503-acb9-c4518c2f433c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Monster\Boss">
+      <UniqueIdentifier>{105266ec-53ef-47d0-bbfa-bf4ed2bbad5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Player">
+      <UniqueIdentifier>{deca0dda-3d74-44c9-a42b-b3a2852408ba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

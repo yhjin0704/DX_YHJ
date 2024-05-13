@@ -27,5 +27,7 @@ private:
 	UCollision* CollisionR1;
 	UCollision* CollisionC0;
 
+	AMonster* HitMonster;
+	bool IsMonsterHit = false;
 };
 

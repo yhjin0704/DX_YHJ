@@ -10,6 +10,13 @@ AKiaraWeapon::AKiaraWeapon()
 
 	CollisionR0->SetCollisionGroup(ECollisionOrder::Weapon);
 	CollisionR0->SetCollisionType(ECollisionType::RotRect);
+
+	CollisionR1 = CreateDefaultSubObject<UCollision>("Collision");
+	//CollisionR0->SetupAttachment(Root);
+	CollisionR1->SetScale({ 50.0f * ContentsValue::MultipleSize, 50.f * ContentsValue::MultipleSize });
+
+	CollisionR1->SetCollisionGroup(ECollisionOrder::Weapon);
+	CollisionR1->SetCollisionType(ECollisionType::RotRect);
 }
 
 AKiaraWeapon::~AKiaraWeapon()
@@ -28,6 +35,7 @@ void AKiaraWeapon::BeginPlay()
 
 	SetKnifeTypeMeleeLocation(35.0f);
 	CollisionR0->SetActive(false);
+	CollisionR1->SetActive(false);
 }
 
 void AKiaraWeapon::Tick(float _DeltaTime)
@@ -44,23 +52,44 @@ void AKiaraWeapon::Tick(float _DeltaTime)
 
 		CollisionR0->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 
+		CollisionR1->SetActive(true);
+		CollisionR1->SetPosition(Root->GetLocalPosition());
+		CollisionR1->AddPosition(Dir * 50.0f * ContentsValue::MultipleSize);
+
+		//CollisionR1->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
+
 		CheckHit();
 	}
 	else
 	{
 		CollisionR0->SetActive(false);
+		CollisionR1->SetActive(false);
 	}
 }
 
 void AKiaraWeapon::CheckHit()
 {
+	
 	CollisionR0->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
 		{
-			AMonster* Monster = dynamic_cast<AMonster*>(_Collison->GetActor());
-
-			float Hp = Monster->GetHp();
+			HitMonster = dynamic_cast<AMonster*>(_Collison->GetActor());
+			IsMonsterHit = true;
+			/*float Hp = HitMonster->GetHp();
 			Hp -= Atk;
-			Monster->SetHp(Hp);
+			HitMonster->SetHp(Hp);*/
 		}
 	);
+	CollisionR1->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collison)
+		{
+			HitMonster = dynamic_cast<AMonster*>(_Collison->GetActor());
+			IsMonsterHit = true;
+		}
+	);
+	if (true == IsMonsterHit)
+	{
+				float Hp = HitMonster->GetHp();
+				Hp -= Atk;
+				HitMonster->SetHp(Hp);
+				IsMonsterHit = false;
+	}
 }
