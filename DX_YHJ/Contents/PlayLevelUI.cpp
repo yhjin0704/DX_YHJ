@@ -130,7 +130,7 @@ void APlayLevelUI::HpUpdate()
 {
 	HpText->SetText(std::to_string(APlayGameMode::MainPlayer->GetHp()));
 
-	HpBar->SetScale({129.0f * ContentsValue::MultipleSize , ContentsValue::MultipleSize });
+	HpBar->SetScale({129.0f * ContentsValue::MultipleSize , 9.0f * ContentsValue::MultipleSize });
 }
 
 void APlayLevelUI::MoneyUpdate()
