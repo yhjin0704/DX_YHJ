@@ -71,7 +71,7 @@ void APlayGameMode::BeginPlay()
 	}
 
 	PlayLevelUI = GetWorld()->SpawnActor<APlayLevelUI>("PlayLevelUI");
-
+	PauseUI = GetWorld()->SpawnActor<APauseUI>("PauseUI");
 }
 
 void APlayGameMode::Tick(float _DeltaTime)
@@ -106,6 +106,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 	PlayLevelUI->SetPlayTime(PlayTime);
 
 	Pause(_DeltaTime);
+	CheckPauseButtonSelect();
 
 	PlayDebugText(_DeltaTime);
 }
@@ -340,7 +341,6 @@ void APlayGameMode::SpawnBossMonsterTimeSet(float _SpawnTime, std::string _Name)
 	}
 }
 
-
 void APlayGameMode::Pause(float _DeltaTime)
 {
 	if (true == IsDown(VK_ESCAPE))
@@ -350,12 +350,14 @@ void APlayGameMode::Pause(float _DeltaTime)
 			IsPause = false;
 			AHoloCursor::MouseAimOn = IsPrevMouseAim;
 			GEngine->SetOrderTimeScale(0, 1.f);
+			PauseUI->AllActiveOff();
 		}
 		else
 		{
 			IsPause = true;
 			IsPrevMouseAim = AHoloCursor::MouseAimOn;
 			GEngine->SetOrderTimeScale(0, 0.f);
+			PauseUI->AllActiveOn();
 		}
 	}
 
@@ -369,6 +371,58 @@ void APlayGameMode::Pause(float _DeltaTime)
 	}
 	PlayTime += PlayDeltaTime;
 	_DeltaTime = 0.0f;
+}
+
+void APlayGameMode::CheckPauseButtonSelect()
+{
+	if (true == IsPause)
+	{
+		if (true == IsDown('W'))
+		{
+			--PauseButtonSelect;
+			if (0 > PauseButtonSelect)
+			{
+				PauseButtonSelect = PauseUI->GetVPauseButtonSize() - 1;
+			}
+		}
+		else if (true == IsDown('S'))
+		{
+			++PauseButtonSelect;
+			if (PauseUI->GetVPauseButtonSize() <= PauseButtonSelect)
+			{
+				PauseButtonSelect = 0;
+			}
+		}
+
+		for (int i = 0; i < 1; ++i)
+		{
+			if (true == PauseUI->GetVPauseButtonIsCursorOn(i))
+			{
+				PauseButtonSelect = i;
+			}
+			PauseUI->SetVPauseButtonIsSelect(i, false);
+		}
+
+		switch (PauseButtonSelect)
+		{
+		case 0:
+			PauseUI->SetVPauseButtonIsSelect(PauseButtonSelect, true);
+			if (true == IsDown(VK_RETURN))
+			{
+				GEngine->ChangeLevel("LobbyLevel");
+			}
+			else if (true == PauseUI->GetVPauseButtonIsCursorOn(PauseButtonSelect))
+			{
+				if (true == IsDown(VK_LBUTTON))
+				{
+					GEngine->ChangeLevel("LobbyLevel");
+				}
+			}
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void APlayGameMode::PlayDebugText(float _DeltaTime)

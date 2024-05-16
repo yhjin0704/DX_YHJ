@@ -35,6 +35,10 @@ enum class EUIOrder
 	Frame,
 	PlayInfo,
 	Text,
+	PauseBack,
+	PauseFrame,
+	PauseObject,
+	PauseText,
 	Cursor,
 };
 

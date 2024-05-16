@@ -67,6 +67,11 @@ void ALobbyGameMode::LevelEnd(ULevel* _NextLevel)
 void ALobbyGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
+	
+	if ("PlayLevel" == _PrevLevel->GetName())
+	{
+		ReturnMainLobby();
+	}
 }
 
 void ALobbyGameMode::StartCharSelect()

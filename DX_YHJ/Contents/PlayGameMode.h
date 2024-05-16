@@ -5,6 +5,7 @@
 #include "NomalMonster.h"
 #include "PlayBackGround.h"
 #include "PlayLevelUI.h"
+#include "PauseUI.h"
 
 struct FIntPoint
 {
@@ -50,7 +51,9 @@ protected:
 
 	std::shared_ptr<AHoloCursor> Cursor;
 	std::shared_ptr<APlayer> Player;
+
 	std::shared_ptr<APlayLevelUI> PlayLevelUI;
+	std::shared_ptr<APauseUI> PauseUI;
 
 	float4 IndexToCenterPos(FIntPoint _Index);
 	FIntPoint PosToIndex(float4 _Pos);
@@ -72,7 +75,6 @@ protected:
 private:
 	FIntPoint CurIndex;
 
-
 	float4 GroupMonsterPos;
 	bool GroupSpawn = false;
 
@@ -89,7 +91,10 @@ private:
 
 	bool IsPrevMouseAim = false;
 
+	int PauseButtonSelect = 0;
+
 	void Pause(float _DeltaTime);
+	void CheckPauseButtonSelect();
 
 	void PlayDebugText(float _DeltaTime);
 };
