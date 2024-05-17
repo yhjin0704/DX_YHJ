@@ -120,6 +120,8 @@ void APlayGameMode::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 
+	ContentsValue::ChangeBGM("StageOneBGM.mp3");
+
 	IsPause = false;
 
 	PlayLevelUI->StartSetting();

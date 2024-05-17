@@ -77,17 +77,6 @@ void UHoloCureCore::Initialize()
 	}
 
 	{
-		UEngineDirectory Dir;
-		Dir.MoveToSearchChild("Resources");
-		Dir.Move("Sound");
-		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".wav" });
-		for (UEngineFile& File : Files)
-		{
-			UEngineSound::Load(File.GetFullPath());
-		}
-	}
-
-	{
 		UEngineDirectory NewDir;
 		NewDir.MoveToSearchChild("Resources");
 		NewDir.Move("Image");
@@ -99,6 +88,22 @@ void UHoloCureCore::Initialize()
 		else
 		{
 			WindowIconPath = AllFiles.front().GetFullPath();
+		}
+	}
+
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("Resources");
+		Dir.Move("Sound");
+		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".wav", ".mp3" });
+		for (UEngineFile& File : Files)
+		{
+			File.Open(EIOOpenMode::Read, EIODataType::Binary);
+
+			char Arr[100];
+			File.Read(Arr, 100);
+
+			UEngineSound::Load(File.GetFullPath());
 		}
 	}
 
