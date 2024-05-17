@@ -3,6 +3,7 @@
 #include "PlayGameMode.h"
 #include "Asacoco.h"
 #include "Wamy.h"
+#include "Spider.h"
 
 PlayGameModeGUI::PlayGameModeGUI()
 {
@@ -26,5 +27,9 @@ void PlayGameModeGUI::OnGui(ULevel* Level, float _Delta)
 	if (true == ImGui::Button("Wamy"))
 	{
 		APlayGameMode::MainPlayer->AddWeapon<AWamy>("Wamy");
+	}
+	if (true == ImGui::Button("Spider"))
+	{
+		APlayGameMode::MainPlayer->AddWeapon<ASpider>("Spider");
 	}
 }

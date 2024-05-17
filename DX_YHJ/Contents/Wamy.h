@@ -5,6 +5,7 @@
 class AWamy : public AMelee
 {
 	GENERATED_BODY(AMelee)
+
 public:
 	// constrcuter destructer
 	AWamy();

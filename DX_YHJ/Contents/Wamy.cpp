@@ -5,9 +5,9 @@
 AWamy::AWamy()
 {
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
-	Collision->SetScale({ 50.0f * ContentsValue::MultipleSize, 50.f * ContentsValue::MultipleSize });
+	Collision->SetScale({ 70.0f * ContentsValue::MultipleSize, 70.0f * ContentsValue::MultipleSize });
 	Collision->SetCollisionGroup(ECollisionOrder::Weapon);
-	Collision->SetCollisionType(ECollisionType::Rect);
+	Collision->SetCollisionType(ECollisionType::RotRect);
 }
 
 AWamy::~AWamy()
@@ -24,17 +24,16 @@ void AWamy::BeginPlay()
 	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 	Renderer->ChangeAnimation("Wamy");
 
-	SetKnifeTypeMeleeLocation(30.0f);
+	SetKnifeTypeMeleeLocation(70.0f);
 	
 	Collision->SetActive(false);
-
 }
 
 void AWamy::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	SetKnifeTypeMeleeLocation(30.0f);
+	SetKnifeTypeMeleeLocation(70.0f);
 
 	if (true == Renderer->IsActive())
 	{

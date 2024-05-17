@@ -115,6 +115,9 @@
     <ClCompile Include="PlayGameModeGUI.cpp">
       <Filter>Level\PlayLevel</Filter>
     </ClCompile>
+    <ClCompile Include="Spider.cpp">
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -230,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="PlayGameModeGUI.h">
       <Filter>Level\PlayLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider.h">
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

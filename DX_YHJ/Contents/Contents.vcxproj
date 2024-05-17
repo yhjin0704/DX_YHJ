@@ -114,6 +114,10 @@
     </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
+    <ClInclude Include="Spider.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <SubType>
       </SubType>
@@ -238,6 +242,10 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player_State.cpp" />
     <ClCompile Include="PlayGameMode.cpp" />
+    <ClCompile Include="Spider.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <SubType>
       </SubType>

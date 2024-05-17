@@ -45,7 +45,7 @@ void AMonster::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::MonsterUp);
 
 	SavedRenderer->CreateAnimation("MonsterSavedHeart", "MonsterSavedHeart", 0.1f, false);
-	SavedRenderer->SetOrder(ERenderOrder::MonsterUIUp);
+	SavedRenderer->SetOrder(ERenderOrder::MonsterUp);
 	SavedRenderer->ChangeAnimation("MonsterSavedHeart");
 
 	ShadowRenderer->SetSprite("Shadow_0.png");
@@ -113,16 +113,8 @@ void AMonster::Move(float _DeltaTime, EMonsterMoveType _MoveType)
 
 void AMonster::CheckPosComparePlayer()
 {
-	if (APlayer::PlayerColPos.Y <= GetActorLocation().Y)
-	{
-		Renderer->SetOrder(ERenderOrder::MonsterUp);
-		SavedRenderer->SetOrder(ERenderOrder::MonsterUIUp);
-	}
-	else
-	{
-		Renderer->SetOrder(ERenderOrder::MonsterDown);
-		SavedRenderer->SetOrder(ERenderOrder::MonsterUIDown);
-	}
+	Renderer->SetOrder(500 - static_cast<int>(GetActorLocation().Y - APlayGameMode::MainPlayer->GetActorLocation().Y));
+	SavedRenderer->SetOrder(500 - static_cast<int>(GetActorLocation().Y - APlayGameMode::MainPlayer->GetActorLocation().Y));
 }
 
 void AMonster::CheckOverPlayer()

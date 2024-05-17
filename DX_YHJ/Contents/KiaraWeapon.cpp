@@ -7,14 +7,12 @@ AKiaraWeapon::AKiaraWeapon()
 	CollisionR0 = CreateDefaultSubObject<UCollision>("Collision");
 	//CollisionR0->SetupAttachment(Root);
 	CollisionR0->SetScale({ 50.0f * ContentsValue::MultipleSize, 50.f * ContentsValue::MultipleSize });
-
 	CollisionR0->SetCollisionGroup(ECollisionOrder::Weapon);
 	CollisionR0->SetCollisionType(ECollisionType::RotRect);
 
 	CollisionR1 = CreateDefaultSubObject<UCollision>("Collision");
 	//CollisionR0->SetupAttachment(Root);
 	CollisionR1->SetScale({ 50.0f * ContentsValue::MultipleSize, 50.f * ContentsValue::MultipleSize });
-
 	CollisionR1->SetCollisionGroup(ECollisionOrder::Weapon);
 	CollisionR1->SetCollisionType(ECollisionType::RotRect);
 }
@@ -34,6 +32,7 @@ void AKiaraWeapon::BeginPlay()
 	Renderer->ChangeAnimation("KiaraAttack");
 
 	SetKnifeTypeMeleeLocation(35.0f);
+
 	CollisionR0->SetActive(false);
 	CollisionR1->SetActive(false);
 }

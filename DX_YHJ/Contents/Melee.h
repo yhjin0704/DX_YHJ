@@ -20,6 +20,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	bool IsUseAniMelee = true;
+
 	void SetKnifeTypeMeleeLocation(float _DistanceFromPlayer);
 
 private:

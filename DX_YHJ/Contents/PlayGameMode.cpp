@@ -115,6 +115,14 @@ void APlayGameMode::Tick(float _DeltaTime)
 void APlayGameMode::LevelEnd(ULevel* _NextLevel)
 {
 	Super::LevelEnd(_NextLevel);
+
+	if (true == IsPause)
+	{
+		IsPause = false;
+		AHoloCursor::MouseAimOn = IsPrevMouseAim;
+		GEngine->SetOrderTimeScale(0, 1.f);
+		PauseUI->AllActiveOff();
+	}
 }
 
 void APlayGameMode::LevelStart(ULevel* _PrevLevel)
