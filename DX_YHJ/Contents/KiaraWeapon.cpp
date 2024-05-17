@@ -52,7 +52,7 @@ void AKiaraWeapon::Tick(float _DeltaTime)
 
 		CollisionR0->SetRotationDeg(FVector{ 0.0f, 0.0f, Angle });
 
-		CollisionR1->SetActive(true);
+		CollisionR1->SetActive(false);
 		CollisionR1->SetPosition(Root->GetLocalPosition());
 		CollisionR1->AddPosition(Dir * 50.0f * ContentsValue::MultipleSize);
 

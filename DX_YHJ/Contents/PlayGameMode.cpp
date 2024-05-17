@@ -5,6 +5,7 @@
 #include <EngineCore/Camera.h>
 #include <EngineCore/EngineDebugMsgWindow.h>
 #include <EngineBase/EngineRandom.h>
+#include "PlayGameModeGUI.h"
 #include "Fubuzilla.h"
 
 std::shared_ptr<APlayer> APlayGameMode::MainPlayer = nullptr;

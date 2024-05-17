@@ -129,8 +129,9 @@ void APlayLevelUI::StartSetting()
 void APlayLevelUI::HpUpdate()
 {
 	HpText->SetText(std::to_string(APlayGameMode::MainPlayer->GetHp()));
-
-	HpBar->SetScale({129.0f * ContentsValue::MultipleSize , 9.0f * ContentsValue::MultipleSize });
+	float Hp = 129.0f * (static_cast<float>(APlayGameMode::MainPlayer->GetHp()) / static_cast<float>(APlayGameMode::MainPlayer->GetMaxHp()));
+	HpBar->SetScale({ Hp * ContentsValue::MultipleSize , 7.0f * ContentsValue::MultipleSize });
+	HpBar->SetPosition(FVector(-382.f - (129.0f - Hp), 320.f));
 }
 
 void APlayLevelUI::MoneyUpdate()

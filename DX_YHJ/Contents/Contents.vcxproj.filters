@@ -109,6 +109,12 @@
     <ClCompile Include="PauseButton.cpp">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Wamy.cpp">
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayGameModeGUI.cpp">
+      <Filter>Level\PlayLevel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -218,6 +224,12 @@
     </ClInclude>
     <ClInclude Include="PauseButton.h">
       <Filter>Level\PlayLevel\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Wamy.h">
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayGameModeGUI.h">
+      <Filter>Level\PlayLevel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

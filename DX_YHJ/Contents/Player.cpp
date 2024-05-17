@@ -66,7 +66,6 @@ void APlayer::BeginPlay()
 	AtkDir->SetPosition(FVector{ PlayerPos.X, PlayerPos.Y + (20.0f * ContentsValue::MultipleSize) });
 
 	AddWeapon<AKiaraWeapon>("KiaraWeapon");
-	AddWeapon<AAsacoco>("Asacoco");
 
 	StateInit();
 }
@@ -216,4 +215,9 @@ void APlayer::CheckHit(float _DeltaTime)
 			}
 		}
 	);
+
+	if (0 > Hp)
+	{
+		Hp = 0;
+	}
 }

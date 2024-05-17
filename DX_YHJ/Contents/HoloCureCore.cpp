@@ -6,6 +6,8 @@
 #include "TitleGameMode.h"
 #include "LobbyGameMode.h"
 #include "PlayGameMode.h"
+#include <EngineCore/EngineEditorGUI.h>
+#include "PlayGameModeGUI.h"
 #include "ContentsValue.h"
 
 UHoloCureCore::UHoloCureCore()
@@ -108,6 +110,7 @@ void UHoloCureCore::Initialize()
 	}
 
 	ContentsValue::WindowSize = GEngine->EngineWindow.GetWindowScale();
+	UEngineEditorGUI::CreateEditorWindow<PlayGameModeGUI>("Weapon");
 
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<ALobbyGameMode>("LobbyLevel");
