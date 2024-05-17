@@ -97,7 +97,7 @@ private:
 	EPlayerDir PlayerDir = EPlayerDir::E;
 	int MaxHp = 100;
 	int Hp = 100;
-	float Atk = 1.0f;
+	float Atk = 30.0f;
 	float CriRate = 0.05f;
 	float Haste = 0.0f;
 	float AtkTime = 1.0f;

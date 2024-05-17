@@ -55,7 +55,7 @@ void ASpider::CheckHit(float _DeltaTime)
 			{
 				HitMonster = dynamic_cast<AMonster*>(_Collison->GetActor());
 				IsMonsterHit = true;
-				HitDelay = 0.5f;
+				HitDelay = 1.0f;
 			}
 		}
 	);
@@ -65,7 +65,7 @@ void ASpider::CheckHit(float _DeltaTime)
 	if (true == IsMonsterHit)
 	{
 		float Hp = HitMonster->GetHp();
-		Hp -= Atk;
+		Hp -= Atk / 3.0f;
 		HitMonster->SetHp(Hp);
 		IsMonsterHit = false;
 	}

@@ -109,14 +109,17 @@
     <ClCompile Include="PauseButton.cpp">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Wamy.cpp">
-      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
-    </ClCompile>
     <ClCompile Include="PlayGameModeGUI.cpp">
       <Filter>Level\PlayLevel</Filter>
     </ClCompile>
     <ClCompile Include="Spider.cpp">
-      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons\Spider</Filter>
+    </ClCompile>
+    <ClCompile Include="Wamy.cpp">
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons\Wamy</Filter>
+    </ClCompile>
+    <ClCompile Include="Fanbeam.cpp">
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\FanBeam</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,14 +231,17 @@
     <ClInclude Include="PauseButton.h">
       <Filter>Level\PlayLevel\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Wamy.h">
-      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
-    </ClInclude>
     <ClInclude Include="PlayGameModeGUI.h">
       <Filter>Level\PlayLevel</Filter>
     </ClInclude>
     <ClInclude Include="Spider.h">
-      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons</Filter>
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons\Spider</Filter>
+    </ClInclude>
+    <ClInclude Include="Wamy.h">
+      <Filter>Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons\Wamy</Filter>
+    </ClInclude>
+    <ClInclude Include="Fanbeam.h">
+      <Filter>Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\FanBeam</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +319,15 @@
     </Filter>
     <Filter Include="Level\PlayLevel\Actor\Player">
       <UniqueIdentifier>{deca0dda-3d74-44c9-a42b-b3a2852408ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons\Spider">
+      <UniqueIdentifier>{0a582e36-5237-4904-803d-ce741f183869}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Melee\NomalWeapons\Wamy">
+      <UniqueIdentifier>{4004fad7-04bf-44f0-913e-ba5423be123e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\PlayLevel\Actor\Equipment\Ranged\NomalWeapons\FanBeam">
+      <UniqueIdentifier>{1b77ef09-cae9-4fb4-8076-830e5780d48a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
