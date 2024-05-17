@@ -34,7 +34,7 @@ void APauseUI::BeginPlay()
 	PauseFrame->SetPosition(FVector(0.f, 0.f));
 	PauseFrame->SetActive(false);
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		std::shared_ptr<APauseButton> PauseButton = GetWorld()->SpawnActor<APauseButton>("PauseButton");
 		PauseButton->SetActorLocation({ 0.0f, 120.0f - (60.0f * i) });
@@ -43,7 +43,11 @@ void APauseUI::BeginPlay()
 	}
 	{
 		VPauseButton[0]->SettingLocation();
-		VPauseButton[0]->GetTextWidget()->SetText("나가기");
+		VPauseButton[0]->GetTextWidget()->SetText("이어서 하기");
+	}
+	{
+		VPauseButton[1]->SettingLocation();
+		VPauseButton[1]->GetTextWidget()->SetText("나가기");
 	}
 }
 

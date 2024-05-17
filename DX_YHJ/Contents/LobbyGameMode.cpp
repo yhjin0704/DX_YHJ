@@ -69,6 +69,7 @@ void ALobbyGameMode::LevelStart(ULevel* _PrevLevel)
 	Super::LevelStart(_PrevLevel);
 
 	ContentsValue::ChangeBGM("TitleBGM.mp3");
+	AHoloCursor::MouseAimOn = false;
 	
 	if ("PlayLevel" == _PrevLevel->GetName())
 	{

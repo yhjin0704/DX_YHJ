@@ -405,7 +405,7 @@ void APlayGameMode::CheckPauseButtonSelect()
 			}
 		}
 
-		for (int i = 0; i < 1; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
 			if (true == PauseUI->GetVPauseButtonIsCursorOn(i))
 			{
@@ -417,6 +417,26 @@ void APlayGameMode::CheckPauseButtonSelect()
 		switch (PauseButtonSelect)
 		{
 		case 0:
+			PauseUI->SetVPauseButtonIsSelect(PauseButtonSelect, true);
+			if (true == IsDown(VK_RETURN))
+			{
+				IsPause = false;
+				AHoloCursor::MouseAimOn = IsPrevMouseAim;
+				GEngine->SetOrderTimeScale(0, 1.f);
+				PauseUI->AllActiveOff();
+			}
+			else if (true == PauseUI->GetVPauseButtonIsCursorOn(PauseButtonSelect))
+			{
+				if (true == IsDown(VK_LBUTTON))
+				{
+					IsPause = false;
+					AHoloCursor::MouseAimOn = IsPrevMouseAim;
+					GEngine->SetOrderTimeScale(0, 1.f);
+					PauseUI->AllActiveOff();
+				}
+			}
+			break;
+		case 1:
 			PauseUI->SetVPauseButtonIsSelect(PauseButtonSelect, true);
 			if (true == IsDown(VK_RETURN))
 			{

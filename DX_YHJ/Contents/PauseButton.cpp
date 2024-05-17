@@ -22,7 +22,7 @@ void APauseButton::BeginPlay()
 	Renderer = CreateWidget<UImage>(GetWorld(), "PuaseButton");
 	Renderer->AddToViewPort(EUIOrder::PauseObject);
 	Renderer->SetSprite("hud_Button_0.png");
-	Renderer->SetAutoSize(0.5f * ContentsValue::MultipleSize, true);
+	Renderer->SetAutoSize(ContentsValue::MultipleSize, true);
 
 	Collision->SetScale({ 90.0f * ContentsValue::MultipleSize, 25.0f * ContentsValue::MultipleSize });
 	Collision->SetCollisionGroup(ECollisionOrder::UIButton);
@@ -38,6 +38,8 @@ void APauseButton::BeginPlay()
 void APauseButton::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	//Collision->SetPosition(GetActorLocation());
 
 	CollisionCheck();
 	SelectChange();
@@ -68,7 +70,7 @@ void APauseButton::SelectChange()
 	else
 	{
 		Renderer->SetSprite("hud_Button_0.png");
-		Renderer->SetAutoSize(0.9f * ContentsValue::MultipleSize, true);
+		Renderer->SetAutoSize(1.2f * ContentsValue::MultipleSize, true);
 		Text->SetColor(Color8Bit::White);
 	}
 }
