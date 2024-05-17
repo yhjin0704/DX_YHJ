@@ -4,6 +4,7 @@
 #include "Asacoco.h"
 #include "Wamy.h"
 #include "Spider.h"
+#include "Fanbeam.h"
 
 PlayGameModeGUI::PlayGameModeGUI()
 {
@@ -32,4 +33,8 @@ void PlayGameModeGUI::OnGui(ULevel* Level, float _Delta)
 	{
 		APlayGameMode::MainPlayer->AddWeapon<ASpider>("Spider");
 	}
+	/*if (true == ImGui::Button("Fanbeam"))
+	{
+		APlayGameMode::MainPlayer->AddWeapon<AFanbeam>("Fanbeam");
+	}*/
 }

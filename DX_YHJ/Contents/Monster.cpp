@@ -2,6 +2,7 @@
 #include "Monster.h"
 #include "Player.h"
 #include "Weapon.h"
+#include "ExpObject.h"
 
 AMonster::AMonster()
 {
@@ -165,6 +166,8 @@ void AMonster::Saved(float _DeltaTime)
 
 	if (true == SavedRenderer->IsCurAnimationEnd())
 	{
+		std::shared_ptr<AExpObject> ExpObject = GetWorld()->SpawnActor<AExpObject>("ExpObject");
+		ExpObject->SetActorLocation({ GetActorLocation().X, GetActorLocation().Y + 100.0f });
 		++APlayLevelUI::KillCount;
 		Destroy();
 	}

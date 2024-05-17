@@ -1,6 +1,10 @@
 #pragma once
-class AExpObject
+#include <EngineCore/Actor.h>
+
+class AExpObject : public AActor
 {
+	GENERATED_BODY(AActor)
+
 public:
 	// constrcuter destructer
 	AExpObject();
@@ -13,8 +17,10 @@ public:
 	AExpObject& operator=(AExpObject&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
-
+	USpriteRenderer* Renderer;
 };
 

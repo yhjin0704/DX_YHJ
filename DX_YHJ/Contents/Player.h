@@ -25,6 +25,11 @@ public:
 
 	UStateManager State;
 
+	USpriteRenderer* GetRenderer()
+	{
+		return Renderer;
+	}
+
 	std::string GetName()
 	{
 		return Name;
@@ -76,7 +81,6 @@ public:
 		std::shared_ptr<AWeapon> Weapon = GetWorld()->SpawnActor<WeaponType>(_Name);
 		MPlayerWeapons.insert({ _Name, Weapon });
 	}
-
 
 protected:
 	void BeginPlay() override;
