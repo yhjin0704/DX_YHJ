@@ -168,7 +168,9 @@ void AMonster::Saved(float _DeltaTime)
 	{
 		std::shared_ptr<AExpObject> ExpObject = GetWorld()->SpawnActor<AExpObject>("ExpObject");
 		ExpObject->SetActorLocation({ GetActorLocation().X, GetActorLocation().Y + 100.0f });
+
 		++APlayLevelUI::KillCount;
+
 		Destroy();
 	}
 }

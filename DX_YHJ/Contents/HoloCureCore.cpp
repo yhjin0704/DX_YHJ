@@ -115,5 +115,6 @@ void UHoloCureCore::Initialize()
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<ALobbyGameMode>("LobbyLevel");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
+
 	GEngine->ChangeLevel("TitleLevel");
 }
