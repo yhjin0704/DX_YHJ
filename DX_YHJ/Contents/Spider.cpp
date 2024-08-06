@@ -60,7 +60,10 @@ void ASpider::CheckHit(float _DeltaTime)
 		}
 	);
 
-	HitDelay -= _DeltaTime;
+	if (0 < HitDelay)
+	{
+		HitDelay -= _DeltaTime;
+	}
 
 	if (true == IsMonsterHit)
 	{
